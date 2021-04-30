@@ -1,8 +1,6 @@
 import java.awt.event.KeyEvent;
-
 import display.Menu;
 import processing.core.PApplet;
-import processing.core.PImage;
 import java.awt.Color;
 
 public class DrawingSurface extends PApplet {
@@ -10,7 +8,7 @@ public class DrawingSurface extends PApplet {
 	private Menu menu;
 	
 	public DrawingSurface() {
-		menu = new Menu(200, 200, 200, 200);
+		menu = new Menu(200, 200, 200, 200, 0, new Color(0), new Color(255, 255, 255));
 	}
 	
 	public void setup() {
@@ -34,7 +32,11 @@ public class DrawingSurface extends PApplet {
 		text("Mask On!", 8 * width/20, 2 * height/30, 4 * width/20, 3 * height/20);
 		popStyle();
 		
+		//map
+		
+		
 		//menu
+		//last because if opened it should appear above others
 		menu.setX(9 * width/10);
 		menu.setY(1 * height/15);
 		menu.setWidth(height/15);
