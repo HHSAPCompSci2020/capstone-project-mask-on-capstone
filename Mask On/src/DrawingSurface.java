@@ -1,12 +1,16 @@
 import java.awt.event.KeyEvent;
+
+import display.Menu;
 import processing.core.PApplet;
 import processing.core.PImage;
 import java.awt.Color;
 
 public class DrawingSurface extends PApplet {
 	
+	private Menu menu;
+	
 	public DrawingSurface() {
-		
+		menu = new Menu(200, 200, 200, 200);
 	}
 	
 	public void setup() {
@@ -15,7 +19,7 @@ public class DrawingSurface extends PApplet {
 	
 	public void draw() {
 		//background image, from unsplash (https://unsplash.com/photos/HRjdJddvPu8)
-		image(loadImage("images/background.jpg"), 0, 0);
+		image(loadImage("images/HomeScreen.jpg"), 0, 0);
 		pushStyle();
 		noStroke();
 		fill(0, 75);
@@ -25,13 +29,26 @@ public class DrawingSurface extends PApplet {
 		//title
 		pushStyle();
 		textAlign(CENTER);
-		textSize(20);
+		textSize(0.02F * width);
 		fill(255);
-		text("Mask On!", 9 * width/20, 2 * height/30, 2 * width/20, 2 * height/20);
+		text("Mask On!", 8 * width/20, 2 * height/30, 4 * width/20, 3 * height/20);
 		popStyle();
+		
+		//menu
+		menu.setX(9 * width/10);
+		menu.setY(1 * height/15);
+		menu.setWidth(height/15);
+		menu.draw(this);
 	}
 	
 	public void keyPressed() {
 		
+	}
+	
+	public void mousePressed() {
+		if (mouseX > menu.getX() && mouseY > menu.getY()
+				&& mouseX < menu.getX() + menu.getWidth() && mouseY < menu.getY() + menu.getHeight()) {
+			menu.openClose();
+		}
 	}
 }

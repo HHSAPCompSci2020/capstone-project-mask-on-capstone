@@ -18,7 +18,7 @@ public class Main {
 		window.setMaximumSize(new Dimension(1000, 650));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
-
+		window.setTitle("Mask On!");
 		window.setVisible(true);
 		
 	}
