@@ -14,7 +14,8 @@ public class Main {
 		JFrame window = (JFrame)canvas.getFrame();
 
 		window.setSize(1000, 650);
-		window.setMinimumSize(new Dimension(400,260));
+		//making it nonresizable without the weird problems with setResizable()
+		window.setMinimumSize(new Dimension(1000, 650));
 		window.setMaximumSize(new Dimension(1000, 650));
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.setResizable(true);
