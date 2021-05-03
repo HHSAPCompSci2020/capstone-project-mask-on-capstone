@@ -35,6 +35,18 @@ public class Map extends Display {
 			drawBox(marker, i);
 		}
 		
+		marker.fill(255, 255, 0);
+		marker.circle(getX() + getWidth()/4, getY() + getHeight()/6.5F, 12);
+		
+		marker.fill(255, 127.5F, 0);
+		marker.circle(getX() + 3 * getWidth()/8, getY() + 5.8F * getHeight()/11, 12);
+		
+		marker.fill(255, 0, 0);
+		marker.circle(getX() + getWidth()/2, getY() + 5 * getHeight()/9, 12);
+		
+		marker.fill(200, 50, 200);
+		marker.circle(getX() + 4 * getWidth()/7, getY() + 3.2F * getHeight()/5, 12);
+		
 		drawChar(marker, 0, 'Y');
 		drawChar(marker, 1, 'O');
 		drawChar(marker, 2, 'R');
@@ -45,8 +57,9 @@ public class Map extends Display {
 	
 	public void changeMap(int x, int y) {
 		//yellow
-		if (x > getX() && y > getY() + getHeight()
-				&& x < getX() + getWidth()/4 - 10 && y < getY() + getHeight() + 30) {
+		if ((Math.pow((x - (getX() + getWidth()/4)), 2) + Math.pow(((getY() + getHeight()/6.5F) - y), 2) < 36)
+				|| (x > getX() && y > getY() + getHeight()
+				&& x < getX() + getWidth()/4 - 10 && y < getY() + getHeight() + 30)) {
 			if (color == 'y') {
 				color = 'w';
 			}
@@ -55,8 +68,9 @@ public class Map extends Display {
 			}
 		}
 		//orange
-		if (x > getX() + getWidth()/4 && y > getY() + getHeight()
-				&& x < getX() + getWidth()/4 + getWidth()/4 - 10 && y < getY() + getHeight() + 30) {
+		if ((Math.pow((x - (getX() + 3 * getWidth()/8)), 2) + Math.pow((y - (getY() + 5.8F * getHeight()/11)), 2) < 36)
+				|| (x > getX() + getWidth()/4 && y > getY() + getHeight()
+				&& x < getX() + getWidth()/4 + getWidth()/4 - 10 && y < getY() + getHeight() + 30)) {
 			if (color == 'o') {
 				color = 'w';
 			}
@@ -65,8 +79,9 @@ public class Map extends Display {
 			}
 		}
 		//red
-		if (x > getX() + 2 * getWidth()/4 && y > getY() + getHeight()
-				&& x < getX() + 2 * getWidth()/4 + getWidth()/4 - 10 && y < getY() + getHeight() + 30) {
+		if ((Math.pow((x - (getX() + getWidth()/2)), 2) + Math.pow((y - (getY() + 5 * getHeight()/9)), 2) < 36)
+				|| (x > getX() + 2 * getWidth()/4 && y > getY() + getHeight()
+				&& x < getX() + 2 * getWidth()/4 + getWidth()/4 - 10 && y < getY() + getHeight() + 30)) {
 			if (color == 'r') {
 				color = 'w';
 			}
@@ -75,8 +90,9 @@ public class Map extends Display {
 			}
 		}
 		//purple
-		if (x > getX() + 3 * getWidth()/4 && y > getY() + getHeight()
-				&& x < getX() + 3 * getWidth()/4 + getWidth()/4 - 10 && y < getY() + getHeight() + 30) {
+		if ((Math.pow((x - (getX() + 4 * getWidth()/7)), 2) + Math.pow((y - (getY() + 3.2F * getHeight()/5)), 2) < 36)
+				|| (x > getX() + 3 * getWidth()/4 && y > getY() + getHeight()
+				&& x < getX() + 3 * getWidth()/4 + getWidth()/4 - 10 && y < getY() + getHeight() + 30)) {
 			if (color == 'p') {
 				color = 'w';
 			}
@@ -88,7 +104,7 @@ public class Map extends Display {
 	
 	private void drawBox(PApplet marker, int i) {
 		if (i == 3) {
-			marker.fill(255, 0, 255);
+			marker.fill(200, 0, 200);
 		}
 		else {
 			marker.fill(255, 255 - (127.5F * i), 0);
