@@ -1,6 +1,7 @@
 import java.awt.event.KeyEvent;
 import display.Map;
 import display.Menu;
+import display.Tier;
 import processing.core.PApplet;
 import java.awt.Color;
 
@@ -35,12 +36,27 @@ public class DrawingSurface extends PApplet {
 		text("Mask On!", 8 * width/20, 2 * height/30, 4 * width/20, 3 * height/20);
 		popStyle();
 		
+		
+		int n = 40;
+		int x = 15;
+		for(int i=0; i<x; i++) {
+			for (int j=0; j<x; j++) {
+				square(x+n*i,x+n*j,n);
+			}
+		}
+		image(loadImage("images/HazmatMan.png"),x,x, n, n);
+		image(loadImage("images/doctor.png"),x+n,x+n, n, n);
+		image(loadImage("images/uninfectedMasked.png"),x+2*n,x+2*n, n, n);
+		image(loadImage("images/uninfectedUnmasked.png"),x+3*n,x+3*n, n, n);
+		image(loadImage("images/infected.png"),x+4*n,x+4*n, n, n);
+		image(loadImage("images/researcher.png"),x+5*n,x+5*n, n, n);
 		//map
 		map.draw(this);
 		
 		//menu
 		//last because if opened it should appear above others
 		menu.draw(this);
+		
 	}
 	
 	public void keyPressed() {
