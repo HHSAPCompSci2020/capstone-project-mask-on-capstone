@@ -1,4 +1,6 @@
 import java.awt.event.KeyEvent;
+
+import display.CovidTracker;
 import display.Map;
 import display.Menu;
 import display.Tier;
@@ -9,10 +11,12 @@ public class DrawingSurface extends PApplet {
 	
 	private Menu menu;
 	private Map map;
+	private CovidTracker tracker;
 	
 	public DrawingSurface() {
 		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
+		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 	}
 	
 	public void setup() {
@@ -56,7 +60,7 @@ public class DrawingSurface extends PApplet {
 		//menu
 		//last because if opened it should appear above others
 		menu.draw(this);
-		
+		tracker.draw(this);
 	}
 	
 	public void keyPressed() {
