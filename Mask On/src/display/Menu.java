@@ -50,6 +50,10 @@ public class Menu extends Display {
 		isOpen = !isOpen;
 	}
 	
+	public boolean state() {
+		return isOpen;
+	}
+	
 	public void setWidth(double width) {
 		super.setWidth(width);
 		super.setHeight(width);
