@@ -8,4 +8,12 @@ public class Location {
 		row = r;
 		col = c;
 	}
+	
+	public int getRow() {
+		return row;
+	}
+	
+	public int getCol() {
+		return col;
+	}
 }

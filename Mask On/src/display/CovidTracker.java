@@ -20,7 +20,7 @@ public class CovidTracker extends Display{
 		marker.stroke(0);
 	}
 	public void update(Tier t) {
-		total = t.getTotal();
+		total = t.getPeople();
 		covidCount = t.getInfected();
 	}
 }
