@@ -30,4 +30,20 @@ public class Location {
 	public ArrayList<Location> getAdjacentLocations() {
 		return null;
 	}
+	
+	public Location getTop() {
+		return null;
+	}
+	
+	public Location getBottom() {
+		return null;
+	}
+	
+	public Location getLeft() {
+		return null;
+	}
+	
+	public Location getRight() {
+		return null;
+	}
 }
