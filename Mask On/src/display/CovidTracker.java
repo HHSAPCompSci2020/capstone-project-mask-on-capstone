@@ -1,7 +1,5 @@
 package display;
 
-import java.awt.Color;
-
 import processing.core.PApplet;
 
 public class CovidTracker extends Display{
@@ -21,7 +19,7 @@ public class CovidTracker extends Display{
 		marker.text("Covid Count: " + covidCount + "/" + total, getX(), getY()-10);
 		marker.stroke(0);
 	}
-	public void getTier(Tier t) {
+	public void update(Tier t) {
 		total = t.getTotal();
 		covidCount = t.getInfected();
 	}
