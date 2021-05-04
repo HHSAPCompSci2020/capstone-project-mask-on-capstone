@@ -1,8 +1,7 @@
 package display;
 
 import java.awt.Color;
-import java.util.ArrayList;
-
+//import gamecomponents.people.Person;
 import processing.core.PApplet;
 
 public abstract class Tier extends Display {
@@ -16,11 +15,29 @@ public abstract class Tier extends Display {
 		infectedPeople = 0;
 		this.totalPeople = totalPeople;
 	}
+	
+	//MUTATOR METHODS
+	/**
+	 * Add a person GameComponent into the grid at a specified location
+	 */
+	public void addPersonToGrid() {
+		
+	}
+	public void addPlaceToGrid() {
+		
+	}
+	
+	//ACCESSOR METHODS
 	public int getInfected() {
 		return infectedPeople;
 	}
 	public int getTotal() {
 		return totalPeople;
 	}
-	public 
+	public Location[][] getGrid() {
+		return grid;
+	}
+	
+	
+	
 }
