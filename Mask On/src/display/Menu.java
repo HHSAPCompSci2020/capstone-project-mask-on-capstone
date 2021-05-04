@@ -29,6 +29,8 @@ public class Menu extends Display {
 			marker.stroke(getStrokeColor().getRGB());
 			marker.strokeWeight(getStrokeWeight());
 			marker.rect(marker.width/15, 3 * marker.height/20, 13 * marker.width/15, 3 * marker.height/4);
+			marker.fill(0);
+			marker.text("Menu!", marker.width/15, 3 * marker.height/20, 13 * marker.width/15, 3 * marker.height/4);
 		}
 		else {
 			marker.fill(getFillColor().getRGB());

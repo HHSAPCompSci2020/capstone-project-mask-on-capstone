@@ -17,7 +17,7 @@ public class DrawingSurface extends PApplet {
 	private Tier tier;
 	
 	public DrawingSurface() {
-		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255));
+		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255, 220));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		tier = new YellowTier(50, 50, 600, 600, 1, new Color(0), new Color(255, 255, 255));
@@ -44,20 +44,22 @@ public class DrawingSurface extends PApplet {
 		text("Mask On!", 8 * width/20, 2 * height/30, 4 * width/20, 3 * height/20);
 		popStyle();
 		
+		//tier
 		
-//		int n = 40;
-//		int x = 15;
-//		for(int i=0; i<x; i++) {
-//			for (int j=0; j<x; j++) {
-//				square(x+n*i,x+n*j,n);
-//			}
-//		}
-//		image(loadImage("images/HazmatMan.png"),x,x, n, n);
-//		image(loadImage("images/doctor.png"),x+n,x+n, n, n);
-//		image(loadImage("images/uninfectedMasked.png"),x+2*n,x+2*n, n, n);
-//		image(loadImage("images/uninfectedUnmasked.png"),x+3*n,x+3*n, n, n);
-//		image(loadImage("images/infected.png"),x+4*n,x+4*n, n, n);
-//		image(loadImage("images/researcher.png"),x+5*n,x+5*n, n, n);
+		/*int n = 40;
+		int x = 15;
+		for(int i=0; i<x; i++) {
+			for (int j=0; j<x; j++) {
+				square(x+n*i,x+n*j,n);
+			}
+		}
+		image(loadImage("images/HazmatMan.png"),x,x, n, n);
+		image(loadImage("images/doctor.png"),x+n,x+n, n, n);
+		image(loadImage("images/uninfectedMasked.png"),x+2*n,x+2*n, n, n);
+		image(loadImage("images/uninfectedUnmasked.png"),x+3*n,x+3*n, n, n);
+		image(loadImage("images/infected.png"),x+4*n,x+4*n, n, n);
+		image(loadImage("images/researcher.png"),x+5*n,x+5*n, n, n);*/
+		
 		//map
 		map.draw(this);
 		
