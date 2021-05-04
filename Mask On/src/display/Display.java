@@ -12,6 +12,13 @@ public abstract class Display {
 	private Color strokeColor;
 	private Color fillColor;
 	
+	/**
+	 * 
+	 * @param x x-coordinate of the start point
+	 * @param y y-coordinate of the start point
+	 * @param width width of the displayed element
+	 * @param height height of the displayed element
+	 */
 	public Display(double x, double y, double width, double height) {
 		this.x = (float) x;
 		this.y = (float) y;
@@ -22,6 +29,16 @@ public abstract class Display {
 		fillColor = new Color(255, 255, 255);
 	}
 	
+	/**
+	 * 
+	 * @param x x-coordinate of the start point
+	 * @param y y-coordinate of the start point
+	 * @param width width of the displayed element
+	 * @param height height of the displayed element
+	 * @param strokeWeight weight of the stroke to draw the displayed element
+	 * @param strokeColor color of the stroke to draw the displayed element
+	 * @param fillColor inner color of the displayed element
+	 */
 	public Display(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		this.x = (float) x;
 		this.y = (float) y;
