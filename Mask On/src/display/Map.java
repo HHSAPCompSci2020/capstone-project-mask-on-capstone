@@ -59,7 +59,9 @@ public class Map extends Display {
 		marker.popStyle();
 	}
 	
-	public void changeMap(int x, int y) {
+	public boolean changeMap(int x, int y) {
+		
+		boolean changed = false;
 		//yellow
 		if ((Math.pow((x - (getX() + getWidth()/4)), 2) + Math.pow(((getY() + getHeight()/6.5F) - y), 2) < 36)
 				|| Display.insideRect(x, y, getX() + getWidth()/2, getY(), getWidth()/4 - 5, 30)) {
@@ -69,6 +71,7 @@ public class Map extends Display {
 			else {
 				color = 'y';
 			}
+			changed = true; 
 		}
 		//orange
 		if ((Math.pow((x - (getX() + 3 * getWidth()/8)), 2) + Math.pow((y - (getY() + 5.8F * getHeight()/11)), 2) < 36)
@@ -79,6 +82,7 @@ public class Map extends Display {
 			else {
 				color = 'o';
 			}
+			changed = true; 
 		}
 		//red
 		if ((Math.pow((x - (getX() + getWidth()/2)), 2) + Math.pow((y - (getY() + 5 * getHeight()/9)), 2) < 36)
@@ -89,6 +93,7 @@ public class Map extends Display {
 			else {
 				color = 'r';
 			}
+			changed = true; 
 		}
 		//purple
 		if ((Math.pow((x - (getX() + 4 * getWidth()/7)), 2) + Math.pow((y - (getY() + 3.2F * getHeight()/5)), 2) < 36)
@@ -99,7 +104,13 @@ public class Map extends Display {
 			else {
 				color = 'p';
 			}
+			changed = true; 
 		}
+		return changed;
+	}
+	
+	public char getColor() {
+		return color;
 	}
 	
 }

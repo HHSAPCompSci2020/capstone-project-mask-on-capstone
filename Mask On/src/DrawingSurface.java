@@ -20,7 +20,7 @@ public class DrawingSurface extends PApplet {
 		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255, 220));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
-		tier = new YellowTier(50, 50, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+		tier = new Tier(50, 50, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 	}
 	
 	public void setup() {
@@ -43,9 +43,7 @@ public class DrawingSurface extends PApplet {
 		fill(255);
 		text("Mask On!", 8 * width/20, 2 * height/30, 4 * width/20, 3 * height/20);
 		popStyle();
-		
-		//tier
-		
+				
 		/*int n = 40;
 		int x = 15;
 		for(int i=0; i<x; i++) {
@@ -63,6 +61,11 @@ public class DrawingSurface extends PApplet {
 		//map
 		map.draw(this);
 		
+		//tier
+		if (map.getColor() != 'w') {
+			tier.draw(this);
+		}
+		
 		//menu
 		//last because if opened it should appear above others
 		menu.draw(this);
@@ -79,7 +82,21 @@ public class DrawingSurface extends PApplet {
 			menu.openClose();
 		}
 		if (!menu.state()) {
-			map.changeMap(mouseX, mouseY);
+			boolean changed = map.changeMap(mouseX, mouseY);
+			if (changed) {
+				if (map.getColor() == 'y') {
+					//tier = new YellowTier();
+				}
+				if (map.getColor() == 'o') {
+					//tier = new OrangeTier();
+				}
+				if (map.getColor() == 'r') {
+					//tier = new RedTier();
+				}
+				if (map.getColor() == 'p') {
+					//tier = new PurpleTier;
+				}
+			}
 		}
 	}
 }

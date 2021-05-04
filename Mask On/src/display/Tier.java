@@ -7,12 +7,13 @@ import gamecomponents.people.*;
 import gamecomponents.places.*;
 import processing.core.PApplet;
 
-public abstract class Tier extends Display {
+public class Tier extends Display {
 	private int infectedPeople;
 	private int totalDoctors, totalResearchers, totalPeople;
 	private int totalPlaces, totalHospitals, totalPublicPlaces, totalFactories;
 	private GameComponent[][] grid; //not accessible by other Tier objects, 
 									//nor mutable without use of mutator methods
+	private boolean isOver;
 	private Player player;
 
 	
@@ -27,6 +28,13 @@ public abstract class Tier extends Display {
 		totalFactories = 0;
 		totalDoctors = 0;
 		totalResearchers = 0;
+		
+		isOver = false;
+		
+	}
+	
+	//FINISH
+	public void draw(PApplet marker) {
 		
 	}
 	

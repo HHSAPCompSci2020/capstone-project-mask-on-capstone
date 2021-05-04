@@ -9,22 +9,24 @@ import processing.core.PApplet;
 public class Person extends GameComponent {
 	
 	private Location loc;
-	private boolean isInfected;
+	private boolean infected;
 	private boolean masked;
+	private boolean vaccinated;
 	private char direction;
 	private int stopwatch;
 	
 	public Person(Location loc, boolean isInfected, char direction) {
 		this.loc = loc;
-		this.isInfected = isInfected;
+		this.infected = isInfected;
 		this.direction = direction;
 		stopwatch = 0;
 		masked = false;
+		vaccinated = false;
 	}
 	
 	public void draw(PApplet marker, Tier t) {
 		if (loc != null) {
-			if (isInfected) {
+			if (infected) {
 				marker.image(marker.loadImage("images/infected.png"), loc.getCol(), loc.getRow(), 40, 40);
 			}
 			else if (masked) {
@@ -45,10 +47,12 @@ public class Person extends GameComponent {
 		if (loc == null) return;
 		
 		ArrayList<Location> adjacent = loc.getAdjacentLocations();
-		if (isInfected) {
+		if (infected) {
 			for (Location l : adjacent) {
 				GameComponent adjacentComponent = t.getComponentAtLoc(l);
-				if (adjacentComponent instanceof Person && !((Person) adjacentComponent).isMasked()) {
+				if (adjacentComponent instanceof Person 
+						&& !((Person) adjacentComponent).isMasked()
+						&& !((Person) adjacentComponent).isVaccinated()) {
 					((Person) adjacentComponent).contractVirus();
 				}
 			}
@@ -120,16 +124,32 @@ public class Person extends GameComponent {
 		return masked;
 	}
 	
+	public boolean isVaccinated() {
+		return vaccinated;
+	}
+	
 	public void takeMask() {
 		masked = true;
 	}
 	
+	public void getVaccinated() {
+		vaccinated = true;
+	}
+	
 	public void contractVirus() {
-		isInfected = true;
+		infected = true;
 	}
 	
 	public void latchToPlayer() {
 		loc = null;
+	}
+	
+	public int getStopwatch() {
+		return stopwatch;
+	}
+	
+	public void setStopwatch(int i) {
+		stopwatch = i;
 	}
 	
 }
