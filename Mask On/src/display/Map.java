@@ -31,21 +31,27 @@ public class Map extends Display {
 			marker.image(marker.loadImage("images/purplemap.png"), getX(), getY(), getWidth(), getHeight());
 		}
 		
-		for (int i = 0; i < 4; i++) {
-			drawBox(marker, i);
-		}
-		
+		//circles and rectangles on map
 		marker.fill(255, 255, 0);
 		marker.circle(getX() + getWidth()/4, getY() + getHeight()/6.5F, 12);
+		marker.rect(getX() + getWidth()/2, getY(), getWidth()/4 - 5, 30);
 		
 		marker.fill(255, 127.5F, 0);
 		marker.circle(getX() + 3 * getWidth()/8, getY() + 5.8F * getHeight()/11, 12);
+		marker.rect(getX() + 3 * getWidth()/4, getY(), getWidth()/4 - 5, 30);
 		
 		marker.fill(255, 0, 0);
 		marker.circle(getX() + getWidth()/2, getY() + 5 * getHeight()/9, 12);
+		marker.rect(getX() + getWidth()/2, getY() + 35, getWidth()/4 - 5, 30);
 		
 		marker.fill(200, 50, 200);
 		marker.circle(getX() + 4 * getWidth()/7, getY() + 3.2F * getHeight()/5, 12);
+		marker.rect(getX() + 3 * getWidth()/4, getY() + 35, getWidth()/4 - 5, 30);
+
+		
+		for (int i = 0; i < 4; i++) {
+			drawBox(marker, i);
+		}
 		
 		drawChar(marker, 0, 'Y');
 		drawChar(marker, 1, 'O');

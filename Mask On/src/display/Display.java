@@ -3,6 +3,11 @@ package display;
 import processing.core.PApplet;
 import java.awt.Color;
 
+/**
+ * 
+ * @author roshnibright
+ *
+ */
 public abstract class Display {
 	private float x;
 	private float y;
@@ -49,6 +54,28 @@ public abstract class Display {
 		this.fillColor = fillColor;
 	}
 	
+	/**
+	 * 
+	 * @param clickX the x-coordinate of the location where clicked
+	 * @param clickY the y-coordinate of the location where clicked
+	 * @param x x-coordinate of the start of the rectangle
+	 * @param y y-coordinate of the start of the rectangle
+	 * @param width width of the rectangle
+	 * @param height height of the rectangle
+	 * @return whether the clicked coordinate is inside the given dimensions for a rectangle
+	 */
+	public static boolean insideRect(float clickX, float clickY, float x, float y, float width, float height) {
+		if (clickX > x && clickY > y
+				&& clickX < x + width && clickY < y + height) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * Draws the displayed element
+	 * @param marker the PApplet on which the displayed element is drawn
+	 */
 	public abstract void draw(PApplet marker);
 	
 	/**
