@@ -15,7 +15,7 @@ public class Tier extends Display {
 									//nor mutable without use of mutator methods
 	private boolean isOver;
 	private Player player;
-
+	private CovidTracker tracker;
 	
 	public Tier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
@@ -30,12 +30,13 @@ public class Tier extends Display {
 		totalResearchers = 0;
 		
 		isOver = false;
-		
+		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 	}
 	
 	//FINISH
 	public void draw(PApplet marker) {
-		
+		tracker.update(this);
+		tracker.draw(marker);
 	}
 	
 	//MUTATOR METHODS
