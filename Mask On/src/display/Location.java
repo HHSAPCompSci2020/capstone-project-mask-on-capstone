@@ -30,20 +30,20 @@ public class Location {
 	public ArrayList<Location> getAdjacentLocations() {
 		return null;
 	}
-	
+	//NEED TO CHECK FOR OUT OF BOUNDS LATER
 	public Location getTop() {
-		return null;
+		return new Location(row-1, col);
 	}
 	
 	public Location getBottom() {
-		return null;
+		return new Location(row+1,col);
 	}
 	
 	public Location getLeft() {
-		return null;
+		return new Location(row,col-1);
 	}
 	
 	public Location getRight() {
-		return null;
+		return new Location(row,col+1);
 	}
 }

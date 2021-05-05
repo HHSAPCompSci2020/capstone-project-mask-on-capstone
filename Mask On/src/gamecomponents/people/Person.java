@@ -151,5 +151,12 @@ public class Person extends GameComponent {
 	public void setStopwatch(int i) {
 		stopwatch = i;
 	}
+	public Location getLocation() {
+        return loc;
+    }
+	public boolean isNull() {
+		if(this.equals(null)) return true;
+		else return false;
+	}
 	
 }

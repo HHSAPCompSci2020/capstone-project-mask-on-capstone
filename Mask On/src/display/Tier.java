@@ -34,6 +34,8 @@ public class Tier extends Display {
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(3,3), false, 'u');
+		System.out.println(person.getLocation().getRow() + "," + person.getLocation().getCol());
+		this.addPersonToGrid(person, new Location(3,3));
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -63,7 +65,11 @@ public class Tier extends Display {
 	 * @param loc a Location (x,y) of the person in the grid 
 	 */
 	public void addPersonToGrid(Person p, Location loc) {
-		if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
+		System.out.println(p.isNull());
+		//System.out.println(p + " loc: "  + loc.getRow() + "," + loc.getCol());
+		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0)
+			System.out.println("You're out of bounds buddy");
+		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
 			
 			totalPeople++;
