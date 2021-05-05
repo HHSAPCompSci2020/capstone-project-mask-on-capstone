@@ -19,9 +19,20 @@ public class Tier extends Display {
 	private CovidTracker tracker;
 	private Person person; //TESTING DELETE LATER
 	
+	/**
+	 * Set up a tier with the given values, similar to Display
+	 * @param x the top left corner x value
+	 * @param y the top left corner y value
+	 * @param width
+	 * @param height
+	 * @param strokeWeight
+	 * @param strokeColor
+	 * @param fillColor
+	 */
 	public Tier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 	
+		grid = new GameComponent[15][15];
 		//default 
 		infectedPeople = 0;
 		totalPeople = 0;
@@ -34,11 +45,15 @@ public class Tier extends Display {
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(3,3), false, 'u');
-		System.out.println(person.getLocation().getRow() + "," + person.getLocation().getCol());
+			System.out.println(person.getLocation().getRow() + "," + person.getLocation().getCol());
 		this.addPersonToGrid(person, new Location(3,3));
 	}
 	
 	//Currently just hardcoding things into it for testing
+	/**
+	 * Draw the tier on the surface
+	 * @param marker the PApplet surface you're drawing on
+	 */
 	public void draw(PApplet marker) {
 		
 		tracker.update(this);
