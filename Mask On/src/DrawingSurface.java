@@ -27,6 +27,7 @@ public class DrawingSurface extends PApplet {
 	
 	public void draw() {
 		//background image, from unsplash (https://unsplash.com/photos/HRjdJddvPu8)
+		scale(width/1000F, height/750F);
 		image(loadImage("images/HomeScreen.jpg"), 0, 0);
 		pushStyle();
 		noStroke();
@@ -74,6 +75,7 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void mousePressed() {
+		mouseX *= 1000F/width; mouseY *= 750F/height;
 		if (mouseX > menu.getX() && mouseY > menu.getY()
 				&& mouseX < menu.getX() + menu.getWidth() && mouseY < menu.getY() + menu.getHeight()) {
 			menu.openClose();
