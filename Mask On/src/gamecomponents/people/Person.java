@@ -120,6 +120,10 @@ public class Person extends GameComponent {
 		}
 	}
 	
+	public Location getLocation() {
+		return loc;
+	}
+	
 	public boolean isMasked() {
 		return masked;
 	}
