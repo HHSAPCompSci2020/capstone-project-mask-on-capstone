@@ -1,11 +1,12 @@
 package display;
 
 import java.awt.Color;
-
+import java.util.ArrayList;
 
 import gamecomponents.people.*;
 import gamecomponents.places.*;
 import processing.core.PApplet;
+
 
 public class Tier extends Display {
 	private int infectedPeople;
@@ -16,6 +17,7 @@ public class Tier extends Display {
 	private boolean isOver;
 	private Player player;
 	private CovidTracker tracker;
+	private Person person; //TESTING DELETE LATER
 	
 	public Tier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
@@ -31,12 +33,27 @@ public class Tier extends Display {
 		
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
+		person = new Person(new Location(3,3), false, 'u');
 	}
 	
-	//FINISH
+	//Currently just hardcoding things into it for testing
 	public void draw(PApplet marker) {
+		
 		tracker.update(this);
 		tracker.draw(marker);
+		
+		int n = 40; // size of each square
+		int x = 15; // how many squares
+		for(int i=0; i<15; i++) {
+			for (int j=0; j<x; j++) {
+				marker.square(this.getX()+n*i,this.getY()+n*j,n);
+			}
+		}
+		
+		person.draw(marker, this);
+		
+		
+		
 	}
 	
 	//MUTATOR METHODS
@@ -92,6 +109,13 @@ public class Tier extends Display {
 	 */
 	public GameComponent getComponentAtLoc(Location loc) {
 		return grid[loc.getRow()][loc.getCol()];
+	}
+	/**
+	 * Get the status of the game, over or still playing
+	 * @return boolean isOver
+	 */
+	public boolean getGameStatus() {
+		return isOver;
 	}
 
 	public int getInfected() {
