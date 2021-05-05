@@ -31,15 +31,15 @@ public class DrawingSurface extends PApplet {
 		pushStyle();
 		noStroke();
 		fill(0, 75);
-		rect(width/20, height/20, 18 * width/20, 18 * height/20);
+		rect(1000/20, 750/20, 18 * 1000/20, 18 * 750/20);
 		popStyle();
 		
 		//title
 		pushStyle();
 		textAlign(CENTER);
-		textSize(0.02F * width);
+		textSize(0.02F * 1000);
 		fill(255);
-		text("Mask On!", 8 * width/20, 2 * height/30, 4 * width/20, 3 * height/20);
+		text("Mask On!", 8 * 1000/20, 2 * 750/30, 4 * 1000/20, 3 * 750/20);
 		popStyle();
 				
 		/*int n = 40;
