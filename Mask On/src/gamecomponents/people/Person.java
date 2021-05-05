@@ -27,17 +27,17 @@ public class Person extends GameComponent {
 	public void draw(PApplet marker, Tier t) {
 		if (loc != null) {
 			if (infected) {
-				marker.image(marker.loadImage("images/infected.png"), loc.getCol(), loc.getRow(), 40, 40);
+				marker.image(marker.loadImage("images/infected.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 			else if (masked) {
-				marker.image(marker.loadImage("images/uninfectedMasked.png"), loc.getCol(), loc.getRow(), 40, 40);
+				marker.image(marker.loadImage("images/uninfectedMasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 			else {
-				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), loc.getCol(), loc.getRow(), 40, 40);
+				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 		}
 		stopwatch++;
-		if (stopwatch % 90 == 0 && canMove(t)) {
+		if (stopwatch % 10 == 0 && canMove(t)) {
 			processPeople(t);
 			move();
 		}

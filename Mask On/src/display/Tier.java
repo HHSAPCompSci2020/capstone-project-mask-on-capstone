@@ -7,7 +7,8 @@ import gamecomponents.people.*;
 import gamecomponents.places.*;
 import processing.core.PApplet;
 
-
+//NOTE FROM ROSHNI: THIS CLASS ALSO NEEDS A METHOD THAT CAN MOVE A PERSON
+//TO ANOTHER GRID LOCATION WHEN IT MOVES (RUN THE PROGRAM AND YOU'LL SEE WHY)
 public class Tier extends Display {
 	private int infectedPeople;
 	private int totalDoctors, totalResearchers, totalPeople;
@@ -45,7 +46,6 @@ public class Tier extends Display {
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(3,3), false, 'u');
-			System.out.println(person.getLocation().getRow() + "," + person.getLocation().getCol());
 		this.addPersonToGrid(person, new Location(3,3));
 	}
 	
@@ -80,8 +80,6 @@ public class Tier extends Display {
 	 * @param loc a Location (x,y) of the person in the grid 
 	 */
 	public void addPersonToGrid(Person p, Location loc) {
-		System.out.println(p.isNull());
-		//System.out.println(p + " loc: "  + loc.getRow() + "," + loc.getCol());
 		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0)
 			System.out.println("You're out of bounds buddy");
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
@@ -129,6 +127,10 @@ public class Tier extends Display {
 	 * @return GameComponent the object in the grid
 	 */
 	public GameComponent getComponentAtLoc(Location loc) {
+		//so that nothing moves to out-of-bounds locations
+		if (loc.getRow() < 0 || loc.getRow() >= grid.length || loc.getCol() < 0 || loc.getCol() >= grid[0].length) {
+			return new GameComponent();
+		}
 		return grid[loc.getRow()][loc.getCol()];
 	}
 	/**
