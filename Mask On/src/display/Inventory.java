@@ -26,7 +26,7 @@ public class Inventory extends Display{
 		researcherCount =0;
 		infectedCount =0;
 		
-		inventory = new int[4]; //0= infected, 1= doctor, 2= researcher
+		inventory = new int[4]; //0 = mask, 1= infected, 2= doctor, 3= researcher
 	
 	}
 
@@ -63,6 +63,11 @@ public class Inventory extends Display{
 		
 	}
 	
+	/**
+	 * updates the inventory variables S
+	 * @param p Player referenced
+	 * @param t Tier referenced
+	 */
 	public void update(Player p, Tier t) {
 		inventory = p.getInventory();
 		maskCount = inventory[0];
