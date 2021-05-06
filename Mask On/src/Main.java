@@ -2,9 +2,15 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
-
+/**
+ * The Main class represents the start of entire program
+ *
+ */
 public class Main {
-
+	/**
+	 * Creates the window of the program and runs the program
+	 * @param args
+	 */
 	public static void main(String args[]) {
 
 		DrawingSurface drawing = new DrawingSurface();

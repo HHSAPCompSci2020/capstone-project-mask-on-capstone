@@ -1,18 +1,30 @@
 package display;
 
 import processing.core.PApplet;
-
+/**
+ * The Map class is a Display which represents the map of California and boxes which are both interactive. 
+ *
+ */
 public class Map extends Display {
 	
 	private char color;
-
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 */
 	public Map(double x, double y, double width, double height) {
 		super(x, y, width, height);
 		//w for blank
 		color = 'w';
 	}
 
-	@Override
+	/**
+	 * Draws the map of California using images and the rectangles which serve as buttons
+	 * marker the PApplet on which the Map is drawn
+	 */
 	public void draw(PApplet marker) {
 		marker.pushStyle();
 		if (color == 'w') {
@@ -58,7 +70,12 @@ public class Map extends Display {
 		
 		marker.popStyle();
 	}
-	
+	/**
+	 * Changes the color of the Map based on coordinates
+	 * @param x the x-coordinate of the location that the user clicked
+	 * @param y the y-coordinate of the location that the user clicked
+	 * @return whether or not the map is changed
+	 */
 	public boolean changeMap(int x, int y) {
 		
 		boolean changed = false;
@@ -108,7 +125,10 @@ public class Map extends Display {
 		}
 		return changed;
 	}
-	
+	/**
+	 * 
+	 * @return a character which represents the selected Color
+	 */
 	public char getColor() {
 		return color;
 	}

@@ -8,23 +8,32 @@ import processing.core.PApplet;
 import tiers.YellowTier;
 
 import java.awt.Color;
-
+/**
+ * The DrawingSurface class draws the components of program on the window and updates them based on user actions
+ *
+ */
 public class DrawingSurface extends PApplet {
 	
 	private Menu menu;
 	private Map map;
 	private Tier tier;
-	
+	/**
+	 * Creates a DrawingSurface, which consists of a menu, map and tiers. 
+	 */
 	public DrawingSurface() {
 		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255, 220));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
 		tier = new Tier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 	}
-	
+	/**
+	 * Sets up the program
+	 */
 	public void setup() {
 		
 	}
-	
+	/**
+	 * Draws the components of the program
+	 */
 	public void draw() {
 		//background image, from unsplash (https://unsplash.com/photos/HRjdJddvPu8)
 		scale(width/1000F, height/750F);
@@ -55,11 +64,15 @@ public class DrawingSurface extends PApplet {
 		//last because if opened it should appear above others
 		menu.draw(this);
 	}
-	
+	/**
+	 * Updates the menu and map based on the user clicking on certain keys
+	 */
 	public void keyPressed() {
 
 	}
-	
+	/**
+	 * Updates the menu and map based on the user clicking on their mouse
+	 */
 	public void mousePressed() {
 		//DELETE LATER 
 			System.out.println("(x,y) = " + mouseX + "," + mouseY);
