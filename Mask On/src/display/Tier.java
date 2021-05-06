@@ -63,7 +63,7 @@ public class Tier extends Display {
 		placeSquares.add(new Location(0, 0));
 		place = new Place(placeSquares);
 		inventory = new Inventory(675, 290,  240, 240);
-		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50, 1, new Color(255, 255, 255), new Color(0, 0, 0));
+		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50);
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
 		this.addPlaceToGrid(place);
