@@ -106,6 +106,7 @@ public class Tier extends Display {
 			
 			totalPeople++;
 			
+			if (p.isInfected()) infectedPeople++;
 			if(p instanceof Doctor) totalDoctors++;
 			else if(p instanceof Researcher) totalResearchers++;
 	
@@ -141,7 +142,7 @@ public class Tier extends Display {
 	 * @param originalLoc the location you want to move the person from
 	 */
 	public void movePerson(Person p) {
-		p.processPeople(this);
+		infectedPeople += p.processPeople(this);
 		
 		if (p.canMove(this)){
 			grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;

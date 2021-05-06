@@ -36,8 +36,9 @@ public class Person extends GameComponent {
 		}
 	}
 	
-	public void processPeople(Tier t) {
-		if (loc == null) return;
+	public int processPeople(Tier t) {
+		int numberInfected = 0;
+		if (loc == null) return 0;
 		
 		ArrayList<Location> adjacent = loc.getAdjacentLocations(t);
 		if (infected) {
@@ -46,11 +47,14 @@ public class Person extends GameComponent {
 				GameComponent adjacentComponent = t.getComponentAtLoc(l);
 				if (adjacentComponent instanceof Person 
 						&& !((Person) adjacentComponent).isMasked()
-						&& !((Person) adjacentComponent).isVaccinated()) {
+						&& !((Person) adjacentComponent).isVaccinated()
+						&& !((Person) adjacentComponent).isInfected()) {
 					((Person) adjacentComponent).contractVirus();
+					numberInfected++;
 				}
 			}
 		}
+		return numberInfected;
 	}
 	
 	public boolean canMove(Tier t) {
@@ -116,6 +120,10 @@ public class Person extends GameComponent {
 	
 	public Location getLocation() {
 		return loc;
+	}
+	
+	public boolean isInfected() {
+		return infected;
 	}
 	
 	public boolean isMasked() {
