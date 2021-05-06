@@ -45,6 +45,11 @@ public class Player extends Person {
 
 	}
 	
+	//player cannot contract the virus
+	public void contractVirus() {
+		
+	}
+	
 	public int[] getInventory() {
 		return inventory;
 	}

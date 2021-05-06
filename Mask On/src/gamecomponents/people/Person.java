@@ -45,7 +45,7 @@ public class Person extends GameComponent {
 			
 			for (Location l : adjacent) {
 				GameComponent adjacentComponent = t.getComponentAtLoc(l);
-				if (adjacentComponent instanceof Person 
+				if (adjacentComponent instanceof Person && !(adjacentComponent instanceof Player)
 						&& !((Person) adjacentComponent).isMasked()
 						&& !((Person) adjacentComponent).isVaccinated()
 						&& !((Person) adjacentComponent).isInfected()) {

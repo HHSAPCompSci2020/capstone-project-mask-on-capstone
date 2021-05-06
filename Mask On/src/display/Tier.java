@@ -119,7 +119,7 @@ public class Tier extends Display {
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
 			
-			totalPeople++;
+			if (!(p instanceof Player)) totalPeople++;
 			
 			if (p.isInfected()) infectedPeople++;
 			if(p instanceof Doctor) totalDoctors++;
