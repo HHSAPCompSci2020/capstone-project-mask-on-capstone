@@ -48,6 +48,7 @@ public class Tier extends Display {
 		totalResearchers = 0;
 		stopwatch = 0;
 		
+		player = new Player(new Location(1,2), false, 'r');
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(0,6), false, 'l');
@@ -55,7 +56,7 @@ public class Tier extends Display {
 		ArrayList<Location> placeSquares = new ArrayList<Location>();
 		placeSquares.add(new Location(0, 0));
 		place = new Place(placeSquares);
-		inventory = new Inventory(675, 290,  240, (1102/900) * 20);
+		inventory = new Inventory(675, 290,  240, 240);
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
 		this.addPlaceToGrid(place);
@@ -71,6 +72,7 @@ public class Tier extends Display {
 		tracker.update(this);
 		tracker.draw(marker);
 		inventory.draw(marker);
+		inventory.update(player, this);
 		
 		int n = 40; // size of each square
 		int x = 15; // how many squares
