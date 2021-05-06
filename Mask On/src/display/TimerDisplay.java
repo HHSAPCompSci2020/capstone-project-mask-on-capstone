@@ -3,6 +3,7 @@ package display;
 import java.awt.Color;
 
 import processing.core.PApplet;
+import processing.core.PFont;
 /**
  * The TimerDisplay class is a Display that represents a stopwatch used to keep track of how much time the user spends on a Tier
  * @author Felicia Zhang
@@ -32,17 +33,31 @@ public class TimerDisplay extends Display{
 	 * @param marker the PApplet on which the TimerDisplay is drawn
 	 */
 	public void draw(PApplet marker) {
+		
+		marker.pushStyle();
 		marker.fill(255);
 		marker.stroke(0);
 		marker.strokeWeight(10);
-		marker.rect(getX()+ getWidth()*3/5, getY(), getWidth(), getHeight());
+		marker.rect(getX()+ getWidth()*5/7, getY(), getWidth(), getHeight());
 		marker.fill(255);
-		int min = (int)(elapsedTime/60);
-		int secs = (int)(elapsedTime % 60);
-		marker.text("TIME:", getX() + getWidth()/10, getY()+ getHeight()*3/5);
+		String min, secs;
+		if ((int)(elapsedTime/60)>=10) {
+			min = "" + (int)(elapsedTime/60);
+		}
+		else {
+			min = "0" + (int)(elapsedTime/60);
+		}
+		if ((int)(elapsedTime % 60)>= 10) {
+			secs = "" + (int)(elapsedTime % 60);
+		}
+		else {
+			secs = "0" + (int)(elapsedTime % 60);
+		}
+		marker.text("TIME:", getX() + getWidth()/10, getY()+ getHeight()*5/7);
 		marker.fill(0);
-		marker.text(min + "m " + secs + "s", getX()+ getWidth()*4/5, getY()+ getHeight()*3/5);
-		marker.strokeWeight(1);
-		marker.fill(255);
+		PFont timerFont = marker.createFont("fonts/digital-7.ttf", getHeight()*5/7);
+		marker.textFont(timerFont);
+		marker.text(min + " : " + secs, getX()+ getWidth()*6/7, getY()+ getHeight()*5/7);
+		marker.popStyle();
 	}
 }
