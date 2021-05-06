@@ -36,11 +36,11 @@ public class Person extends GameComponent {
 				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 		}
-		stopwatch++;
-		if (stopwatch % 10 == 0 && canMove(t)) {
-			processPeople(t);
-			move();
-		}
+//		stopwatch++;
+//		if (stopwatch % 10 == 0 && canMove(t)) {
+//			processPeople(t);
+//			move();
+//		}
 	}
 	
 	public void processPeople(Tier t) {
@@ -148,13 +148,13 @@ public class Person extends GameComponent {
 		loc = null;
 	}
 	
-	public int getStopwatch() {
-		return stopwatch;
-	}
-	
-	public void setStopwatch(int i) {
-		stopwatch = i;
-	}
+//	public int getStopwatch() {
+//		return stopwatch;
+//	}
+//	
+//	public void setStopwatch(int i) {
+//		stopwatch = i;
+//	}
 	public boolean isNull() {
 		if(this.equals(null)) return true;
 		else return false;

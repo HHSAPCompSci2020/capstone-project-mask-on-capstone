@@ -19,6 +19,7 @@ public class Tier extends Display {
 	private Player player;
 	private CovidTracker tracker;
 	private Person person; //TESTING DELETE LATER
+	private int stopwatch;
 	
 	/**
 	 * Set up a tier with the given values, similar to Display
@@ -42,11 +43,12 @@ public class Tier extends Display {
 		totalFactories = 0;
 		totalDoctors = 0;
 		totalResearchers = 0;
+		stopwatch = 0;
 		
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(3,3), false, 'u');
-		this.addPersonToGrid(person, new Location(3,3));
+		this.addPersonToGrid(person);
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -68,6 +70,12 @@ public class Tier extends Display {
 		}
 		
 		person.draw(marker, this);
+		stopwatch++;
+		
+		if (stopwatch % 10 == 0) {
+			this.movePerson(person);
+		}
+		
 		
 		
 		
@@ -77,9 +85,9 @@ public class Tier extends Display {
 	/**
 	 * Add a person GameComponent into the grid at a specified location
 	 * @param p an object of type Person 
-	 * @param loc a Location (x,y) of the person in the grid 
 	 */
-	public void addPersonToGrid(Person p, Location loc) {
+	public void addPersonToGrid(Person p) {
+		Location loc = p.getLocation();
 		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0)
 			System.out.println("You're out of bounds buddy");
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
@@ -114,6 +122,22 @@ public class Tier extends Display {
 			else
 				System.out.println("This space is occupied");
 		}
+	}
+	
+	/**
+	 * Move a Person from its original location to a new location
+	 * @param originalLoc the location you want to move the person from
+	 */
+	public void movePerson(Person p) {
+		p.processPeople(this);
+		
+		if (p.canMove(this)){
+			grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
+			p.move();
+			grid[p.getLocation().getRow()][p.getLocation().getCol()] = p;
+			
+		}
+		
 	}
 	
 	
@@ -171,6 +195,13 @@ public class Tier extends Display {
 	
 	public int getPublicPlaces() {
 		return totalPublicPlaces;
+	}
+	public int getStopwatch() {
+		return stopwatch;
+	}
+	
+	public void setStopwatch(int i) {
+		stopwatch = i;
 	}
 	
 	
