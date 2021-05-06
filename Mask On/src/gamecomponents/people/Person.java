@@ -13,13 +13,11 @@ public class Person extends GameComponent {
 	private boolean masked;
 	private boolean vaccinated;
 	private char direction;
-	private int stopwatch;
 	
 	public Person(Location loc, boolean isInfected, char direction) {
 		this.loc = loc;
 		this.infected = isInfected;
 		this.direction = direction;
-		stopwatch = 0;
 		masked = false;
 		vaccinated = false;
 	}
@@ -36,11 +34,6 @@ public class Person extends GameComponent {
 				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 		}
-//		stopwatch++;
-//		if (stopwatch % 10 == 0 && canMove(t)) {
-//			processPeople(t);
-//			move();
-//		}
 	}
 	
 	public void processPeople(Tier t) {
@@ -51,11 +44,9 @@ public class Person extends GameComponent {
 			
 			for (Location l : adjacent) {
 				GameComponent adjacentComponent = t.getComponentAtLoc(l);
-					if (adjacentComponent != null) System.out.println("hi");
 				if (adjacentComponent instanceof Person 
 						&& !((Person) adjacentComponent).isMasked()
 						&& !((Person) adjacentComponent).isVaccinated()) {
-					if (l.getRow() == 11) System.out.println("yo");
 					((Person) adjacentComponent).contractVirus();
 				}
 			}

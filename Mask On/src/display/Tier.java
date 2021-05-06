@@ -48,8 +48,8 @@ public class Tier extends Display {
 		
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
-		person = new Person(new Location(3,3), false, 'u');
-		person2 = new Person(new Location(3,4), true, 'd');
+		person = new Person(new Location(6,4), false, 'u');
+		person2 = new Person(new Location(3,5), true, 'd');
 		inventory = new Inventory(675, 290,  240, (1102/900) * 20);
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
@@ -82,9 +82,6 @@ public class Tier extends Display {
 			this.movePerson(person);
 			this.movePerson(person2);
 		}
-		
-		
-		
 		
 	}
 	
