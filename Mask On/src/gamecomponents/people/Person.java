@@ -133,6 +133,9 @@ public class Person extends GameComponent {
 	public boolean isVaccinated() {
 		return vaccinated;
 	}
+	public char getDirection() {
+		return this.direction;
+	}
 	
 	public void takeMask() {
 		masked = true;

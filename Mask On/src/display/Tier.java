@@ -67,6 +67,7 @@ public class Tier extends Display {
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
 		this.addPlaceToGrid(place);
+		this.addPersonToGrid(player);
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -83,6 +84,8 @@ public class Tier extends Display {
 		timer.updateTime();
 		timer.draw(marker);
 		
+		
+		//GRID
 		int n = 40; // size of each square
 		int x = 15; // how many squares
 		for(int i=0; i<15; i++) {
@@ -91,6 +94,7 @@ public class Tier extends Display {
 			}
 		}
 		
+		player.draw(marker, this);
 		person.draw(marker, this);
 		person2.draw(marker, this);
 		place.draw(marker, this);
