@@ -28,7 +28,7 @@ public class Tier extends Display {
 	private Place place; //TESTING DELETE LATER
 	private int stopwatch;
 	private Inventory inventory;
-	
+	private TimerDisplay timer;
 	
 	/**
 	 * Set up a tier with the given values, similar to Display
@@ -56,13 +56,14 @@ public class Tier extends Display {
 		
 		player = new Player(new Location(1,2), false, 'r');
 		isOver = false;
-		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
+		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(0,6), false, 'l');
 		person2 = new Person(new Location(1,3), true, 'r');
 		ArrayList<Location> placeSquares = new ArrayList<Location>();
 		placeSquares.add(new Location(0, 0));
 		place = new Place(placeSquares);
 		inventory = new Inventory(675, 290,  240, 240);
+		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50, 1, new Color(255, 255, 255), new Color(0, 0, 0));
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
 		this.addPlaceToGrid(place);
@@ -79,6 +80,8 @@ public class Tier extends Display {
 		tracker.draw(marker);
 		inventory.draw(marker);
 		inventory.update(player, this);
+		timer.updateTime();
+		timer.draw(marker);
 		
 		int n = 40; // size of each square
 		int x = 15; // how many squares
