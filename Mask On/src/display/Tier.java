@@ -18,8 +18,9 @@ public class Tier extends Display {
 	private boolean isOver;
 	private Player player;
 	private CovidTracker tracker;
-	private Person person; //TESTING DELETE LATER
+	private Person person, person2; //TESTING DELETE LATER
 	private int stopwatch;
+	private Inventory inventory;
 	
 	/**
 	 * Set up a tier with the given values, similar to Display
@@ -48,7 +49,10 @@ public class Tier extends Display {
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(3,3), false, 'u');
+		person2 = new Person(new Location(3,4), true, 'd');
+		inventory = new Inventory(675, 290,  240, (1102/900) * 20);
 		this.addPersonToGrid(person);
+		this.addPersonToGrid(person2);
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -60,6 +64,7 @@ public class Tier extends Display {
 		
 		tracker.update(this);
 		tracker.draw(marker);
+		inventory.draw(marker);
 		
 		int n = 40; // size of each square
 		int x = 15; // how many squares
@@ -70,10 +75,12 @@ public class Tier extends Display {
 		}
 		
 		person.draw(marker, this);
+		person2.draw(marker, this);
 		stopwatch++;
 		
 		if (stopwatch % 10 == 0) {
 			this.movePerson(person);
+			this.movePerson(person2);
 		}
 		
 		

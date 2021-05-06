@@ -27,8 +27,28 @@ public class Location {
 		col = c;
 	}
 	
-	public ArrayList<Location> getAdjacentLocations() {
-		return null;
+	public ArrayList<Location> getAdjacentLocations(Tier tier) {
+		Location t = getTop();
+		Location l = getLeft();
+		Location d = getBottom();
+		Location r = getRight();
+		ArrayList<Location> adjacent = new ArrayList<Location>();
+		
+		if (t.getCol() >= 0 && t.getCol() < tier.getGrid()[0].length 
+				&& t.getRow() >= 0 && t.getRow() < tier.getGrid().length)
+			adjacent.add(t);
+		if (l.getCol() >= 0 && l.getCol() < tier.getGrid()[0].length 
+				&& l.getRow() >= 0 && l.getRow() < tier.getGrid().length)
+			adjacent.add(l);
+		if (d.getCol() >= 0 && d.getCol() < tier.getGrid()[0].length 
+				&& d.getRow() >= 0 && d.getRow() < tier.getGrid().length)
+			adjacent.add(d);
+		if (r.getCol() >= 0 && r.getCol() < tier.getGrid()[0].length 
+				&& r.getRow() >= 0 && r.getRow() < tier.getGrid().length)
+			adjacent.add(r);
+			
+		return adjacent;
+		
 	}
 	//NEED TO CHECK FOR OUT OF BOUNDS LATER
 	public Location getTop() {
@@ -40,6 +60,7 @@ public class Location {
 	}
 	
 	public Location getLeft() {
+		System.out.println("left " + row + "," + (col-1));
 		return new Location(row,col-1);
 	}
 	

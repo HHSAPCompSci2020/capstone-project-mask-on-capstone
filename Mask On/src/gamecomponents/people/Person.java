@@ -46,13 +46,16 @@ public class Person extends GameComponent {
 	public void processPeople(Tier t) {
 		if (loc == null) return;
 		
-		ArrayList<Location> adjacent = loc.getAdjacentLocations();
+		ArrayList<Location> adjacent = loc.getAdjacentLocations(t);
 		if (infected) {
+			
 			for (Location l : adjacent) {
 				GameComponent adjacentComponent = t.getComponentAtLoc(l);
+					if (adjacentComponent != null) System.out.println("hi");
 				if (adjacentComponent instanceof Person 
 						&& !((Person) adjacentComponent).isMasked()
 						&& !((Person) adjacentComponent).isVaccinated()) {
+					if (l.getRow() == 11) System.out.println("yo");
 					((Person) adjacentComponent).contractVirus();
 				}
 			}

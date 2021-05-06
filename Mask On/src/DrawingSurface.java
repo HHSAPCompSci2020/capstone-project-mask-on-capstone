@@ -61,6 +61,9 @@ public class DrawingSurface extends PApplet {
 	}
 	
 	public void mousePressed() {
+		//DELETE LATER 
+			System.out.println("(x,y) = " + mouseX + "," + mouseY);
+			
 		mouseX *= 1000F/width; mouseY *= 750F/height;
 		if (mouseX > menu.getX() && mouseY > menu.getY()
 				&& mouseX < menu.getX() + menu.getWidth() && mouseY < menu.getY() + menu.getHeight()) {
@@ -84,4 +87,5 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 	}
+
 }
