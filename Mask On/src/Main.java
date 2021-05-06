@@ -9,7 +9,7 @@ import processing.core.PApplet;
 public class Main {
 	/**
 	 * Creates the window of the program and runs the program
-	 * @param args
+	 * @param args default
 	 */
 	public static void main(String args[]) {
 

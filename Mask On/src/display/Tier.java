@@ -7,6 +7,12 @@ import gamecomponents.people.*;
 import gamecomponents.places.*;
 import processing.core.PApplet;
 
+/**
+ * 
+ * @author emtinside
+ *
+ */
+
 //NOTE FROM ROSHNI: THIS CLASS ALSO NEEDS A METHOD THAT CAN MOVE A PERSON
 //TO ANOTHER GRID LOCATION WHEN IT MOVES (RUN THE PROGRAM AND YOU'LL SEE WHY)
 public class Tier extends Display {
@@ -28,11 +34,11 @@ public class Tier extends Display {
 	 * Set up a tier with the given values, similar to Display
 	 * @param x the top left corner x value
 	 * @param y the top left corner y value
-	 * @param width
-	 * @param height
-	 * @param strokeWeight
-	 * @param strokeColor
-	 * @param fillColor
+	 * @param width tier width
+	 * @param height tier height
+	 * @param strokeWeight strokeweight of lines
+	 * @param strokeColor strokecolor of lines
+	 * @param fillColor fill color of shapes
 	 */
 	public Tier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
@@ -120,7 +126,6 @@ public class Tier extends Display {
 	/**
 	 * Add a place GameComponent into the grid at a specified location
 	 * @param p an object of type Place
-	 * @param locs an ArrayList of Locations (x,y) that the place occupies 
 	 */
 	public void addPlaceToGrid(Place p) {
 		ArrayList<Location> locs = p.getLocations();
@@ -141,7 +146,7 @@ public class Tier extends Display {
 	
 	/**
 	 * Move a Person from its original location to a new location
-	 * @param originalLoc the location you want to move the person from
+	 * @param p the Person object you are moving
 	 */
 	public void movePerson(Person p) {
 		infectedPeople += p.processPeople(this);

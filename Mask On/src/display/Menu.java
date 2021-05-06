@@ -4,7 +4,7 @@ import java.awt.Color;
 import processing.core.PApplet;
 /**
  * The Menu class is a Display that represents the options that the user has regarding the program
- *
+ * @author roshnibright
  */
 public class Menu extends Display {
 	

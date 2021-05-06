@@ -1,11 +1,8 @@
-import java.awt.event.KeyEvent;
 
-import display.CovidTracker;
 import display.Map;
 import display.Menu;
 import display.Tier;
 import processing.core.PApplet;
-import tiers.YellowTier;
 
 import java.awt.Color;
 /**

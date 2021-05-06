@@ -5,7 +5,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 /**
  * The Inventory class is a Display that shows what the player has
- *
+ * @author emtinside
  */
 public class Inventory extends Display{
 

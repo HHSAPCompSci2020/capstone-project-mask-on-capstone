@@ -33,14 +33,14 @@ public class Location {
 	}
 	/**
 	 * 
-	 * @param r
+	 * @param r row 
 	 */
 	public void setRow(int r) {
 		row = r;
 	}
 	/**
 	 * 
-	 * @param c
+	 * @param c column
 	 */
 	public void setCol(int c) {
 		col = c;
@@ -48,7 +48,7 @@ public class Location {
 	/**
 	 * 
 	 * @param tier the Tier that the current Location is in
-	 * @return ArrayList<Location> represents all adjacent locations to the current Location
+	 * @return ArrayList(Location) represents all adjacent locations to the current Location
 	 */
 	public ArrayList<Location> getAdjacentLocations(Tier tier) {
 

@@ -3,17 +3,17 @@ package display;
 import processing.core.PApplet;
 /**
  * The Map class is a Display which represents the map of California and boxes which are both interactive. 
- *
+ * @author roshnibright
  */
 public class Map extends Display {
 	
 	private char color;
 	/**
 	 * 
-	 * @param x
-	 * @param y
-	 * @param width
-	 * @param height
+	 * @param x top left X coord
+	 * @param y top left Y coord
+	 * @param width map width
+	 * @param height map height
 	 */
 	public Map(double x, double y, double width, double height) {
 		super(x, y, width, height);
