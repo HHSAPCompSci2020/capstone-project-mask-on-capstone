@@ -19,8 +19,10 @@ public class Tier extends Display {
 	private Player player;
 	private CovidTracker tracker;
 	private Person person, person2; //TESTING DELETE LATER
+	private Place place; //TESTING DELETE LATER
 	private int stopwatch;
 	private Inventory inventory;
+	
 	
 	/**
 	 * Set up a tier with the given values, similar to Display
@@ -48,11 +50,15 @@ public class Tier extends Display {
 		
 		isOver = false;
 		tracker = new CovidTracker(675, 19 * 650/20, 240, (1102/900) * 20);
-		person = new Person(new Location(6,4), false, 'u');
-		person2 = new Person(new Location(3,5), true, 'd');
+		person = new Person(new Location(0,6), false, 'l');
+		person2 = new Person(new Location(1,3), true, 'r');
+		ArrayList<Location> placeSquares = new ArrayList<Location>();
+		placeSquares.add(new Location(0, 0));
+		place = new Place(placeSquares);
 		inventory = new Inventory(675, 290,  240, (1102/900) * 20);
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
+		this.addPlaceToGrid(place);
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -76,6 +82,7 @@ public class Tier extends Display {
 		
 		person.draw(marker, this);
 		person2.draw(marker, this);
+		place.draw(marker, this);
 		stopwatch++;
 		
 		if (stopwatch % 10 == 0) {
@@ -110,12 +117,13 @@ public class Tier extends Display {
 	/**
 	 * Add a place GameComponent into the grid at a specified location
 	 * @param p an object of type Place
-	 * @param locs an array of Locations (x,y) that the place occupies 
+	 * @param locs an ArrayList of Locations (x,y) that the place occupies 
 	 */
-	public void addPlaceToGrid(Place p, Location[] locs) {
-		for (int i = 0; i < locs.length; i++) {
-			if (grid[locs[i].getRow()][locs[i].getCol()] == null) { // if empty
-				grid[locs[i].getRow()][locs[i].getCol()] = p;
+	public void addPlaceToGrid(Place p) {
+		ArrayList<Location> locs = p.getLocations();
+		for (int i = 0; i < locs.size(); i++) {
+			if (grid[locs.get(i).getRow()][locs.get(i).getCol()] == null) { // if empty
+				grid[locs.get(i).getRow()][locs.get(i).getCol()] = p;
 				
 				totalPlaces++;
 				
