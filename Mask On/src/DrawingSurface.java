@@ -96,6 +96,10 @@ public class DrawingSurface extends PApplet {
 				}
 			}
 		}
+		
+	}
+	public void mouseDragged() {
+			
 	}
 
 }
