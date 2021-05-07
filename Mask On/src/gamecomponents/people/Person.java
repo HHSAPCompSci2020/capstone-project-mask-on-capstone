@@ -147,12 +147,20 @@ public class Person extends GameComponent {
 		}
 	}
 	
+
+	public void setLocation(Location loc) {
+		this.loc = loc;
+	}
+
 	/**
 	 * 
 	 * @return the current Location of the Person
 	 */
 	public Location getLocation() {
-		return loc;
+		if(this.loc !=null)
+			return loc;
+		else
+			return null;
 	}
 	
 	/**
@@ -213,6 +221,9 @@ public class Person extends GameComponent {
 	 */
 	public void latchToPlayer() {
 		loc = null;
+	}
+	public void setDirection(char direction) {
+		this.direction = direction;
 	}
 	
 //	public int getStopwatch() {

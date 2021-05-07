@@ -1,6 +1,7 @@
 package display;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import gamecomponents.people.*;
@@ -164,6 +165,24 @@ public class Tier extends Display {
 		
 	}
 	
+	/**
+	 * Remove a person from the grid
+	 * @param p Person
+	 */
+	public void removeFromGrid(Person p) {
+		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;	
+	}
+	
+	/**
+	 * Remove a place from the grid
+	 * @param p Place
+	 */
+	public void removeFromGrid(Place p) {
+		ArrayList<Location> locs = p.getLocations();
+		for(int i=0; i<locs.size(); i++) {
+			grid[locs.get(i).getRow()][locs.get(i).getCol()] = null;
+		}
+	}
 	
 	//	ACCESSOR METHODS
 	public GameComponent[][] getGrid() {
@@ -276,6 +295,7 @@ public class Tier extends Display {
 	public void setStopwatch(int i) {
 		stopwatch = i;
 	}
+
 	
 	
 	

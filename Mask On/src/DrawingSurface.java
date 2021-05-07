@@ -1,8 +1,14 @@
+
+
+import display.Location;
 import display.Map;
 import display.Menu;
 import display.Tier;
+import gamecomponents.people.Player;
 import processing.core.PApplet;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+
 
 /**
  * The DrawingSurface class draws the components of program on the window and updates them based on user actions
@@ -13,7 +19,7 @@ public class DrawingSurface extends PApplet {
 	private Menu menu;
 	private Map map;
 	private Tier tier;
-	
+
 	/**
 	 * Creates a DrawingSurface, which consists of a menu, map and tiers. 
 	 */
@@ -21,6 +27,7 @@ public class DrawingSurface extends PApplet {
 		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255, 220));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
 		tier = new Tier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+
 	}
 	
 	/**
@@ -58,7 +65,7 @@ public class DrawingSurface extends PApplet {
 		if (map.getColor() != 'w') {
 			tier.draw(this);
 		}
-		
+				
 		//menu
 		//last because if opened it should appear above others
 		menu.draw(this);
@@ -68,7 +75,30 @@ public class DrawingSurface extends PApplet {
 	 * Updates the menu and map based on the user clicking on certain keys
 	 */
 	public void keyPressed() {
-
+		if (keyCode == KeyEvent.VK_W){
+			if (tier.getPlayer().canMove(tier)) {
+				tier.getPlayer().setDirection('u');
+				tier.movePerson(tier.getPlayer());
+			}
+		}
+		if (keyCode == KeyEvent.VK_A){
+			if (tier.getPlayer().canMove(tier)) {
+				tier.getPlayer().setDirection('l');
+				tier.movePerson(tier.getPlayer());
+			}
+		}
+		if (keyCode == KeyEvent.VK_S){
+			if (tier.getPlayer().canMove(tier)) {
+				tier.getPlayer().setDirection('d');
+				tier.movePerson(tier.getPlayer());
+			}
+		}
+		if (keyCode == KeyEvent.VK_D){
+			if (tier.getPlayer().canMove(tier)) {
+				tier.getPlayer().setDirection('r');
+				tier.movePerson(tier.getPlayer());
+			}
+		}
 	}
 	
 	/**
