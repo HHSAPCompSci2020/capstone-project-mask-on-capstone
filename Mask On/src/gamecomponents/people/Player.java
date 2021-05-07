@@ -83,6 +83,7 @@ public class Player extends Person {
 		
 	}
 	
+	@Override
 	//player cannot contract the virus
 	//not yet coded
 	public void contractVirus() {
@@ -102,20 +103,21 @@ public class Player extends Person {
 	 */
 	public boolean canMove(Tier t) {
 		Location loc = this.getLocation();
+				System.out.println("You are at: " + this.getLocation().getRow() + "," + this.getLocation().getCol());
 		char direction = this.getDirection();
 	
-		if (loc == null) return false;
+		if (loc.isOutOfBounds(t)) return false;
 		
-				System.out.println(loc.getRow() + "," + loc.getCol());
+				//System.out.println(loc.getRow() + "," + loc.getCol());
 				
 		if (direction == 'u') 
-			if (t.getComponentAtLoc(loc.getTop()) != null) 
+			if (t.getComponentAtLoc(loc.getTop(t)) != null) 
 				if (t.getComponentAtLoc(loc.getBottom()) != null) 
 					return false;
 		
 		else if (direction == 'd') 
 			if (t.getComponentAtLoc(loc.getBottom()) != null) 
-				if (t.getComponentAtLoc(loc.getTop()) != null) 
+				if (t.getComponentAtLoc(loc.getTop(t)) != null) 
 					return false;
 		
 		else if (direction == 'l') 

@@ -87,8 +87,9 @@ public class Person extends GameComponent {
 	public boolean canMove(Tier t) {
 		if (loc == null) return false;
 		
+		
 		if (direction == 'u') {
-			if (t.getComponentAtLoc(loc.getTop()) != null) {
+			if (t.getComponentAtLoc(loc.getTop(t)) != null) {
 				if (t.getComponentAtLoc(loc.getBottom()) != null) {
 					return false;
 				}
@@ -99,7 +100,7 @@ public class Person extends GameComponent {
 		}
 		else if (direction == 'd') {
 			if (t.getComponentAtLoc(loc.getBottom()) != null) {
-				if (t.getComponentAtLoc(loc.getTop()) != null) {
+				if (t.getComponentAtLoc(loc.getTop(t)) != null) {
 					return false;
 				}
 				direction = 'u';
@@ -243,12 +244,6 @@ public class Person extends GameComponent {
 		if(this.equals(null)) return true;
 		else return false;
 	}
-	
-	private boolean isOutOfBounds(Location loc, Tier t) {
-		if (loc.getRow() >= t.getGrid().length || loc.getRow() < 0 || loc.getCol() >= t.getGrid()[0].length || loc.getCol() < 0)
-			return true;
-		
-			return false;
-	}
+
 	
 }
