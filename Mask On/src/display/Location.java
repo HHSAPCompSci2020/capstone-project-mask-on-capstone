@@ -55,13 +55,13 @@ public class Location {
 		ArrayList<Location> adjacent = new ArrayList<Location>();
 		
 		addToArrayList(getTop(tier), adjacent, tier);
-		addToArrayList(getLeft(), adjacent, tier);
-		addToArrayList(getBottom(), adjacent, tier);
-		addToArrayList(getRight(), adjacent, tier);
-		addToArrayList(getTopLeft(), adjacent, tier);
-		addToArrayList(getTopRight(), adjacent, tier);
-		addToArrayList(getBottomLeft(), adjacent, tier);
-		addToArrayList(getBottomRight(), adjacent, tier);
+		addToArrayList(getLeft(tier), adjacent, tier);
+		addToArrayList(getBottom(tier), adjacent, tier);
+		addToArrayList(getRight(tier), adjacent, tier);
+		addToArrayList(getTopLeft(tier), adjacent, tier);
+		addToArrayList(getTopRight(tier), adjacent, tier);
+		addToArrayList(getBottomLeft(tier), adjacent, tier);
+		addToArrayList(getBottomRight(tier), adjacent, tier);
 			
 		return adjacent;
 		
@@ -72,60 +72,80 @@ public class Location {
 	 * @return the adjacent Location above this Location
 	 */
 	public Location getTop(Tier t) {
-		System.out.println("above loc row : " + new Location(row-1,col).row);
 		if (!(new Location(row-1,col).isOutOfBounds(t)))
 			return new Location(row-1, col);
 		
-		return this;
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location below of this Location
 	 */
-	public Location getBottom() {
-		return new Location(row+1,col);
+	public Location getBottom(Tier t) {
+		if (!(new Location(row+1,col).isOutOfBounds(t)))
+			return new Location(row+1,col);
+		
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location to the left of this Location
 	 */
-	public Location getLeft() {
-		return new Location(row,col-1);
+	public Location getLeft(Tier t) {
+		if (!(new Location(row,col-1).isOutOfBounds(t)))
+			return new Location(row,col-1);
+		
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location to the right of this Location
 	 */
-	public Location getRight() {
-		return new Location(row,col+1);
+	public Location getRight(Tier t) {
+		if (!(new Location(row,col+1).isOutOfBounds(t)))
+			return new Location(row,col+1);
+		
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location to the top left of this Location
 	 */
-	public Location getTopLeft() {
-		return new Location(row - 1, col - 1);
+	public Location getTopLeft(Tier t) {
+		if (!(new Location(row-1,col-1).isOutOfBounds(t)))
+			return new Location(row+1,col);
+		
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location to the top right of this Location
 	 */
-	public Location getTopRight() {
-		return new Location(row - 1, col + 1);
+	public Location getTopRight(Tier t) {
+		if (!(new Location(row-1,col+1).isOutOfBounds(t)))
+			return new Location(row-1,col+1);
+		
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location to the bottom left of this Location
 	 */
-	public Location getBottomLeft() {
-		return new Location(row + 1, col - 1);
+	public Location getBottomLeft(Tier t) {
+		if (!(new Location(row+1,col-1).isOutOfBounds(t)))
+			return new Location(row-1,col+1);
+		
+		return null;
 	}
 	/**
 	 * 
 	 * @return the adjacent Location to the bottom right of this Location
 	 */
-	public Location getBottomRight() {
-		return new Location(row + 1, col + 1);
+	public Location getBottomRight(Tier t) {
+		if (!(new Location(row+1,col+1).isOutOfBounds(t)))
+			return new Location(row-1,col+1);
+		
+		return null;
 	}
 	public boolean isOutOfBounds(Tier t) {
 		if (this.row >= t.getGrid().length || this.row < 0 || this.col >= t.getGrid()[0].length || this.col< 0)
@@ -140,9 +160,10 @@ public class Location {
 	 * @param tier the Tier that the Location is in
 	 */
 	private void addToArrayList(Location l, ArrayList<Location> arr, Tier tier) {
-		if (l.getCol() >= 0 && l.getCol() < tier.getGrid()[0].length 
+		if(!(l == null))
+			if (l.getCol() >= 0 && l.getCol() < tier.getGrid()[0].length 
 				&& l.getRow() >= 0 && l.getRow() < tier.getGrid().length)
-			arr.add(l);
+					arr.add(l);
 	}
 	
 }

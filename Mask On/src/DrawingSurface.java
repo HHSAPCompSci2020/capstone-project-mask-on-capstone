@@ -77,27 +77,27 @@ public class DrawingSurface extends PApplet {
 	 */
 	public void keyPressed() {
 		if (keyCode == KeyEvent.VK_W){
-			if (tier.getPlayer().canMove(tier)) {
-				tier.getPlayer().setDirection('u');
-				tier.movePerson(tier.getPlayer());
+			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getTop(tier), tier)) {
+				//tier.getPlayer().setDirection('u');
+				tier.movePlayer(tier.getPlayer().getLocation().getTop(tier), tier.getPlayer());
 			}
 		}
 		if (keyCode == KeyEvent.VK_A){
-			if (tier.getPlayer().canMove(tier)) {
-				tier.getPlayer().setDirection('l');
-				tier.movePerson(tier.getPlayer());
+			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getLeft(tier), tier)) {
+				//tier.getPlayer().setDirection('u');
+				tier.movePlayer(tier.getPlayer().getLocation().getLeft(tier), tier.getPlayer());
 			}
 		}
 		if (keyCode == KeyEvent.VK_S){
-			if (tier.getPlayer().canMove(tier)) {
-				tier.getPlayer().setDirection('d');
-				tier.movePerson(tier.getPlayer());
+			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getBottom(tier), tier)) {
+				//tier.getPlayer().setDirection('u');
+				tier.movePlayer(tier.getPlayer().getLocation().getBottom(tier), tier.getPlayer());
 			}
 		}
 		if (keyCode == KeyEvent.VK_D){
-			if (tier.getPlayer().canMove(tier)) {
-				tier.getPlayer().setDirection('r');
-				tier.movePerson(tier.getPlayer());
+			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getRight(tier), tier)) {
+				//tier.getPlayer().setDirection('u');
+				tier.movePlayer(tier.getPlayer().getLocation().getRight(tier), tier.getPlayer());
 			}
 		}
 	}

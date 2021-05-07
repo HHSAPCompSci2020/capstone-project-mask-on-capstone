@@ -78,19 +78,21 @@ public class Person extends GameComponent {
 		}
 		return numberInfected;
 	}
+
 	
 	/**
 	 * Checks whether the Person can move
 	 * @param t Tier in which the Person is inside
 	 * @return whether or not the Person can move
 	 */
+	/*
 	public boolean canMove(Tier t) {
 		if (loc == null) return false;
 		
 		
 		if (direction == 'u') {
-			if (t.getComponentAtLoc(loc.getTop(t)) != null) {
-				if (t.getComponentAtLoc(loc.getBottom()) != null) {
+			if (t.getComponentAtLoc(loc.getTop(t)) != null && !loc.getTop(t).isOutOfBounds(t)) {
+				if (t.getComponentAtLoc(loc.getBottom(t)) != null && !loc.getBottom(t).isOutOfBounds(t)) {
 					return false;
 				}
 				direction = 'd';
@@ -99,8 +101,8 @@ public class Person extends GameComponent {
 			return true;
 		}
 		else if (direction == 'd') {
-			if (t.getComponentAtLoc(loc.getBottom()) != null) {
-				if (t.getComponentAtLoc(loc.getTop(t)) != null) {
+			if (t.getComponentAtLoc(loc.getBottom(t)) != null && !loc.getBottom(t).isOutOfBounds(t)) {
+				if (t.getComponentAtLoc(loc.getTop(t)) != null && !loc.getTop(t).isOutOfBounds(t)) {
 					return false;
 				}
 				direction = 'u';
@@ -109,8 +111,8 @@ public class Person extends GameComponent {
 			return true;
 		}
 		else if (direction == 'l') {
-			if (t.getComponentAtLoc(loc.getLeft()) != null) {
-				if (t.getComponentAtLoc(loc.getRight()) != null) {
+			if (t.getComponentAtLoc(loc.getLeft(t)) != null && !loc.getLeft(t).isOutOfBounds(t)) {
+				if (t.getComponentAtLoc(loc.getRight(t)) != null && !loc.getRight(t).isOutOfBounds(t)) {
 					return false;
 				}
 				direction = 'r';
@@ -119,8 +121,8 @@ public class Person extends GameComponent {
 			return true;
 		}
 		else {
-			if (t.getComponentAtLoc(loc.getRight()) != null) {
-				if (t.getComponentAtLoc(loc.getLeft()) != null) {
+			if (t.getComponentAtLoc(loc.getRight(t)) != null && !loc.getRight(t).isOutOfBounds(t)) {
+				if (t.getComponentAtLoc(loc.getLeft(t)) != null && !loc.getLeft(t).isOutOfBounds(t)) {
 					return false;
 				}
 				direction = 'l';
@@ -130,7 +132,35 @@ public class Person extends GameComponent {
 		}
 		
 	}
+	*/
 	
+	public boolean canMove(Tier t) {
+		Location loc;
+		if (direction == 'u') loc = new Location(this.getLocation().getRow()-1, this.getLocation().getCol());
+		else if (direction == 'd') loc = new Location(this.getLocation().getRow()+1, this.getLocation().getCol());
+		else if (direction == 'l') loc = new Location(this.getLocation().getRow(), this.getLocation().getCol()-1);
+		else loc = new Location(this.getLocation().getRow(), this.getLocation().getCol()+1);
+		
+		//if (loc == null) return false;
+		if (loc.isOutOfBounds(t)) {
+			if (direction == 'u') direction = 'd';
+			else if (direction == 'd') direction ='u';
+			else if (direction == 'l') direction ='r';
+			else if (direction == 'r') direction ='l';
+			
+			return false;
+		}
+		else if (t.getComponentAtLoc(loc) == null) return true;
+		else {
+			if (direction == 'u') direction = 'd';
+			else if (direction == 'd') direction ='u';
+			else if (direction == 'l') direction ='r';
+			else if (direction == 'r') direction ='l';
+			
+			return false;
+		}
+		
+	}
 	/**
 	 * Moves the Person based on its given direction and surroundings
 	 */
@@ -144,7 +174,7 @@ public class Person extends GameComponent {
 		else if (direction == 'l') {
 			loc.setCol(loc.getCol() - 1);
 		}
-		else {
+		else if (direction == 'r'){
 			loc.setCol(loc.getCol() + 1);
 		}
 	}

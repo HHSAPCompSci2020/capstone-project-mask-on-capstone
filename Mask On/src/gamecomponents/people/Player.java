@@ -96,43 +96,54 @@ public class Player extends Person {
 	public int[] getInventory() {
 		return inventory;
 	}
-	/**
-	 * Checks whether the Player can move
-	 * @param t Tier in which the Player is inside
-	 * @return whether or not the Player can move
-	 */
-	public boolean canMove(Tier t) {
-		Location loc = this.getLocation();
-				System.out.println("You are at: " + this.getLocation().getRow() + "," + this.getLocation().getCol());
-		char direction = this.getDirection();
 	
+	public boolean canMove(Location loc, Tier t) {
+		if (loc == null) return false;
 		if (loc.isOutOfBounds(t)) return false;
+		if (t.getComponentAtLoc(loc) == null) return true;
+			
+		return false;
 		
-				//System.out.println(loc.getRow() + "," + loc.getCol());
-				
-		if (direction == 'u') 
-			if (t.getComponentAtLoc(loc.getTop(t)) != null) 
-				if (t.getComponentAtLoc(loc.getBottom()) != null) 
-					return false;
-		
-		else if (direction == 'd') 
-			if (t.getComponentAtLoc(loc.getBottom()) != null) 
-				if (t.getComponentAtLoc(loc.getTop(t)) != null) 
-					return false;
-		
-		else if (direction == 'l') 
-			if (t.getComponentAtLoc(loc.getLeft()) != null) 
-				if (t.getComponentAtLoc(loc.getRight()) != null) 
-					return false;
-		
-		else 
-			if (t.getComponentAtLoc(loc.getRight()) != null) 
-				if (t.getComponentAtLoc(loc.getLeft()) != null) 
-					return false;
-		
-		
-		return true;
 	}
 	
+//	/**
+//	 * Checks whether the Player can move
+//	 * @param t Tier in which the Player is inside
+//	 * @return whether or not the Player can move
+//	 */
+//	public boolean canMove(Tier t) {
+//		Location loc = this.getLocation();
+//				//System.out.println("You are at: " + this.getLocation().getRow() + "," + this.getLocation().getCol());
+//		char direction = this.getDirection();
+//	
+//	//	if (loc.isOutOfBounds(t)) return false;
+//		
+//				//System.out.println(loc.getRow() + "," + loc.getCol());
+//				
+//		if (direction == 'u') 
+//			if (t.getComponentAtLoc(loc.getTop(t)) != null) 
+//				if (loc.getTop(t).isOutOfBounds(t)) 
+//					return false;
+//		
+//		else if (direction == 'd') 
+//			if (t.getComponentAtLoc(loc.getBottom(t)) != null) if (loc.getTop(t).isOutOfBounds(t)) 
+//				if (t.getComponentAtLoc(loc.getBottom(t)) != null) 
+//					return false;
+//		
+//		else if (direction == 'l') 
+//			if (t.getComponentAtLoc(loc.getLeft(t)) != null) 
+//				if (loc.getRight(t).isOutOfBounds(t)) 
+//					return false;
+//		
+//		else 
+//			if (t.getComponentAtLoc(loc.getRight(t)) != null) 
+//				if (loc.getRight(t).isOutOfBounds(t)) 
+//					return false;
+//		
+//		
+//		return true;
+//	}
+	
+
 
 }

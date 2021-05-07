@@ -55,8 +55,8 @@ public class Tier extends Display {
 		player = new Player(new Location(1,2), false, 'r');
 		isOver = false;
 		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
-		person = new Person(new Location(0,6), false, 'l');
-		person2 = new Person(new Location(1,3), true, 'r');
+		person = new Person(new Location(5,3), false, 'u');
+		person2 = new Person(new Location(1,3), true, 'l');
 		ArrayList<Location> placeSquares = new ArrayList<Location>();
 		placeSquares.add(new Location(0, 0));
 		place = new Place(placeSquares);
@@ -157,9 +157,24 @@ public class Tier extends Display {
 	public void movePerson(Person p) {
 		infectedPeople += p.processPeople(this);
 		
-		if (p.canMove(this)){
+		if (p.canMove(this) && p.getLocation() != null){
 			grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
 			p.move();
+			grid[p.getLocation().getRow()][p.getLocation().getCol()] = p;
+			
+		}
+		
+	}
+	
+	/**
+	 * Move a Person from its original location to a new location
+	 * @param p the Person object you are moving
+	 */
+	public void movePlayer(Location loc, Player p) {
+		
+		if (p.canMove(loc, this) && p.getLocation() != null){
+			grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
+			p.setLocation(loc);
 			grid[p.getLocation().getRow()][p.getLocation().getCol()] = p;
 			
 		}
@@ -196,10 +211,14 @@ public class Tier extends Display {
 	 */
 	public GameComponent getComponentAtLoc(Location loc) {
 		//so that nothing moves to out-of-bounds locations
-		if (loc.getRow() < 0 || loc.getRow() >= grid.length || loc.getCol() < 0 || loc.getCol() >= grid[0].length) {
+		if (loc != null) {
+		if ((loc.getRow() < 0 || loc.getRow() >= grid.length || loc.getCol() < 0 || loc.getCol() >= grid[0].length)) {
 			return new GameComponent();
 		}
 		return grid[loc.getRow()][loc.getCol()];
+		}
+		return null;
+		
 	}
 	/**
 	 * Get the status of the game, over or still playing
