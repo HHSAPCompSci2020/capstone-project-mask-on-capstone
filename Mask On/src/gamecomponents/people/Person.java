@@ -157,6 +157,7 @@ public class Person extends GameComponent {
 	 * @return the current Location of the Person
 	 */
 	public Location getLocation() {
+
 		if(this.loc !=null)
 			return loc;
 		else
@@ -240,6 +241,13 @@ public class Person extends GameComponent {
 	public boolean isNull() {
 		if(this.equals(null)) return true;
 		else return false;
+	}
+	
+	private boolean isOutOfBounds(Location loc, Tier t) {
+		if (loc.getRow() >= t.getGrid().length || loc.getRow() < 0 || loc.getCol() >= t.getGrid()[0].length || loc.getCol() < 0)
+			return true;
+		
+			return false;
 	}
 	
 }

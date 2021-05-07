@@ -3,7 +3,6 @@ package gamecomponents.people;
 import display.Location;
 import display.Tier;
 import processing.core.PApplet;
-import java.awt.event.KeyEvent;
 
 public class Player extends Person {
 
@@ -67,12 +66,12 @@ public class Player extends Person {
 	@Override
 	public boolean canMove(Tier t) {
 		Location loc = this.getLocation();
-	
 		char direction = this.getDirection();
-		
+	
 		if (loc == null) return false;
 		
-		System.out.println(loc.getRow() + "," + loc.getCol());
+				System.out.println(loc.getRow() + "," + loc.getCol());
+				
 		if (direction == 'u') 
 			if (t.getComponentAtLoc(loc.getTop()) != null) 
 				if (t.getComponentAtLoc(loc.getBottom()) != null) 
@@ -96,4 +95,6 @@ public class Player extends Person {
 		
 		return true;
 	}
+	
+
 }
