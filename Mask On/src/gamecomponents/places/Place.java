@@ -6,13 +6,27 @@ import display.Location;
 import display.Tier;
 import processing.core.PApplet;
 
+/**
+ * This class represents a Place on the grid displayed in a Tier
+ * @author roshnibright
+ *
+ */
 public class Place extends GameComponent {
 	private ArrayList<Location> locs = new ArrayList<Location>();
 	
+	/**
+	 * 
+	 * @param locs the ArrayList of Location objects the Place occupies
+	 */
 	public Place(ArrayList<Location> locs) {
 		this.locs = locs;
 	}
 	
+	/**
+	 * 
+	 * @param marker the PApplet surface on which the Place is being drawn
+	 * @param t the Tier in which the Place is inside
+	 */
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
 		marker.fill(120);
@@ -22,6 +36,10 @@ public class Place extends GameComponent {
 		marker.popStyle();
 	}
 	
+	/**
+	 * 
+	 * @return the ArrayList of Location objects that the Place occupies
+	 */
 	public ArrayList<Location> getLocations() {
 		return locs;
 	}

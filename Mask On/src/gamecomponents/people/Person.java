@@ -6,6 +6,11 @@ import display.Location;
 import display.Tier;
 import processing.core.PApplet;
 
+/**
+ * This class represents a Person on the grid displayed in a Tier
+ * @author roshnibright
+ *
+ */
 public class Person extends GameComponent {
 	
 	private Location loc;
@@ -14,6 +19,12 @@ public class Person extends GameComponent {
 	private boolean vaccinated;
 	private char direction;
 	
+	/**
+	 * Creates a Person with given information, automatically unmasked
+	 * @param loc Location at which the Person starts at
+	 * @param isInfected whether the Person starts out infected or not
+	 * @param direction which direction the Person will start moving in
+	 */
 	public Person(Location loc, boolean isInfected, char direction) {
 		this.loc = loc;
 		this.infected = isInfected;
@@ -22,6 +33,11 @@ public class Person extends GameComponent {
 		vaccinated = false;
 	}
 	
+	/**
+	 * Draws the Person in the given Tier with the given PApplet
+	 * @param marker PApplet on which the Person is drawn
+	 * @param t Tier in which the Person is drawn
+	 */
 	public void draw(PApplet marker, Tier t) {
 		if (loc != null) {
 			if (infected) {
@@ -36,6 +52,11 @@ public class Person extends GameComponent {
 		}
 	}
 	
+	/**
+	 * Takes in the neighboring people and infects them if Person is infected
+	 * @param t Tier in which the Person is inside
+	 * @return the number of people the person infected
+	 */
 	public int processPeople(Tier t) {
 		int numberInfected = 0;
 		if (loc == null) return 0;
@@ -57,6 +78,11 @@ public class Person extends GameComponent {
 		return numberInfected;
 	}
 	
+	/**
+	 * Checks whether the Person can move
+	 * @param t Tier in which the Person is inside
+	 * @return whether or not the Person can move
+	 */
 	public boolean canMove(Tier t) {
 		if (loc == null) return false;
 		
@@ -103,6 +129,9 @@ public class Person extends GameComponent {
 		
 	}
 	
+	/**
+	 * Moves the Person based on its given direction and surroundings
+	 */
 	public void move() {
 		if (direction == 'u') {
 			loc.setRow(loc.getRow() - 1);
@@ -118,37 +147,70 @@ public class Person extends GameComponent {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return the current Location of the Person
+	 */
 	public Location getLocation() {
 		return loc;
 	}
 	
+	/**
+	 * 
+	 * @return whether the Person is infected or not
+	 */
 	public boolean isInfected() {
 		return infected;
 	}
 	
+	/**
+	 * 
+	 * @return whether the Person is masked or not
+	 */
 	public boolean isMasked() {
 		return masked;
 	}
 	
+	/**
+	 * 
+	 * @return whether the Person is vaccinated or not
+	 */
 	public boolean isVaccinated() {
 		return vaccinated;
 	}
+	
+	/**
+	 * 
+	 * @return the direction the Person is currently supposed to travel in if it can move
+	 */
 	public char getDirection() {
 		return this.direction;
 	}
 	
+	/**
+	 * Gives the Person a mask
+	 */
 	public void takeMask() {
 		masked = true;
 	}
 	
+	/**
+	 * Gets the Person vaccinated
+	 */
 	public void getVaccinated() {
 		vaccinated = true;
 	}
 	
+	/**
+	 * Makes the Person infected
+	 */
 	public void contractVirus() {
 		infected = true;
 	}
 	
+	/**
+	 * Has the Person be carried by the Player
+	 */
 	public void latchToPlayer() {
 		loc = null;
 	}
@@ -160,6 +222,10 @@ public class Person extends GameComponent {
 //	public void setStopwatch(int i) {
 //		stopwatch = i;
 //	}
+	/**
+	 * 
+	 * @return whether the Person object is null or not
+	 */
 	public boolean isNull() {
 		if(this.equals(null)) return true;
 		else return false;

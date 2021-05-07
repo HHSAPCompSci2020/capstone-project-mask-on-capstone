@@ -8,13 +8,10 @@ import gamecomponents.places.*;
 import processing.core.PApplet;
 
 /**
- * 
+ * This class represents the overall structure of a Tier, or level, in the Mask On! game
  * @author emtinside
  *
  */
-
-//NOTE FROM ROSHNI: THIS CLASS ALSO NEEDS A METHOD THAT CAN MOVE A PERSON
-//TO ANOTHER GRID LOCATION WHEN IT MOVES (RUN THE PROGRAM AND YOU'LL SEE WHY)
 public class Tier extends Display {
 	private int infectedPeople;
 	private int totalDoctors, totalResearchers, totalPeople;
@@ -191,42 +188,91 @@ public class Tier extends Display {
 	public boolean getGameStatus() {
 		return isOver;
 	}
-
+	
+	/**
+	 * 
+	 * @return the number of infected people
+	 */
 	public int getInfected() {
 		return infectedPeople;
 	}
 
+	/**
+	 * 
+	 * @return the total number of people
+	 */
 	public int getPeople() {
 		return totalPeople;
 	}
+	
+	/**
+	 * 
+	 * @return the Player object in control of the game
+	 */
+	public Player getPlayer() {
+		return player;
+	}
 
+	/**
+	 * 
+	 * @return the total number of Places
+	 */
 	public int getPlaces() {
 		return totalPlaces;
 	}
 
+	/**
+	 * 
+	 * @return the total number of Hospitals
+	 */
 	public int getHospitals() {
 		return totalHospitals;
 	}
 	
+	/**
+	 * 
+	 * @return the total number of Doctors
+	 */
 	public int getDoctors() {
 		return totalDoctors;
 	}
 	
+	/**
+	 * 
+	 * @return the total number of Factories
+	 */
 	public int getFactories() {
 		return totalFactories;
 	}
 	
+	/**
+	 * 
+	 * @return the total number of Researchers
+	 */
 	public int getResearchers() {
 		return totalResearchers;
 	}
 	
+	/**
+	 * 
+	 * @return the total number of PublicPlaces
+	 */
 	public int getPublicPlaces() {
 		return totalPublicPlaces;
 	}
+	
+	/**
+	 * 
+	 * @return the total number of times the draw() method has been called
+	 */
 	public int getStopwatch() {
 		return stopwatch;
 	}
 	
+	/**
+	 * 
+	 * @param i the number to set the supposed previous number of draw() calls to
+	 */
 	public void setStopwatch(int i) {
 		stopwatch = i;
 	}

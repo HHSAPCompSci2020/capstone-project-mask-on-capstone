@@ -4,7 +4,7 @@ import java.awt.Color;
 import display.Tier;
 import processing.core.PApplet;
 
-public class YellowTier extends Tier{
+public class YellowTier extends Tier {
 	
 	public YellowTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);

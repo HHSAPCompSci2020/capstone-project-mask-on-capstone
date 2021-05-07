@@ -1,7 +1,8 @@
 package display;
-import java.awt.Color;
 
+import java.awt.Color;
 import processing.core.PApplet;
+
 /**
  * The Menu class is a Display that represents the options that the user has regarding the program
  * @author roshnibright
@@ -9,6 +10,7 @@ import processing.core.PApplet;
 public class Menu extends Display {
 	
 	private boolean isOpen;
+	
 	/**
 	 * 
 	 * @param x x-coordinate of the start point
@@ -23,6 +25,7 @@ public class Menu extends Display {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 		isOpen = true;
 	}
+	
 	/**
 	 * Draws the Menu
 	 * @param marker the PApplet on which the Menu is drawn
@@ -62,12 +65,14 @@ public class Menu extends Display {
 
 		marker.popStyle();
 	}
+	
 	/**
 	 * Opens or closes the Menu depending on its current state
 	 */
 	public void openClose() {
 		isOpen = !isOpen;
 	}
+	
 	/**
 	 * 
 	 * @return the state of the Menu
@@ -75,6 +80,7 @@ public class Menu extends Display {
 	public boolean state() {
 		return isOpen;
 	}
+	
 	/**
 	 * @param width the width to set the dimensions of the Menu to
 	 */

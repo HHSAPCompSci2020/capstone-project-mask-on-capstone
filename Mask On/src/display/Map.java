@@ -1,6 +1,7 @@
 package display;
 
 import processing.core.PApplet;
+
 /**
  * The Map class is a Display which represents the map of California and boxes which are both interactive. 
  * @author roshnibright
@@ -8,10 +9,11 @@ import processing.core.PApplet;
 public class Map extends Display {
 	
 	private char color;
+	
 	/**
 	 * 
-	 * @param x top left X coord
-	 * @param y top left Y coord
+	 * @param x top left X coordinate
+	 * @param y top left Y coordinate
 	 * @param width map width
 	 * @param height map height
 	 */
@@ -70,6 +72,7 @@ public class Map extends Display {
 		
 		marker.popStyle();
 	}
+	
 	/**
 	 * Changes the color of the Map based on coordinates
 	 * @param x the x-coordinate of the location that the user clicked
@@ -125,6 +128,7 @@ public class Map extends Display {
 		}
 		return changed;
 	}
+	
 	/**
 	 * 
 	 * @return a character which represents the selected Color
