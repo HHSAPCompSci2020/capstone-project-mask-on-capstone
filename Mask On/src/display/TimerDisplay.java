@@ -31,6 +31,7 @@ public class TimerDisplay extends Display{
 	/**
 	 * Draws the TimerDisplay
 	 * @param marker the PApplet on which the TimerDisplay is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
 		

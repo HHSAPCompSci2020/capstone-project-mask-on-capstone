@@ -24,6 +24,7 @@ public class CovidTracker extends Display{
 	/**
 	 * Draws the tracker, which is a horizontal bar in which the ratio of the red to the whole bar is proportional to the Covid count out of the total population
 	 * @param marker the PApplet on which the CovidTracker is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
 		marker.noStroke();

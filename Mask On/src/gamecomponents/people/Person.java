@@ -37,6 +37,7 @@ public class Person extends GameComponent {
 	 * Draws the Person in the given Tier with the given PApplet
 	 * @param marker PApplet on which the Person is drawn
 	 * @param t Tier in which the Person is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker, Tier t) {
 		if (loc != null) {

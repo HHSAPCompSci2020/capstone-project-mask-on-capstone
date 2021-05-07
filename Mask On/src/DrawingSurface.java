@@ -39,6 +39,7 @@ public class DrawingSurface extends PApplet {
 	
 	/**
 	 * Draws the components of the program
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw() {
 		//background image, from unsplash (https://unsplash.com/photos/HRjdJddvPu8)

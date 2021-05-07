@@ -23,9 +23,10 @@ public class Place extends GameComponent {
 	}
 	
 	/**
-	 * 
+	 * Draws the Place in the given Tier
 	 * @param marker the PApplet surface on which the Place is being drawn
 	 * @param t the Tier in which the Place is inside
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();

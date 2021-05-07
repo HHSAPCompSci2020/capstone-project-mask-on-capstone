@@ -25,7 +25,8 @@ public class Map extends Display {
 
 	/**
 	 * Draws the map of California using images and the rectangles which serve as buttons
-	 * marker the PApplet on which the Map is drawn
+	 * @param marker the PApplet on which the Map is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
 		marker.pushStyle();

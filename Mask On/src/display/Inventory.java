@@ -33,6 +33,7 @@ public class Inventory extends Display{
 	/**
 	 * Draws the Inventory
 	 * @param marker the PApplet on which the displayed element is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
 		marker.noStroke();

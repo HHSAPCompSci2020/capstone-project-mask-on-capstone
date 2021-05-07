@@ -72,6 +72,7 @@ public class Tier extends Display {
 	/**
 	 * Draw the tier on the surface
 	 * @param marker the PApplet surface you're drawing on
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
 		

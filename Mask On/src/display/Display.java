@@ -4,7 +4,7 @@ import processing.core.PApplet;
 import java.awt.Color;
 
 /**
- * 
+ * The Display class represents an object that is displayed on the window
  * @author roshnibright
  *
  */
@@ -18,7 +18,7 @@ public abstract class Display {
 	private Color fillColor;
 	
 	/**
-	 * 
+	 * Creates a Display
 	 * @param x x-coordinate of the start point
 	 * @param y y-coordinate of the start point
 	 * @param width width of the displayed element
@@ -35,7 +35,7 @@ public abstract class Display {
 	}
 	
 	/**
-	 * 
+	 * Creates a Display with specified colors
 	 * @param x x-coordinate of the start point
 	 * @param y y-coordinate of the start point
 	 * @param width width of the displayed element
@@ -55,7 +55,7 @@ public abstract class Display {
 	}
 	
 	/**
-	 * 
+	 * Tests whether or not the user clicked on a rectangle
 	 * @param clickX the x-coordinate of the location where clicked
 	 * @param clickY the y-coordinate of the location where clicked
 	 * @param x x-coordinate of the start of the rectangle
@@ -75,6 +75,7 @@ public abstract class Display {
 	/**
 	 * Draws the displayed element
 	 * @param marker the PApplet on which the displayed element is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public abstract void draw(PApplet marker);
 	

@@ -29,6 +29,7 @@ public class Menu extends Display {
 	/**
 	 * Draws the Menu
 	 * @param marker the PApplet on which the Menu is drawn
+	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
 		marker.pushStyle();
