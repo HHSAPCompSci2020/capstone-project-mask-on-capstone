@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"display","c":"TimerDisplay","l":"draw(PApplet)","url":"draw(processing.core.PApplet)"},{"p":"display","c":"TimerDisplay","l":"TimerDisplay(double, double, double, double)","url":"%3Cinit%3E(double,double,double,double)"},{"p":"display","c":"TimerDisplay","l":"updateTime()"}]
