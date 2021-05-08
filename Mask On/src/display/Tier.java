@@ -22,8 +22,10 @@ public class Tier extends Display {
 	private boolean over;
 	private Player player;
 	private CovidTracker tracker;
-	private Person person, person2; //TESTING DELETE LATER
-	private Place place; //TESTING DELETE LATER
+	private ArrayList<Person> people;
+	private ArrayList<Place> places;
+	/*private Person person, person2; //TESTING DELETE LATER
+	private Place place; //TESTING DELETE LATER*/
 	private int stopwatch;
 	private Inventory inventory;
 	private TimerDisplay timer;
@@ -52,20 +54,21 @@ public class Tier extends Display {
 		totalResearchers = 0;
 		stopwatch = 0;
 		
-		player = new Player(new Location(1,2), false, 'r');
+		people = new ArrayList<Person>();
+		places = new ArrayList<Place>();
 		over = false;
 		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
-		person = new Person(new Location(5,3), false, 'u');
+		inventory = new Inventory(675, 290,  240, 240);
+		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50);
+		
+		/*person = new Person(new Location(5,3), false, 'u');
 		person2 = new Person(new Location(1,3), true, 'l');
 		ArrayList<Location> placeSquares = new ArrayList<Location>();
 		placeSquares.add(new Location(0, 0));
 		place = new Place(placeSquares);
-		inventory = new Inventory(675, 290,  240, 240);
-		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50);
 		this.addPersonToGrid(person);
 		this.addPersonToGrid(person2);
-		this.addPlaceToGrid(place);
-		this.addPersonToGrid(player);
+		this.addPlaceToGrid(place);*/
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -96,15 +99,25 @@ public class Tier extends Display {
 		}
 		
 		player.draw(marker, this);
-		person.draw(marker, this);
+		
+		for (Person p : people) {
+			p.draw(marker, this);
+		}
+		
+		for (Place p : places) {
+			p.draw(marker, this);
+		}
+		
+		/*person.draw(marker, this);
 		person2.draw(marker, this);
-		place.draw(marker, this);
+		place.draw(marker, this);*/
 		stopwatch++;
 		
 		if (!over) {
 			if (stopwatch % 10 == 0) {
-				this.movePerson(person);
-				this.movePerson(person2);
+				for (Person p : people) {
+					movePerson(p);
+				}
 			}
 		}
 		
@@ -242,12 +255,35 @@ public class Tier extends Display {
 	public int getInfected() {
 		return infectedPeople;
 	}
+	
+	public ArrayList<Person> getPeople() {
+		return people;
+	}
+	
+	public void addPersonToArrayList(Person p) {
+		people.add(p);
+		this.addPersonToGrid(p);
+	}
+	
+	public void addPlayer(Player p) {
+		if (player == null) player = p;
+		this.addPersonToGrid(p);
+	}
+	
+	public ArrayList<Place> getPlaces() {
+		return places;
+	}
+	
+	public void addPlaceToArrayList(Place p) {
+		places.add(p);
+		this.addPlaceToGrid(p);
+	}
 
 	/**
 	 * 
 	 * @return the total number of people
 	 */
-	public int getPeople() {
+	public int getNumPeople() {
 		return totalPeople;
 	}
 	
@@ -263,7 +299,7 @@ public class Tier extends Display {
 	 * 
 	 * @return the total number of Places
 	 */
-	public int getPlaces() {
+	public int getNumPlaces() {
 		return totalPlaces;
 	}
 
