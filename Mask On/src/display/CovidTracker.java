@@ -3,7 +3,7 @@ package display;
 import processing.core.PApplet;
 /**
  * Represents a tracker that keeps track of the number of Covid cases in each Tier
- * @author goldb
+ * @author Felicia Zhang
  *
  */
 public class CovidTracker extends Display{
@@ -39,8 +39,14 @@ public class CovidTracker extends Display{
 	 * Updates the Covid count and total number of people based on the Tier
 	 * @param t the current Tier
 	 */
-	public void update(Tier t) {
+	public boolean update(Tier t) {
 		total = t.getPeople();
 		covidCount = t.getInfected();
+		if (total == covidCount) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

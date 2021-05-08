@@ -6,6 +6,11 @@ import display.Menu;
 import display.Tier;
 import gamecomponents.people.Player;
 import processing.core.PApplet;
+import tiers.OrangeTier;
+import tiers.PurpleTier;
+import tiers.RedTier;
+import tiers.YellowTier;
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 
@@ -26,7 +31,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255, 220));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
-		tier = new Tier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+		tier = new YellowTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 
 	}
 	
@@ -76,28 +81,30 @@ public class DrawingSurface extends PApplet {
 	 * Updates the menu and map based on the user clicking on certain keys
 	 */
 	public void keyPressed() {
-		if (keyCode == KeyEvent.VK_W){
-			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getTop(tier), tier)) {
-				//tier.getPlayer().setDirection('u');
-				tier.movePlayer(tier.getPlayer().getLocation().getTop(tier), tier.getPlayer());
+		if (!tier.getGameStatus()) {
+			if (keyCode == KeyEvent.VK_W){
+				if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getTop(tier), tier)) {
+					//tier.getPlayer().setDirection('u');
+					tier.movePlayer(tier.getPlayer().getLocation().getTop(tier), tier.getPlayer());
+				}
 			}
-		}
-		if (keyCode == KeyEvent.VK_A){
-			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getLeft(tier), tier)) {
-				//tier.getPlayer().setDirection('u');
-				tier.movePlayer(tier.getPlayer().getLocation().getLeft(tier), tier.getPlayer());
+			if (keyCode == KeyEvent.VK_A){
+				if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getLeft(tier), tier)) {
+					//tier.getPlayer().setDirection('u');
+					tier.movePlayer(tier.getPlayer().getLocation().getLeft(tier), tier.getPlayer());
+				}
 			}
-		}
-		if (keyCode == KeyEvent.VK_S){
-			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getBottom(tier), tier)) {
-				//tier.getPlayer().setDirection('u');
-				tier.movePlayer(tier.getPlayer().getLocation().getBottom(tier), tier.getPlayer());
+			if (keyCode == KeyEvent.VK_S){
+				if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getBottom(tier), tier)) {
+					//tier.getPlayer().setDirection('u');
+					tier.movePlayer(tier.getPlayer().getLocation().getBottom(tier), tier.getPlayer());
+				}
 			}
-		}
-		if (keyCode == KeyEvent.VK_D){
-			if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getRight(tier), tier)) {
-				//tier.getPlayer().setDirection('u');
-				tier.movePlayer(tier.getPlayer().getLocation().getRight(tier), tier.getPlayer());
+			if (keyCode == KeyEvent.VK_D){
+				if (tier.getPlayer().canMove(tier.getPlayer().getLocation().getRight(tier), tier)) {
+					//tier.getPlayer().setDirection('u');
+					tier.movePlayer(tier.getPlayer().getLocation().getRight(tier), tier.getPlayer());
+				}
 			}
 		}
 	}
@@ -115,19 +122,22 @@ public class DrawingSurface extends PApplet {
 			menu.openClose();
 		}
 		if (!menu.state()) {
-			boolean changed = map.changeMap(mouseX, mouseY);
+			boolean changed = false;
+			if (map.getColor() == 'w' || tier.getGameStatus()) {
+				changed = map.changeMap(mouseX, mouseY);
+			}
 			if (changed) {
 				if (map.getColor() == 'y') {
-					//tier = new YellowTier();
+					tier = new YellowTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 				}
 				if (map.getColor() == 'o') {
-					//tier = new OrangeTier();
+					tier = new OrangeTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 				}
 				if (map.getColor() == 'r') {
-					//tier = new RedTier();
+					tier = new RedTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 				}
 				if (map.getColor() == 'p') {
-					//tier = new PurpleTier;
+					tier = new PurpleTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
 				}
 			}
 		}

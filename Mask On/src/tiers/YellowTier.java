@@ -11,9 +11,4 @@ public class YellowTier extends Tier {
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public void draw(PApplet marker) {
-		// TODO Auto-generated method stub
-		
-	}
 }

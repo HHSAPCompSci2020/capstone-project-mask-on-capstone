@@ -19,7 +19,7 @@ public class Tier extends Display {
 	private int totalPlaces, totalHospitals, totalPublicPlaces, totalFactories;
 	private GameComponent[][] grid; //not accessible by other Tier objects, 
 									//nor mutable without use of mutator methods
-	private boolean isOver;
+	private boolean over;
 	private Player player;
 	private CovidTracker tracker;
 	private Person person, person2; //TESTING DELETE LATER
@@ -53,7 +53,7 @@ public class Tier extends Display {
 		stopwatch = 0;
 		
 		player = new Player(new Location(1,2), false, 'r');
-		isOver = false;
+		over = false;
 		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
 		person = new Person(new Location(5,3), false, 'u');
 		person2 = new Person(new Location(1,3), true, 'l');
@@ -76,11 +76,13 @@ public class Tier extends Display {
 	 */
 	public void draw(PApplet marker) {
 		
-		tracker.update(this);
+		over = tracker.update(this);
 		tracker.draw(marker);
 		inventory.draw(marker);
 		inventory.update(player, this);
-		timer.updateTime();
+		if (!over) {
+			timer.updateTime();
+		}
 		timer.draw(marker);
 		
 		
@@ -99,9 +101,11 @@ public class Tier extends Display {
 		place.draw(marker, this);
 		stopwatch++;
 		
-		if (stopwatch % 10 == 0) {
-			this.movePerson(person);
-			this.movePerson(person2);
+		if (!over) {
+			if (stopwatch % 10 == 0) {
+				this.movePerson(person);
+				this.movePerson(person2);
+			}
 		}
 		
 	}
@@ -164,6 +168,9 @@ public class Tier extends Display {
 			
 		}
 		
+		//just in case it doesn't infect the first time
+		infectedPeople += p.processPeople(this);
+		
 	}
 	
 	/**
@@ -225,7 +232,7 @@ public class Tier extends Display {
 	 * @return boolean isOver
 	 */
 	public boolean getGameStatus() {
-		return isOver;
+		return over;
 	}
 	
 	/**

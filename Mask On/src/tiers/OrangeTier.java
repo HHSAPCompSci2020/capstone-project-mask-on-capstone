@@ -9,10 +9,4 @@ public class OrangeTier extends YellowTier{
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 		// TODO Auto-generated constructor stub
 	}
-
-
-	public void draw(PApplet marker) {
-		// TODO Auto-generated method stub
-		
-	}
 }

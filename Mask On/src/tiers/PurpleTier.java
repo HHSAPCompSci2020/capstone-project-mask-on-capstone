@@ -10,9 +10,4 @@ public class PurpleTier extends YellowTier{
 		// TODO Auto-generated constructor stub
 	}
 
-
-	public void draw(PApplet marker) {
-		// TODO Auto-generated method stub
-		
-	}
 }
