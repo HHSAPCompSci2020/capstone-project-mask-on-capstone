@@ -1,11 +1,10 @@
 package tiers;
+
 import java.awt.Color;
 import java.util.ArrayList;
-
 import display.*;
 import gamecomponents.people.*;
 import gamecomponents.places.*;
-import processing.core.PApplet;
 
 public class YellowTier extends Tier {
 	
@@ -19,7 +18,7 @@ public class YellowTier extends Tier {
 		
 		ArrayList<Location> hospitalSquares = new ArrayList<Location>();
 		for (int i = 0; i <= 1; i++) {
-			for (int j = 0; j <= 2; j++) {
+			for (int j = 0; j <= 1; j++) {
 				hospitalSquares.add(new Location(i, j));
 			}
 		}

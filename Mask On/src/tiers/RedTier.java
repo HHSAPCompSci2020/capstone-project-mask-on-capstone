@@ -1,7 +1,6 @@
 package tiers;
-import java.awt.Color;
 
-import processing.core.PApplet;
+import java.awt.Color;
 
 public class RedTier extends YellowTier{
 	
