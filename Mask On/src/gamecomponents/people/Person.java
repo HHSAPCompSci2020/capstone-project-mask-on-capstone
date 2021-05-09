@@ -151,6 +151,10 @@ public class Person extends GameComponent {
 			return false;
 		}
 		else if (t.getComponentAtLoc(loc) == null) return true;
+		else if (t.getComponentAtLoc(loc) instanceof Player) {
+		//	this.latchToPlayer(t);
+			return true;
+		}
 		else {
 			if (direction == 'u') direction = 'd';
 			else if (direction == 'd') direction ='u';
@@ -252,8 +256,8 @@ public class Person extends GameComponent {
 	/**
 	 * Has the Person be carried by the Player
 	 */
-	public void latchToPlayer() {
-		loc = null;
+	public void latchToPlayer(Tier t) {
+		t.removeFromGrid(this);
 	}
 	public void setDirection(char direction) {
 		this.direction = direction;

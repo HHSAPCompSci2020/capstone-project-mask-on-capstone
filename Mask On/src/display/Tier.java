@@ -114,7 +114,7 @@ public class Tier extends Display {
 		stopwatch++;
 		
 		if (!over) {
-			if (stopwatch % 10 == 0) {
+			if (stopwatch % 20 == 0) {
 				for (Person p : people) {
 					movePerson(p);
 				}
@@ -125,7 +125,7 @@ public class Tier extends Display {
 	
 	//MUTATOR METHODS
 	/**
-	 * Add a person GameComponent into the grid at a specified location
+	 * Add a person GameComponent into the grid at a specified location in the Person's contructor;
 	 * @param p an object of type Person 
 	 */
 	public void addPersonToGrid(Person p) {
@@ -134,7 +134,6 @@ public class Tier extends Display {
 			System.out.println("You're out of bounds buddy");
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
-			
 			if (!(p instanceof Player)) totalPeople++;
 			
 			if (p.isInfected()) infectedPeople++;
@@ -206,6 +205,7 @@ public class Tier extends Display {
 	 * @param p Person
 	 */
 	public void removeFromGrid(Person p) {
+		p.setLocation(null);
 		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;	
 	}
 	

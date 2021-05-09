@@ -1,5 +1,7 @@
 package gamecomponents.people;
 
+import java.util.ArrayList;
+
 import display.Location;
 import display.Tier;
 import processing.core.PApplet;
@@ -46,11 +48,11 @@ public class Player extends Person {
 	 * @param t the Tier in which the the person is in
 	 */
 	public void grabPerson(Person p, Tier t) {
-		if (p.isInfected()) inventory[1]++;
-		if (p instanceof Doctor) inventory[2]++;
-		if (p instanceof Researcher) inventory[3]++;
-		
-		t.removeFromGrid(p);	
+		p.latchToPlayer(t);
+		//TESTER if(p instanceof Person) inventory[0]++;
+		if (p.isInfected()) inventory[1] ++;
+		else if (p instanceof Doctor) inventory[2]++;
+		else if (p instanceof Researcher) inventory[3]++;	
 	}
 	/**
 	 * Puts the person in a random adjacent spot
@@ -62,7 +64,9 @@ public class Player extends Person {
 		if (p instanceof Doctor) inventory[2]--;
 		if (p instanceof Researcher) inventory[3]--;
 		
-		p.setLocation(new Location(this.getLocation().getRow()+1, this.getLocation().getCol()));
+		ArrayList<Location> locs = this.getLocation().getAdjacentLocations(t);
+		Location loc = locs.get(returnRandom(locs.size()-1, 0));
+		p.setLocation(loc);
 		t.addPersonToGrid(p);
 	}
 	/**
@@ -70,9 +74,11 @@ public class Player extends Person {
 	 * @param p the person that needs a mask
 	 */
 	public void giveMask(Person p) {
-		if (inventory[0] >0) inventory[0]--;
 		if (!p.isInfected() || p.isVaccinated() && !p.isMasked()) {
-			p.takeMask();
+			if (inventory[0] >0) { 
+				inventory[0]--;
+				p.takeMask();			
+			}
 		}
 	}
 	/**
@@ -89,6 +95,7 @@ public class Player extends Person {
 	public void contractVirus() {
 		
 	}
+	
 	/**
 	 * 
 	 * @return the inventory
@@ -97,52 +104,77 @@ public class Player extends Person {
 		return inventory;
 	}
 	
+	/**
+	 * Checks whether the Player can move
+	 * @param t Tier in which the Player is inside
+	 * @return whether or not the Player can move
+	 */
 	public boolean canMove(Location loc, Tier t) {
 		if (loc == null) return false;
 		if (loc.isOutOfBounds(t)) return false;
 		if (t.getComponentAtLoc(loc) == null) return true;
+		if (t.getComponentAtLoc(loc) instanceof Person) {
+			Person p = (Person) t.getComponentAtLoc(loc);
+			if (p.isInfected() || p instanceof Doctor || p instanceof Researcher) {
+						System.out.println("you've picked up a person");
+				grabPerson(p, t);
+				return true;
+			}
+		}
 			
 		return false;
 		
 	}
+
+	/**
+	 * The Player fills up their mask inventory to 5 masks
+	 */
+	public void collectMasks() {
+		int curMasks = inventory[0];
+		for (int i= curMasks; i<=5; i++) {
+			inventory[0]++;
+		}
+	}
+
+	/*
+	public boolean canMove(Tier t) {
+		Location loc = this.getLocation();
+				//System.out.println("You are at: " + this.getLocation().getRow() + "," + this.getLocation().getCol());
+		char direction = this.getDirection();
 	
-//	/**
-//	 * Checks whether the Player can move
-//	 * @param t Tier in which the Player is inside
-//	 * @return whether or not the Player can move
-//	 */
-//	public boolean canMove(Tier t) {
-//		Location loc = this.getLocation();
-//				//System.out.println("You are at: " + this.getLocation().getRow() + "," + this.getLocation().getCol());
-//		char direction = this.getDirection();
-//	
-//	//	if (loc.isOutOfBounds(t)) return false;
-//		
-//				//System.out.println(loc.getRow() + "," + loc.getCol());
-//				
-//		if (direction == 'u') 
-//			if (t.getComponentAtLoc(loc.getTop(t)) != null) 
-//				if (loc.getTop(t).isOutOfBounds(t)) 
-//					return false;
-//		
-//		else if (direction == 'd') 
-//			if (t.getComponentAtLoc(loc.getBottom(t)) != null) if (loc.getTop(t).isOutOfBounds(t)) 
-//				if (t.getComponentAtLoc(loc.getBottom(t)) != null) 
-//					return false;
-//		
-//		else if (direction == 'l') 
-//			if (t.getComponentAtLoc(loc.getLeft(t)) != null) 
-//				if (loc.getRight(t).isOutOfBounds(t)) 
-//					return false;
-//		
-//		else 
-//			if (t.getComponentAtLoc(loc.getRight(t)) != null) 
-//				if (loc.getRight(t).isOutOfBounds(t)) 
-//					return false;
-//		
-//		
-//		return true;
-//	}
+	//	if (loc.isOutOfBounds(t)) return false;
+		
+				//System.out.println(loc.getRow() + "," + loc.getCol());
+				
+		if (direction == 'u') 
+			if (t.getComponentAtLoc(loc.getTop(t)) != null) 
+				if (loc.getTop(t).isOutOfBounds(t)) 
+					return false;
+		
+		else if (direction == 'd') 
+			if (t.getComponentAtLoc(loc.getBottom(t)) != null) if (loc.getTop(t).isOutOfBounds(t)) 
+				if (t.getComponentAtLoc(loc.getBottom(t)) != null) 
+					return false;
+		
+		else if (direction == 'l') 
+			if (t.getComponentAtLoc(loc.getLeft(t)) != null) 
+				if (loc.getRight(t).isOutOfBounds(t)) 
+					return false;
+		
+		else 
+			if (t.getComponentAtLoc(loc.getRight(t)) != null) 
+				if (loc.getRight(t).isOutOfBounds(t)) 
+					return false;
+		
+		
+		return true;
+	}
+	*/
+	
+	private int returnRandom(int max, int min) {
+		int range = (max-min)+1;
+		return (int) (Math.random()*range) +min;
+	}
 	
 
 
