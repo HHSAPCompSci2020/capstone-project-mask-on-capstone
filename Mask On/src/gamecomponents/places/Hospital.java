@@ -18,18 +18,16 @@ public class Hospital extends Place {
 	}
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
-		marker.fill(120);
 		for (Location l : getLocations()) {
 			marker.stroke(120);
 			marker.square(t.getX() + 40 * l.getCol(), t.getY() + 40 * l.getRow(), 40);
 		}
-		marker.fill(255);
+		marker.fill(0);
 		marker.textSize(12);
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
-		marker.text("Patients:", t.getX()+ t.getWidth()*11/105, t.getY() + t.getHeight()/30);
-		marker.text(patients.size(), t.getX()+ t.getWidth()*2/15, t.getY()+ t.getHeight()/15);
 		marker.image(marker.loadImage("images/hospital.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
+		marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
 		marker.popStyle();
 	}
 	public boolean addPatient(Person p) {
