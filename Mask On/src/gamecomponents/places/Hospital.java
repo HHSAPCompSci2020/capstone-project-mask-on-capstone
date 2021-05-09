@@ -6,16 +6,29 @@ import display.Location;
 import display.Tier;
 import gamecomponents.people.Person;
 import processing.core.PApplet;
-
+/**
+ * The Hospital class represents a Place that can hold 5 patients at a time. 
+ * @author Felicia Zhang
+ *
+ */
 public class Hospital extends Place {
 	private ArrayList<Person> patients;
 	private ArrayList<Double> times;
-	
+	/**
+	 * 
+	 * @param locs the ArrayList of Location objects the Hospital occupies
+	 */
 	public Hospital(ArrayList<Location> locs) {
 		super(locs);
 		patients = new ArrayList<Person>();
 		times = new ArrayList<Double>();
 	}
+	/**
+	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has
+	 * @param marker the PApplet surface on which the Hospital is being drawn
+	 * @param t the Tier in which the Hospital is inside
+	 * @pre this method runs with the conditions previously set on the given PApplet
+	 */
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
 		for (Location l : getLocations()) {
@@ -30,15 +43,23 @@ public class Hospital extends Place {
 		marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
 		marker.popStyle();
 	}
+	/**
+	 * Admits a person to the Hospital if the Hospital is not full
+	 * @param p the Person that wants to be admitted to the Hospital
+	 * @return whether or not the patient was admitted to the Hospital
+	 */
 	public boolean addPatient(Person p) {
 		if (patients.size()<5) {
 			patients.add(p);
-			p.getVaccinated();
 			times.add((double)(System.currentTimeMillis()));
 			return true;
 		}
 		return false;
 	}
+	/**
+	 * Removes a patient a patient that has stayed at the Hospital for at least 30 seconds
+	 * @return the Person that was removed or if no one was removed, null is returned
+	 */
 	public Person removePatient() {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
