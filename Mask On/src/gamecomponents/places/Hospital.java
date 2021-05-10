@@ -60,15 +60,42 @@ public class Hospital extends Place {
 	 * Removes a patient a patient that has stayed at the Hospital for at least 30 seconds
 	 * @return the Person that was removed or if no one was removed, null is returned
 	 */
-	public Person removePatient() {
+	public void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
 			if ((currentTime - times.get(i))/1000 >= 30) {
 				times.remove(i);
-				return patients.remove(i);
+				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
+				
+				for (int a=0; a<this.getLocations().size();a++) {
+					HosLocs.add(this.getLocations().get(a).getAdjacentLocations(t));
+				}
+				
+				ArrayList<Location> validLocs = new ArrayList<Location>();
+				
+				for (int b=0; b<HosLocs.size(); b++) {
+					for (int x=0; x<HosLocs.get(b).size(); x++){
+						if (t.getComponentAtLoc(HosLocs.get(b).get(i)) == null) {
+							validLocs.add(HosLocs.get(b).get(i));
+					}
+				}
+				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0));
+				
+				patients.get(i).setLocation(loc);
+				System.out.println(patients.get(i).getLocation().getRow() + " "+patients.get(i).getLocation().getCol());
+				t.addPersonToGrid(patients.get(i));
+				t.addPersonToArrayList(patients.get(i));
+				patients.remove(i);
+				
+				//return patients.remove(i);
 			}
 		}
-		return null;
 	}
+		//return null;
+	}
+		private int returnRandom(int max, int min) {
+			int range = (max-min)+1;
+			return (int) (Math.random()*range) +min;
+		}
 }
 

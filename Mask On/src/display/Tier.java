@@ -139,7 +139,9 @@ public class Tier extends Display {
 			if (p.isInfected()) infectedPeople++;
 			if(p instanceof Doctor) totalDoctors++;
 			else if(p instanceof Researcher) totalResearchers++;
-	
+			
+			if (! (p instanceof Player))
+				people.add(p);
 		}
 		else
 			System.out.println("This space is occupied");
@@ -160,9 +162,13 @@ public class Tier extends Display {
 				if(p instanceof Hospital) totalHospitals++;
 				else if(p instanceof PublicPlace) totalPublicPlaces++;
 				else if(p instanceof Factory) totalFactories++;
+				
+				places.add(p);
 			}
 			else
 				System.out.println("This space is occupied");
+			
+			
 		}
 	}
 	
@@ -207,6 +213,8 @@ public class Tier extends Display {
 	public void removeFromGrid(Person p) {
 		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
 		p.setLocation(null);	
+		
+		people.remove(p);
 	}
 	
 	/**
@@ -217,6 +225,7 @@ public class Tier extends Display {
 		ArrayList<Location> locs = p.getLocations();
 		for(int i=0; i<locs.size(); i++) {
 			grid[locs.get(i).getRow()][locs.get(i).getCol()] = null;
+			places.remove(p);
 		}
 	}
 	
