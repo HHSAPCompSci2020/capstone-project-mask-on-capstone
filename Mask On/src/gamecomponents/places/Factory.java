@@ -6,7 +6,7 @@ import display.Location;
 import display.Tier;
 import processing.core.PApplet;
 /**
- * The Factory class represents a Place that makes masks.
+ * The Factory class represents a Place that makes masks. It makes 5 masks in 30 seconds and is open when it is done making the masks.
  * @author Felicia Zhang
  *
  */

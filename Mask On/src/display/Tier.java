@@ -134,17 +134,19 @@ public class Tier extends Display {
 			System.out.println("You're out of bounds buddy");
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
-			if (!(p instanceof Player)) totalPeople++;
+			if (people.contains(p)) {
+				if (!(p instanceof Player)) totalPeople++;
 			
-			if (p.isInfected()) infectedPeople++;
-			if(p instanceof Doctor) totalDoctors++;
-			else if(p instanceof Researcher) totalResearchers++;
-			
+				if (p.isInfected()) infectedPeople++;
+				if(p instanceof Doctor) totalDoctors++;
+				else if(p instanceof Researcher) totalResearchers++;
+			}
 			if (! (p instanceof Player))
 				people.add(p);
 		}
-		else
+		else {
 			System.out.println("This space is occupied");
+		}
 		
 	}
 	/**
@@ -214,11 +216,13 @@ public class Tier extends Display {
 		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
 		p.setLocation(null);
 		
-		if (p.isInfected()) infectedPeople--;
-		if(p instanceof Doctor) totalDoctors--;
-		else if(p instanceof Researcher) totalResearchers--;
+//		if (p.isInfected()) infectedPeople--;
+//		if(p instanceof Doctor) totalDoctors--;
+//		else if(p instanceof Researcher) totalResearchers--;
 		
-		if (!(p instanceof Player)) {totalPeople--; people.remove(p);}
+		if (!(p instanceof Player)) {
+//			totalPeople--; 
+		people.remove(p);}
 		
 		//people.remove(p);
 	}
