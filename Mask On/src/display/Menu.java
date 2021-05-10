@@ -50,6 +50,13 @@ public class Menu extends Display {
 			marker.rect(1000/15, 3 * 750/20, 13 * 1000/15, 3 * 750/4);
 			marker.fill(0);
 			marker.text("Menu!", 1000/15, 3 * 750/20, 13 * 1000/15, 3 * 750/4);
+			
+			//start button that does the same thing as the close box
+			marker.fill(255, 220, 0);
+			marker.strokeWeight(1);
+			marker.rect(430, 600, 140, 40);
+			marker.fill(0);
+			marker.text("START", 470, 625);
 		}
 		else {
 			marker.fill(getFillColor().getRGB());
@@ -70,8 +77,11 @@ public class Menu extends Display {
 	/**
 	 * Opens or closes the Menu depending on its current state
 	 */
-	public void openClose() {
-		isOpen = !isOpen;
+	public void openClose(int x, int y) {
+		if (Display.insideRect(x, y, getX(), getY(), getWidth(), getHeight())
+				|| Display.insideRect(x, y, 430, 600, 140, 40)) {
+			isOpen = !isOpen;
+		}
 	}
 	
 	/**
