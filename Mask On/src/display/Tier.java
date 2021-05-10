@@ -212,9 +212,15 @@ public class Tier extends Display {
 	 */
 	public void removeFromGrid(Person p) {
 		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
-		p.setLocation(null);	
+		p.setLocation(null);
 		
-		people.remove(p);
+		if (p.isInfected()) infectedPeople--;
+		if(p instanceof Doctor) totalDoctors--;
+		else if(p instanceof Researcher) totalResearchers--;
+		
+		if (!(p instanceof Player)) {totalPeople--; people.remove(p);}
+		
+		//people.remove(p);
 	}
 	
 	/**
