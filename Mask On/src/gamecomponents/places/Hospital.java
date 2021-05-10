@@ -66,26 +66,29 @@ public class Hospital extends Place {
 		for (int i = 0; i<patients.size(); i++) {
 			if ((currentTime - times.get(i))/1000 >= 30) {
 				times.remove(i);
-//				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
-//				
-//				for (int a=0; a<this.getLocations().size();a++) {
-//					HosLocs.add(this.getLocations().get(a).getAdjacentLocations(t));
-//				}
-//				
-//				ArrayList<Location> validLocs = new ArrayList<Location>();
-//				
-//				for (int b=0; b<HosLocs.size(); b++) {
-//					for (int x=0; x<HosLocs.get(b).size(); x++){
-//						if (t.getComponentAtLoc(HosLocs.get(b).get(i)) == null) {
-//							validLocs.add(HosLocs.get(b).get(i));
-//					}
-//				}
-//				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0));
+/*				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
+				
+				for (int a=0; a<this.getLocations().size();a++) {
+					HosLocs.add(this.getLocations().get(a).getAdjacentLocations(t));
+				}
+				
+				ArrayList<Location> validLocs = new ArrayList<Location>();
+				
+				for (int b=0; b<HosLocs.size(); b++) {
+					for (int x=0; x<HosLocs.get(b).size(); x++){
+						if (t.getComponentAtLoc(HosLocs.get(b).get(i)) == null) {
+							validLocs.add(HosLocs.get(b).get(i));
+					}
+				}
+				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0)); 
+*/
+				Person p = patients.get(i);
+				p.cure();
 				Location loc = getLocations().get(2).getBottom(t);
 				patients.get(i).setLocation(loc);
-				System.out.println(patients.get(i).getLocation().getRow() + " "+patients.get(i).getLocation().getCol());
-				t.addPersonToGrid(patients.get(i));
-				t.addPersonToArrayList(patients.get(i));
+				System.out.println(p.getLocation().getRow() + " "+p.getLocation().getCol());
+				t.addPersonToGrid(p);
+				t.addPersonToArrayList(p);
 				patients.remove(i);
 				
 				//return patients.remove(i);

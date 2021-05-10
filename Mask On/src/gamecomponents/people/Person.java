@@ -276,6 +276,8 @@ public class Person extends GameComponent {
 		if(this.equals(null)) return true;
 		else return false;
 	}
-
+	public void cure() {
+		infected = false;
+	}
 	
 }
