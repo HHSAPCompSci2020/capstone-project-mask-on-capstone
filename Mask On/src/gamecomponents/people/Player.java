@@ -116,7 +116,6 @@ public class Player extends Person {
 		if (loc == null) return false;
 		if (loc.isOutOfBounds(t)) return false;
 		if (t.getComponentAtLoc(loc) == null) return true;
-					h.addPatient(new Person(null, true, 'r'));
 		
 		if (inventory[1] + inventory[2] + inventory[3] + inventory[4] <= 1) {
 			if (t.getComponentAtLoc(loc) instanceof Person) {
