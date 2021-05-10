@@ -149,7 +149,9 @@ public class Player extends Person {
 					}
 				}
 				else if (p instanceof Factory) {
-					this.collectMasks();
+					if (((Factory) p).retrieveMasks() == 5) {
+						inventory[0]+=5;
+					}
 				}
 				else if (p instanceof VaccineClinic) {
 					
@@ -159,16 +161,6 @@ public class Player extends Person {
 		}		
 		return false;
 		
-	}
-
-	/**
-	 * The Player fills up their mask inventory to 5 masks
-	 */
-	public void collectMasks() {
-		int curMasks = inventory[0];
-		for (int i= curMasks; i<5; i++) {
-			inventory[0]++;
-		}
 	}
 	public Person getInfectedPersonInventory() {
 		return infected;
