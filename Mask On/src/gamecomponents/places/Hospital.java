@@ -42,6 +42,7 @@ public class Hospital extends Place {
 		marker.image(marker.loadImage("images/hospital.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
 		marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
 		marker.popStyle();
+		removePatient(t);
 	}
 	/**
 	 * Admits a person to the Hospital if the Hospital is not full
@@ -65,22 +66,22 @@ public class Hospital extends Place {
 		for (int i = 0; i<patients.size(); i++) {
 			if ((currentTime - times.get(i))/1000 >= 30) {
 				times.remove(i);
-				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
-				
-				for (int a=0; a<this.getLocations().size();a++) {
-					HosLocs.add(this.getLocations().get(a).getAdjacentLocations(t));
-				}
-				
-				ArrayList<Location> validLocs = new ArrayList<Location>();
-				
-				for (int b=0; b<HosLocs.size(); b++) {
-					for (int x=0; x<HosLocs.get(b).size(); x++){
-						if (t.getComponentAtLoc(HosLocs.get(b).get(i)) == null) {
-							validLocs.add(HosLocs.get(b).get(i));
-					}
-				}
-				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0));
-				
+//				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
+//				
+//				for (int a=0; a<this.getLocations().size();a++) {
+//					HosLocs.add(this.getLocations().get(a).getAdjacentLocations(t));
+//				}
+//				
+//				ArrayList<Location> validLocs = new ArrayList<Location>();
+//				
+//				for (int b=0; b<HosLocs.size(); b++) {
+//					for (int x=0; x<HosLocs.get(b).size(); x++){
+//						if (t.getComponentAtLoc(HosLocs.get(b).get(i)) == null) {
+//							validLocs.add(HosLocs.get(b).get(i));
+//					}
+//				}
+//				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0));
+				Location loc = getLocations().get(2).getBottom(t);
 				patients.get(i).setLocation(loc);
 				System.out.println(patients.get(i).getLocation().getRow() + " "+patients.get(i).getLocation().getCol());
 				t.addPersonToGrid(patients.get(i));
@@ -92,7 +93,6 @@ public class Hospital extends Place {
 		}
 	}
 		//return null;
-	}
 		private int returnRandom(int max, int min) {
 			int range = (max-min)+1;
 			return (int) (Math.random()*range) +min;
