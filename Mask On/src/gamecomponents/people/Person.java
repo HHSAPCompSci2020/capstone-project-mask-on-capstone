@@ -135,6 +135,7 @@ public class Person extends GameComponent {
 	*/
 	
 	public boolean canMove(Tier t) {
+		if (loc == null) return false;
 		Location loc;
 		if (direction == 'u') loc = new Location(this.getLocation().getRow()-1, this.getLocation().getCol());
 		else if (direction == 'd') loc = new Location(this.getLocation().getRow()+1, this.getLocation().getCol());
@@ -151,10 +152,6 @@ public class Person extends GameComponent {
 			return false;
 		}
 		else if (t.getComponentAtLoc(loc) == null) return true;
-		else if (t.getComponentAtLoc(loc) instanceof Player) {
-		//	this.latchToPlayer(t);
-			return true;
-		}
 		else {
 			if (direction == 'u') direction = 'd';
 			else if (direction == 'd') direction ='u';
@@ -258,6 +255,7 @@ public class Person extends GameComponent {
 	 */
 	public void latchToPlayer(Tier t) {
 		t.removeFromGrid(this);
+		loc = null;
 	}
 	public void setDirection(char direction) {
 		this.direction = direction;

@@ -205,8 +205,8 @@ public class Tier extends Display {
 	 * @param p Person
 	 */
 	public void removeFromGrid(Person p) {
-		p.setLocation(null);
-		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;	
+		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
+		p.setLocation(null);	
 	}
 	
 	/**

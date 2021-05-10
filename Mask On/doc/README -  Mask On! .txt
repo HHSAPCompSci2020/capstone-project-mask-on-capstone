@@ -121,6 +121,6 @@ Credits:
 	
 
 External resources: Processing (external java library), pixilart.com (drawing software), GridWorld, unsplash
-	Roshni: Map, Display, Menu, Location, DrawingSurface, Person, Player, Main, UML, README
-	Felicia: CovidTracker, TimerDisplay, DrawingSurface, Main, UML, README
+	Roshni: Map, Display, Menu, Location, DrawingSurface, Person, Place, Main, YellowTier, UML, README
+	Felicia: CovidTracker, TimerDisplay, DrawingSurface, Hospital, Factory, Main, UML, README
 	Emily: Inventory, Tier, Player, images, DrawingSurface, Main, UML, README
