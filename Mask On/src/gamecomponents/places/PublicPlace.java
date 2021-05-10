@@ -11,4 +11,9 @@ public class PublicPlace extends Place {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Hospital convertIntoHospital() {
+		//need to remove it from the board in the future
+		return new Hospital(this.getLocations());
+	}
+	
 }
