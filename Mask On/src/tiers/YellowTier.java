@@ -9,18 +9,7 @@ import gamecomponents.places.*;
 public class YellowTier extends Tier {
 	
 	public YellowTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
-		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
-		// TODO Auto-generated constructor stub
-		
-		this.addPersonToArrayList(new Person(new Location(5,3), false, 'u'));
-		this.addPersonToArrayList(new Person(new Location(1,3), true, 'l'));
-		this.addPersonToArrayList(new Person(new Location(5,4), false, 'l'));
-		this.addPersonToArrayList(new Person(new Location(5,9), false, 'r'));
-		this.addPersonToArrayList(new Person(new Location(7,0), false, 'l'));
-		this.addPersonToArrayList(new Person(new Location(10,2), true, 'd'));
-		this.addPersonToArrayList(new Person(new Location(1,7), false, 'u'));
-		this.addPersonToArrayList(new Person(new Location(8,4), false, 'l'));
-		
+		super(x, y, width, height, strokeWeight, strokeColor, fillColor);		
 		
 		this.addPlayer(new Player(new Location(5, 5), false, 'r'));
 	
@@ -39,6 +28,8 @@ public class YellowTier extends Tier {
 			}
 		}
 		this.addPlaceToArrayList(new Factory(factorySquares));
+		
+		randomSpawn(10, 2, 0, 0);
 	}
 
 }

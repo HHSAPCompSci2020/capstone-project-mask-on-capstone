@@ -57,9 +57,9 @@ public class Player extends Person {
 			p.latchToPlayer(t);
 			//TESTER if(p instanceof Person) inventory[0]++;
 			yourPerson = p;
-			if (p.isInfected()) {inventory[1] ++; yourPerson =p;}
-			else if (p instanceof Doctor) {inventory[2]++; yourPerson=p;}
-			else if (p instanceof Researcher) {inventory[3]++; yourPerson=p;}
+			if (p.isInfected()) {inventory[1] ++;}
+			else if (p instanceof Doctor) {inventory[2]++;}
+			else if (p instanceof Researcher) {inventory[3]++;}
 		
 	}
 	/**
@@ -111,10 +111,8 @@ public class Player extends Person {
 			}
 		}
 		int index = 0;
-		System.out.println(neighbors.size());
 		while (inventory[0] > 0 && index < neighbors.size()) {
 			neighbors.get(index).takeMask();
-			//neighbors.remove(index);
 			inventory[0]--;
 			index++;
 		}

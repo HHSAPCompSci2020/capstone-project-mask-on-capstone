@@ -93,17 +93,13 @@ public class Tier extends Display {
 		player.draw(marker, this);
 		
 		for (Person p : people) {
-			//System.out.println(p);
 			p.draw(marker, this);
 		}
 		
 		for (Place p : places) {
 			p.draw(marker, this);
 		}
-		
-		/*person.draw(marker, this);
-		person2.draw(marker, this);
-		place.draw(marker, this);*/
+
 		stopwatch++;
 		
 		if (!over) {
@@ -392,7 +388,48 @@ public class Tier extends Display {
 		infectedPeople--;
 	}
 	
+	public void randomSpawn(int normalPeople, int infected, int doctors, int researchers) {
+		for (int i = 0; i < normalPeople; i++) {
+			addPersonToArrayList(new Person(randomEmptyLocation(), false, randomDirection()));
+		}
+		for (int i = 0; i < infected; i++) {
+			addPersonToArrayList(new Person(randomEmptyLocation(), true, randomDirection()));
+		}
+		for (int i = 0; i < doctors; i++) {
+			addPersonToArrayList(new Doctor(randomEmptyLocation(), randomDirection()));
+		}
+		for (int i = 0; i < researchers; i++) {
+			addPersonToArrayList(new Researcher(randomEmptyLocation(), randomDirection()));
+		}
+	}
 	
+	private Location randomEmptyLocation() {
+		ArrayList<Location> emptyLocs = new ArrayList<Location>();
+		for (int r = 0; r < grid.length; r++) {
+			for (int c = 0; c < grid[r].length; c++) {
+				if (grid[r][c] == null) emptyLocs.add(new Location(r, c));
+			}
+		}
+		int random = (int) (Math.random() * emptyLocs.size());
+		return emptyLocs.get(random);
+	}
+	
+	private char randomDirection() {
+		int random = (int) (Math.random() * 4);
+		
+		if (random == 0) {
+			return 'u';
+		}
+		else if (random == 1) {
+			return 'd';
+		}
+		else if (random == 2) {
+			return 'l';
+		}
+		else {
+			return 'r';
+		}
+	}
 	
 	
 }

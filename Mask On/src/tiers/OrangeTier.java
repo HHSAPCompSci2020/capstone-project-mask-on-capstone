@@ -2,23 +2,45 @@ package tiers;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import display.Location;
+import display.*;
+import gamecomponents.people.*;
 import gamecomponents.places.*;
 
-public class OrangeTier extends YellowTier {
+public class OrangeTier extends Tier {
 	
 	public OrangeTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
-		// TODO Auto-generated constructor stub
 		
 		//public places
-		ArrayList<Location> p1 = new ArrayList<Location>();
-		p1.add(new Location(0, 8));
-		p1.add(new Location(0, 9));
-		p1.add(new Location(0, 10));
-		p1.add(new Location(1, 8));
-		p1.add(new Location(1, 9));
-		p1.add(new Location(1, 10));
-		this.addPlaceToArrayList(new Place(p1));
+		ArrayList<Location> publicPlaceSquares1 = new ArrayList<Location>();
+		for (int i = 0; i <= 1; i++) {
+			for (int j = 9; j <= 10; j++) {
+				publicPlaceSquares1.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new PublicPlace(publicPlaceSquares1));
+		
+		ArrayList<Location> publicPlaceSquares2 = new ArrayList<Location>();
+		for (int i = 10; i <= 11; i++) {
+			for (int j = 3; j <= 4; j++) {
+				publicPlaceSquares2.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new PublicPlace(publicPlaceSquares2));
+		
+		//factory
+		ArrayList<Location> factorySquares = new ArrayList<Location>();
+		for (int i = 13; i <= 14; i++) {
+			for (int j = 13; j <= 14; j++) {
+				factorySquares.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new Factory(factorySquares));
+		
+		//player
+		this.addPlayer(new Player(new Location(7, 8), false, 'r'));
+		
+		//people
+		randomSpawn(7, 3, 1, 0);
 	}
 }
