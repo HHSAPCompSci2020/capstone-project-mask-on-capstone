@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 import display.Location;
 
+/**
+ * 
+ * @author EmilyTumacder
+ *
+ */
 public class PublicPlace extends Place {
 
 	public PublicPlace(ArrayList<Location> locs) {

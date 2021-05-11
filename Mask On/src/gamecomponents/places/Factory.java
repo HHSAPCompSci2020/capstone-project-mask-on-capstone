@@ -39,12 +39,12 @@ public class Factory extends Place {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/factory.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
-		if (elapsedTime >= 30) {
+		if (elapsedTime >= 20) {
 			marker.text("OPEN", t.getX()+ 40*(x+1), t.getY() + 40*(y+1));
 			isOpen = true;
 		}
 		else {
-			marker.text("" + (30 - (int)elapsedTime) + "s left", t.getX()+ 40*(x+0.8f), t.getY() + 40*(y+1));
+			marker.text("" + (20 - (int)elapsedTime) + "s left", t.getX()+ 40*(x+0.8f), t.getY() + 40*(y+1));
 		}
 		marker.popStyle();
 	}

@@ -76,11 +76,11 @@ public class DrawingSurface extends PApplet {
 			fill(0,0,0,175);
 			rect(tier.getX(),tier.getY(),tier.getWidth(),tier.getHeight());
 			fill(255);
-			rect(width/4+10, height/2-10, 200,100);
+			rect(1000/4+10, 750/2-10, 200,100);
 			fill(0,0,255);
 			textSize(30);
 			textAlign(CENTER, CENTER);
-			text("VICTORY", width/4 + 10, height/2-10, 200, 100);
+			text("VICTORY", 1000/4 + 10, 750/2-10, 200, 100);
 			popStyle();
 		}
 				
@@ -121,6 +121,10 @@ public class DrawingSurface extends PApplet {
 			if (keyCode == KeyEvent.VK_Q) {
 				tier.getPlayer().dropPerson(tier.getPlayer().getYourPerson(), tier);
 			}
+			if (keyCode == KeyEvent.VK_E) {
+				tier.getPlayer().giveMask(tier);
+			}
+
 		}
 	}
 	

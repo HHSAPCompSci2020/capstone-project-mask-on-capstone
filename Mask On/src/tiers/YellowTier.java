@@ -14,8 +14,16 @@ public class YellowTier extends Tier {
 		
 		this.addPersonToArrayList(new Person(new Location(5,3), false, 'u'));
 		this.addPersonToArrayList(new Person(new Location(1,3), true, 'l'));
-		this.addPlayer(new Player(new Location(5, 5), false, 'r'));
+		this.addPersonToArrayList(new Person(new Location(5,4), false, 'l'));
+		this.addPersonToArrayList(new Person(new Location(5,9), false, 'r'));
+		this.addPersonToArrayList(new Person(new Location(7,0), false, 'l'));
+		this.addPersonToArrayList(new Person(new Location(10,2), true, 'd'));
+		this.addPersonToArrayList(new Person(new Location(1,7), false, 'u'));
+		this.addPersonToArrayList(new Person(new Location(8,4), false, 'l'));
 		
+		
+		this.addPlayer(new Player(new Location(5, 5), false, 'r'));
+	
 		ArrayList<Location> hospitalSquares = new ArrayList<Location>();
 		for (int i = 0; i <= 1; i++) {
 			for (int j = 0; j <= 1; j++) {

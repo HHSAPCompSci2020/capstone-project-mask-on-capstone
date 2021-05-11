@@ -113,7 +113,7 @@ public class Location {
 	 */
 	public Location getTopLeft(Tier t) {
 		if (!(new Location(row-1,col-1).isOutOfBounds(t)))
-			return new Location(row+1,col);
+			return new Location(row-1,col-1);
 		
 		return null;
 	}
@@ -133,7 +133,7 @@ public class Location {
 	 */
 	public Location getBottomLeft(Tier t) {
 		if (!(new Location(row+1,col-1).isOutOfBounds(t)))
-			return new Location(row-1,col+1);
+			return new Location(row+1,col-1);
 		
 		return null;
 	}
@@ -143,7 +143,7 @@ public class Location {
 	 */
 	public Location getBottomRight(Tier t) {
 		if (!(new Location(row+1,col+1).isOutOfBounds(t)))
-			return new Location(row-1,col+1);
+			return new Location(row+1,col+1);
 		
 		return null;
 	}

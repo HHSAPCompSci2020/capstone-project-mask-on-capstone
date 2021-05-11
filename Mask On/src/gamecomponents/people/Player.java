@@ -69,6 +69,8 @@ public class Player extends Person {
 	 */
 	public void dropPerson(Person p, Tier t) {
 		
+		if (yourPerson == null) return;
+		
 		ArrayList<Location> locAd = this.getLocation().getAdjacentLocations(t);
 		ArrayList<Location> locs = new ArrayList<Location>();
 		for (int i=0; i<locAd.size();i++) {
@@ -97,12 +99,24 @@ public class Player extends Person {
 	 * Gives a person a mask
 	 * @param p the person that needs a mask
 	 */
-	public void giveMask(Person p) {
-		if (!p.isInfected() || p.isVaccinated() && !p.isMasked()) {
-			if (inventory[0] >0) { 
-				inventory[0]--;
-				p.takeMask();			
+	public void giveMask(Tier t) {
+		ArrayList<Location> locs = this.getLocation().getAdjacentLocations(t);
+		
+		ArrayList<Person> neighbors = new ArrayList<Person>();
+		for (int i =0; i<locs.size(); i++) {
+			if (t.getComponentAtLoc(locs.get(i)) instanceof Person) {
+				Person p = (Person) t.getComponentAtLoc(locs.get(i));
+				if (!p.isMasked() && !p.isInfected() && !(p instanceof Player))
+					neighbors.add(p);
 			}
+		}
+		int index = 0;
+		System.out.println(neighbors.size());
+		while (inventory[0] > 0 && index < neighbors.size()) {
+			neighbors.get(index).takeMask();
+			//neighbors.remove(index);
+			inventory[0]--;
+			index++;
 		}
 	}
 	
@@ -128,7 +142,7 @@ public class Player extends Person {
 			if (t.getComponentAtLoc(loc) instanceof Person) {
 				Person p = (Person) t.getComponentAtLoc(loc);
 				if (yourPerson == null && (!p.isMasked()|| !p.isVaccinated()|| p.isInfected() || p instanceof Doctor || p instanceof Researcher)) {
-							System.out.println("you've picked up a person");
+					//		System.out.println("you've picked up a person");
 					grabPerson(p, t);
 					return true;
 				}
@@ -183,7 +197,7 @@ public class Player extends Person {
 	}
 	
 	private int returnRandom(int max, int min) {
-		int range = (max-min)+1;
+		int range = (max-min);
 		return (int) (Math.random()*range) +min;
 	}
 	

@@ -64,42 +64,46 @@ public class Hospital extends Place {
 	public void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
-			if ((currentTime - times.get(i))/1000 >= 10) {
+			if ((currentTime - times.get(i))/1000 >= 5) {
 				times.remove(i);
-/*				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
 				
-				for (int a=0; a<this.getLocations().size();a++) {
-					HosLocs.add(this.getLocations().get(a).getAdjacentLocations(t));
+				/*
+				 * 1. get what the hospital occupies (arraylist of locations)
+				 * 2. find the adjacent locations to all the locations that hospital occupies (arraylist of locations)
+				 * 3. Add all the locations at 2) into 1)
+				 */
+				
+				ArrayList<Location> hosLocs = new ArrayList<Location>();
+				for (int a=0; a<this.getLocations().size(); a++){
+					hosLocs.addAll(this.getLocations().get(a).getAdjacentLocations(t));
 				}
-				
-				ArrayList<Location> validLocs = new ArrayList<Location>();
-				
-				for (int b=0; b<HosLocs.size(); b++) {
-					for (int x=0; x<HosLocs.get(b).size(); x++){
-						if (t.getComponentAtLoc(HosLocs.get(b).get(i)) == null) {
-							validLocs.add(HosLocs.get(b).get(i));
+				//ArrayList<Location> validLocs = new ArrayList<Location>();
+				for (int b=0; b<hosLocs.size();b++) {
+					if (hosLocs.get(b).isOutOfBounds(t) || t.getComponentAtLoc(hosLocs.get(b)) != null) {
+						hosLocs.remove(b);
+						b--;
 					}
+					
 				}
-				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0)); 
-*/
+				
+				Location loc = hosLocs.get(0); 
+//System.out.println(loc.getRow() +" "+ loc.getCol());
 				Person p = patients.get(i);
 				p.cure(t);
-				Location loc = getLocations().get(2).getBottom(t);
+			//	Location loc = getLocations().get(2).getBottom(t);
 				patients.get(i).setLocation(loc);
 					//System.out.println(p.getLocation().getRow() + " "+p.getLocation().getCol());
 				t.addPersonToGrid(p);
 			//	t.addPersonToArrayList(p);
 				patients.remove(i);
-				System.out.println(t.getPeople());
+//				System.out.println(t.getPeople());
 				
 				//return patients.remove(i);
+				}
 			}
 		}
-	}
+	
 		//return null;
-		private int returnRandom(int max, int min) {
-			int range = (max-min)+1;
-			return (int) (Math.random()*range) +min;
-		}
+
 }
 
