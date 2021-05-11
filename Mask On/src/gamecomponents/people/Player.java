@@ -1,7 +1,6 @@
 package gamecomponents.people;
 
 import java.util.ArrayList;
-
 import display.Location;
 import display.Tier;
 import gamecomponents.places.Factory;
@@ -10,6 +9,7 @@ import gamecomponents.places.Place;
 import gamecomponents.places.PublicPlace;
 import gamecomponents.places.VaccineClinic;
 import processing.core.PApplet;
+
 /**
  * The Player class is a Person that is controlled by the user.
  */
@@ -160,10 +160,17 @@ public class Player extends Person {
 					
 					return false;
 				}
-			//EDIT LATER FOR TURNING INTO VACCINE CLINICS
+			
 				else if (p instanceof PublicPlace) {
 					if (inventory[2] >0) {
 						inventory[2]--;
+						PublicPlace place = (PublicPlace)p;
+						place.convertIntoHospital();
+					}
+				}
+				else if (p instanceof VaccineClinic) {
+					if (inventory[3] >0) {
+						inventory[3]--;
 						PublicPlace place = (PublicPlace)p;
 						place.convertIntoHospital();
 					}

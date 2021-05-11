@@ -37,6 +37,13 @@ public class OrangeTier extends Tier {
 		}
 		this.addPlaceToArrayList(new Factory(factorySquares));
 		
+		//private places
+		ArrayList<Location> privateSquares = new ArrayList<Location>();
+		for (int i = 0; i < 4; i++) {
+			privateSquares.add(new Location(4, i));
+		}
+		this.addPlaceToArrayList(new Place(privateSquares));
+		
 		//player
 		this.addPlayer(new Player(new Location(7, 8), false, 'r'));
 		

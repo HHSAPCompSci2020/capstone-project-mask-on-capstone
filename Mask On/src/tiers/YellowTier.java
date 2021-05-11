@@ -29,7 +29,13 @@ public class YellowTier extends Tier {
 		}
 		this.addPlaceToArrayList(new Factory(factorySquares));
 		
-		randomSpawn(10, 2, 0, 0);
+		ArrayList<Location> privateSquares = new ArrayList<Location>();
+		for (int i = 0; i < 4; i++) {
+			privateSquares.add(new Location(7, i));
+		}
+		this.addPlaceToArrayList(new Place(privateSquares));
+		
+		randomSpawn(8, 2, 0, 0);
 	}
 	
 	public int getScore() {
