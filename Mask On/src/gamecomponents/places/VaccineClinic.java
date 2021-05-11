@@ -3,28 +3,39 @@ package gamecomponents.places;
 import java.util.ArrayList;
 import display.Location;
 import display.Tier;
+import gamecomponents.people.Doctor;
 import gamecomponents.people.Person;
+import gamecomponents.people.Player;
 import gamecomponents.people.Researcher;
 import processing.core.PApplet;
 /**
- * The VaccineClinic represents a Place that vaccinates people after the researches make the vaccine. It can hold a maximum of 5 patients at a time and opens after 3 researchers enter.
+ * The VaccineClinic represents a Place that vaccinates people. It can hold a maximum of 5 patients at a time and can have 1 Researcher.
  * @author Felicia Zhang
  *
  */
+
 public class VaccineClinic extends Place {
 	private ArrayList<Person> patients;
 	private ArrayList<Double> times;
-	private int researcherCount;
+	private double startTime;
+	private Researcher researcher;
+	private boolean isOpen;
+	/**
+	 * Creates a VaccineClinic at certain locations
+	 * @param locs the ArrayList of Location objects the VaccineClinic occupies
+	 */
 	public VaccineClinic(ArrayList<Location> locs) {
 		super(locs);
 		patients = new ArrayList<Person>();
 		times = new ArrayList<Double>();
-		researcherCount = 0;
+		startTime = (double)(System.currentTimeMillis());
+		isOpen = false;
+		researcher = null;
 	}
 	/**
 	 * Draws the VaccineClinic in the given Tier, the VaccineClinic shows that number of researches it currently has if it is not open
 	 * if it is open, the VaccineClinic displays the word open
-	 * @param marker the PApplet surface on which the Hospital is being drawn
+	 * @param marker the PApplet surface on which the VaccineClinic is being drawn
 	 * @param t the Tier in which the Hospital is inside
 	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
@@ -39,26 +50,30 @@ public class VaccineClinic extends Place {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
-		if (researcherCount>=3) {
-			marker.text("OPEN: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
+		if (!isOpen && (double)(System.currentTimeMillis() - startTime)/1000 >=15) {
+			isOpen = true;
+		}
+		if (isOpen) {
+			marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
 		}
 		else {
-			marker.text("Researchers: " + researcherCount, t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
+			marker.text("VACCINE IS NOT READY", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
 		}
 		marker.popStyle();
 		removePatient(t);
 	}
 	/**
-	 * Admits a person to the VaccineClinic, a Person that is not a Researcher can only be admitted if the clinic is open and not full
+	 * Admits a patient to the VaccineClinic, a Person that is not a Doctor, Player, or Researcher can only be admitted if the clinic is not at its full capacity of 5 people. 
+	 * Only 1 Researcher can be admitted to a clinic.
 	 * @param p the Person that wants to be admitted to the VaccineClinic
 	 * @return whether or not the patient was admitted to the VaccineClinic
 	 */
 	public boolean addPerson(Person p) {
-		if (p instanceof Researcher) {
-			researcherCount++;
+		if (p instanceof Researcher && researcher == null) {
+			researcher = (Researcher) p;
 			return true;
 		}
-		else if (patients.size() < 5 && researcherCount>=3) {
+		else if (patients.size() < 5 && isOpen && !(p instanceof Doctor) && !(p instanceof Player)) {
 			patients.add(p);
 			times.add((double)(System.currentTimeMillis()));
 			return true;
@@ -66,27 +81,33 @@ public class VaccineClinic extends Place {
 		return false;
 	}
 	/**
-	 * Removes a patient a patient that has stayed at the VaccineClinic for at least 30 seconds
-	 * @return the Person that was removed or if no one was removed, null is returned
+	 * Removes a patient a patient that has stayed at the clinic for at least 15 seconds
+	 * @param t The Tier that the VaccineClinic is in
 	 */
 	public void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
-			if ((currentTime - times.get(i))/1000 >= 30) {
+			if ((currentTime - times.get(i))/1000 >= 15) {
 				times.remove(i);
+				ArrayList<Location> clinicLocs = new ArrayList<Location>();
+				for (int a=0; a<this.getLocations().size(); a++){
+					clinicLocs.addAll(this.getLocations().get(a).getAdjacentLocations(t));
+				}
+				for (int b=0; b<clinicLocs.size();b++) {
+					if (clinicLocs.get(b).isOutOfBounds(t) || t.getComponentAtLoc(clinicLocs.get(b)) != null) {
+						clinicLocs.remove(b);
+						b--;
+					}
+					
+				}		
+				Location loc = clinicLocs.get(0); 
 				Person p = patients.get(i);
 				p.getVaccinated();
-				Location loc = getLocations().get(2).getBottom(t);
 				patients.get(i).setLocation(loc);
-				System.out.println(p.getLocation().getRow() + " "+p.getLocation().getCol());
 				t.addPersonToGrid(p);
-				t.addPersonToArrayList(p);
 				patients.remove(i);
+				}
 			}
 		}
-	}
-	public boolean returnStatus() {
-		return researcherCount>=3;
-	}
-	
 }
+

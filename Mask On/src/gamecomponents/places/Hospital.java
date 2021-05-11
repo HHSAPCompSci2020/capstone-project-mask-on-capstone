@@ -4,24 +4,29 @@ import java.util.ArrayList;
 
 import display.Location;
 import display.Tier;
+import gamecomponents.people.Doctor;
 import gamecomponents.people.Person;
+import gamecomponents.people.Player;
+import gamecomponents.people.Researcher;
 import processing.core.PApplet;
 /**
- * The Hospital class represents a Place that can hold 5 patients at a time. 
+ * The Hospital class represents a Place that can hold 5 patients at a time. It can have 1 doctor. 
  * @author Felicia Zhang
  *
  */
 public class Hospital extends Place {
 	private ArrayList<Person> patients;
 	private ArrayList<Double> times;
+	private Doctor doctor;
 	/**
-	 * 
+	 * Creates a Hospital at certain locations
 	 * @param locs the ArrayList of Location objects the Hospital occupies
 	 */
 	public Hospital(ArrayList<Location> locs) {
 		super(locs);
 		patients = new ArrayList<Person>();
 		times = new ArrayList<Double>();
+		doctor = null;
 	}
 	/**
 	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has
@@ -45,12 +50,17 @@ public class Hospital extends Place {
 		removePatient(t);
 	}
 	/**
-	 * Admits a person to the Hospital if the Hospital is not full
+	 * Admits a person that is not a Researcher or Player to the Hospital if the Hospital is not at its maximum capacity of 5 people.
+	 * Only 1 Doctor may be admitted to a Hospital. 
 	 * @param p the Person that wants to be admitted to the Hospital
 	 * @return whether or not the patient was admitted to the Hospital
 	 */
 	public boolean addPatient(Person p) {
-		if (patients.size()<5) {
+		if (p instanceof Doctor && doctor == null) {
+			doctor = (Doctor) p;
+			return true;
+		}
+		else if (patients.size()<5 && !(p instanceof Researcher) && !(p instanceof Player)) {
 			patients.add(p);
 			times.add((double)(System.currentTimeMillis()));
 			return true;
@@ -58,13 +68,13 @@ public class Hospital extends Place {
 		return false;
 	}
 	/**
-	 * Removes a patient a patient that has stayed at the Hospital for at least 30 seconds
-	 * @return the Person that was removed or if no one was removed, null is returned
+	 * Removes a patient a patient that has stayed at the Hospital for at least 15 seconds
+	 * @param t The Tier that the Hospital is in
 	 */
 	public void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
-			if ((currentTime - times.get(i))/1000 >= 5) {
+			if ((currentTime - times.get(i))/1000 >= 15) {
 				times.remove(i);
 				
 				/*
@@ -102,8 +112,5 @@ public class Hospital extends Place {
 				}
 			}
 		}
-	
-		//return null;
-
 }
 
