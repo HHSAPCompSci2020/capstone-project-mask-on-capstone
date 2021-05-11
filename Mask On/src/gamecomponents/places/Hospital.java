@@ -64,7 +64,7 @@ public class Hospital extends Place {
 	public void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
-			if ((currentTime - times.get(i))/1000 >= 30) {
+			if ((currentTime - times.get(i))/1000 >= 10) {
 				times.remove(i);
 /*				ArrayList<ArrayList<Location>> HosLocs = new ArrayList<ArrayList<Location>>();
 				
@@ -83,13 +83,14 @@ public class Hospital extends Place {
 				Location loc = validLocs.get(returnRandom(validLocs.size()-1, 0)); 
 */
 				Person p = patients.get(i);
-				p.cure();
+				p.cure(t);
 				Location loc = getLocations().get(2).getBottom(t);
 				patients.get(i).setLocation(loc);
-				System.out.println(p.getLocation().getRow() + " "+p.getLocation().getCol());
+					//System.out.println(p.getLocation().getRow() + " "+p.getLocation().getCol());
 				t.addPersonToGrid(p);
-				t.addPersonToArrayList(p);
+			//	t.addPersonToArrayList(p);
 				patients.remove(i);
+				System.out.println(t.getPeople());
 				
 				//return patients.remove(i);
 			}

@@ -106,8 +106,8 @@ public class DrawingSurface extends PApplet {
 					tier.movePlayer(tier.getPlayer().getLocation().getRight(tier), tier.getPlayer());
 				}
 			}
-			if (keyCode == KeyEvent.VK_1) {
-				tier.getPlayer().dropPerson(tier.getPlayer().getInfectedPersonInventory(), tier);
+			if (keyCode == KeyEvent.VK_Q) {
+				tier.getPlayer().dropPerson(tier.getPlayer().getYourPerson(), tier);
 			}
 		}
 	}

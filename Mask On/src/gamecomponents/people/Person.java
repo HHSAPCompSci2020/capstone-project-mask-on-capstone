@@ -80,60 +80,6 @@ public class Person extends GameComponent {
 	}
 
 	
-	/**
-	 * Checks whether the Person can move
-	 * @param t Tier in which the Person is inside
-	 * @return whether or not the Person can move
-	 */
-	/*
-	public boolean canMove(Tier t) {
-		if (loc == null) return false;
-		
-		
-		if (direction == 'u') {
-			if (t.getComponentAtLoc(loc.getTop(t)) != null && !loc.getTop(t).isOutOfBounds(t)) {
-				if (t.getComponentAtLoc(loc.getBottom(t)) != null && !loc.getBottom(t).isOutOfBounds(t)) {
-					return false;
-				}
-				direction = 'd';
-				return true;
-			}
-			return true;
-		}
-		else if (direction == 'd') {
-			if (t.getComponentAtLoc(loc.getBottom(t)) != null && !loc.getBottom(t).isOutOfBounds(t)) {
-				if (t.getComponentAtLoc(loc.getTop(t)) != null && !loc.getTop(t).isOutOfBounds(t)) {
-					return false;
-				}
-				direction = 'u';
-				return true;
-			}
-			return true;
-		}
-		else if (direction == 'l') {
-			if (t.getComponentAtLoc(loc.getLeft(t)) != null && !loc.getLeft(t).isOutOfBounds(t)) {
-				if (t.getComponentAtLoc(loc.getRight(t)) != null && !loc.getRight(t).isOutOfBounds(t)) {
-					return false;
-				}
-				direction = 'r';
-				return true;
-			}
-			return true;
-		}
-		else {
-			if (t.getComponentAtLoc(loc.getRight(t)) != null && !loc.getRight(t).isOutOfBounds(t)) {
-				if (t.getComponentAtLoc(loc.getLeft(t)) != null && !loc.getLeft(t).isOutOfBounds(t)) {
-					return false;
-				}
-				direction = 'l';
-				return true;
-			}
-			return true;
-		}
-		
-	}
-	*/
-	
 	public boolean canMove(Tier t) {
 		if (loc == null) return false;
 		Location loc;
@@ -276,7 +222,8 @@ public class Person extends GameComponent {
 		if(this.equals(null)) return true;
 		else return false;
 	}
-	public void cure() {
+	public void cure(Tier t) {
+		t.reduceInfected();
 		infected = false;
 	}
 	

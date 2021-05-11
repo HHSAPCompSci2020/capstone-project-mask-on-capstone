@@ -19,7 +19,7 @@ public class Player extends Person {
 	boolean isInfected;
 	boolean hasPPE;
 	boolean hasPerson;
-	Person infected;
+	Person yourPerson;
 	/**
 	 * Creates a Player with given information
 	 * @param loc Location at which the Player starts at
@@ -56,10 +56,10 @@ public class Player extends Person {
 	public void grabPerson(Person p, Tier t) {
 			p.latchToPlayer(t);
 			//TESTER if(p instanceof Person) inventory[0]++;
-			
-			if (p.isInfected()) {inventory[1] ++; infected =p;}
-			else if (p instanceof Doctor) inventory[2]++;
-			else if (p instanceof Researcher) inventory[3]++;
+			yourPerson = p;
+			if (p.isInfected()) {inventory[1] ++; yourPerson =p;}
+			else if (p instanceof Doctor) {inventory[2]++; yourPerson=p;}
+			else if (p instanceof Researcher) {inventory[3]++; yourPerson=p;}
 		
 	}
 	/**
@@ -76,15 +76,22 @@ public class Player extends Person {
 				locs.add(locAd.get(i));
 			}
 		}
+		
 		Location loc = locs.get(returnRandom(locs.size()-1, 0));
+		while (t.getComponentAtLoc(loc) != null) {
+			locs.remove(loc);
+			loc = locs.get(returnRandom(locs.size()-1, 0));
+		}
 			//System.out.println(loc.getRow() +" "+ loc.getCol());
 		p.setLocation(loc);
 		t.addPersonToGrid(p);
 			//System.out.println(t.getComponentAtLoc(loc));
 		
-		if (p.isInfected()) {inventory[1]--; infected = null;}
-		if (p instanceof Doctor) inventory[2]--;
-		if (p instanceof Researcher) inventory[3]--;
+		if (p.isInfected()) {inventory[1]--;}
+		if (p instanceof Doctor) {inventory[2]--;}
+		if (p instanceof Researcher) {inventory[3]--;}
+		
+		yourPerson = null;
 	}
 	/**
 	 * Gives a person a mask
@@ -120,7 +127,7 @@ public class Player extends Person {
 		if (inventory[1] + inventory[2] + inventory[3] + inventory[4] <= 1) {
 			if (t.getComponentAtLoc(loc) instanceof Person) {
 				Person p = (Person) t.getComponentAtLoc(loc);
-				if (!p.isMasked()|| !p.isVaccinated()|| p.isInfected() || p instanceof Doctor || p instanceof Researcher) {
+				if (yourPerson == null && (!p.isMasked()|| !p.isVaccinated()|| p.isInfected() || p instanceof Doctor || p instanceof Researcher)) {
 							System.out.println("you've picked up a person");
 					grabPerson(p, t);
 					return true;
@@ -128,16 +135,17 @@ public class Player extends Person {
 			}
 			if (t.getComponentAtLoc(loc) instanceof Place) {
 				Place p = (Place) t.getComponentAtLoc(loc);
-				if (p instanceof Hospital) {
-					if (inventory[1] >0) {
+				if (p instanceof Hospital && yourPerson != null && yourPerson.isInfected()) {
+					
 						Hospital h = (Hospital)p;
-						h.addPatient(new Person(null, true, 'r'));
+						h.addPatient(yourPerson);
+						yourPerson = null;
 						/* TESTING
 						Person person = new Person(null, false, 'r');
 						this.dropPerson(person, t);
 						*/
 						inventory[1] --;
-					}
+					
 					return false;
 				}
 			//EDIT LATER FOR TURNING INTO VACCINE CLINICS
@@ -162,14 +170,16 @@ public class Player extends Person {
 		return false;
 		
 	}
-	public Person getInfectedPersonInventory() {
-		return infected;
-	}
+
 	
 	@Override
 	//player cannot contract the virus
 	public void contractVirus() {
 		
+	}
+	
+	public Person getYourPerson() {
+		return yourPerson;
 	}
 	
 	private int returnRandom(int max, int min) {

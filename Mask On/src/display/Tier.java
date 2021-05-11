@@ -15,8 +15,6 @@ import processing.core.PApplet;
  */
 public class Tier extends Display {
 	private int infectedPeople;
-	private int totalDoctors, totalResearchers, totalPeople;
-	private int totalPlaces, totalHospitals, totalPublicPlaces, totalFactories;
 	private GameComponent[][] grid; //not accessible by other Tier objects, 
 									//nor mutable without use of mutator methods
 	private boolean over;
@@ -46,12 +44,6 @@ public class Tier extends Display {
 		grid = new GameComponent[15][15];
 		//default 
 		infectedPeople = 0;
-		totalPeople = 0;
-		totalHospitals = 0;
-		totalPublicPlaces = 0;
-		totalFactories = 0;
-		totalDoctors = 0;
-		totalResearchers = 0;
 		stopwatch = 0;
 		
 		people = new ArrayList<Person>();
@@ -101,6 +93,7 @@ public class Tier extends Display {
 		player.draw(marker, this);
 		
 		for (Person p : people) {
+			//System.out.println(p);
 			p.draw(marker, this);
 		}
 		
@@ -132,23 +125,21 @@ public class Tier extends Display {
 		Location loc = p.getLocation();
 		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0)
 			System.out.println("You're out of bounds buddy");
+		
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
-			if (people.contains(p)) {
-				if (!(p instanceof Player)) totalPeople++;
-			
-				if (p.isInfected()) infectedPeople++;
-				if(p instanceof Doctor) totalDoctors++;
-				else if(p instanceof Researcher) totalResearchers++;
-			}
-			if (! (p instanceof Player))
-				people.add(p);
 		}
 		else {
 			System.out.println("This space is occupied");
 		}
-		
 	}
+	
+	public void addPersonToArrayList(Person p) {
+		if (p.isInfected()) infectedPeople++;
+		people.add(p);
+		this.addPersonToGrid(p);
+	}
+	
 	/**
 	 * Add a place GameComponent into the grid at a specified location
 	 * @param p an object of type Place
@@ -158,21 +149,18 @@ public class Tier extends Display {
 		for (int i = 0; i < locs.size(); i++) {
 			if (grid[locs.get(i).getRow()][locs.get(i).getCol()] == null) { // if empty
 				grid[locs.get(i).getRow()][locs.get(i).getCol()] = p;
-				
-				totalPlaces++;
-				
-				if(p instanceof Hospital) totalHospitals++;
-				else if(p instanceof PublicPlace) totalPublicPlaces++;
-				else if(p instanceof Factory) totalFactories++;
-				
-				places.add(p);
 			}
 			else
 				System.out.println("This space is occupied");
-			
-			
+		
 		}
 	}
+	
+	public void addPlaceToArrayList(Place p) {
+		places.add(p);
+		this.addPlaceToGrid(p);
+	}
+
 	
 	/**
 	 * Move a Person from its original location to a new location
@@ -220,9 +208,9 @@ public class Tier extends Display {
 //		if(p instanceof Doctor) totalDoctors--;
 //		else if(p instanceof Researcher) totalResearchers--;
 		
-		if (!(p instanceof Player)) {
+		//if (!(p instanceof Player)) {
 //			totalPeople--; 
-		people.remove(p);}
+		//people.remove(p);}
 		
 		//people.remove(p);
 	}
@@ -279,10 +267,6 @@ public class Tier extends Display {
 		return people;
 	}
 	
-	public void addPersonToArrayList(Person p) {
-		people.add(p);
-		this.addPersonToGrid(p);
-	}
 	
 	public void addPlayer(Player p) {
 		if (player == null) player = p;
@@ -293,17 +277,13 @@ public class Tier extends Display {
 		return places;
 	}
 	
-	public void addPlaceToArrayList(Place p) {
-		places.add(p);
-		this.addPlaceToGrid(p);
-	}
 
 	/**
 	 * 
 	 * @return the total number of people
 	 */
 	public int getNumPeople() {
-		return totalPeople;
+		return people.size();
 	}
 	
 	/**
@@ -319,7 +299,7 @@ public class Tier extends Display {
 	 * @return the total number of Places
 	 */
 	public int getNumPlaces() {
-		return totalPlaces;
+		return places.size();
 	}
 
 	/**
@@ -327,6 +307,12 @@ public class Tier extends Display {
 	 * @return the total number of Hospitals
 	 */
 	public int getHospitals() {
+		int totalHospitals=0;
+		for (Place p: places) {
+			if (p instanceof Hospital) {
+				totalHospitals++;
+			}
+		}
 		return totalHospitals;
 	}
 	
@@ -335,6 +321,12 @@ public class Tier extends Display {
 	 * @return the total number of Doctors
 	 */
 	public int getDoctors() {
+		int totalDoctors=0;
+		for (Person p: people) {
+			if (p instanceof Doctor) {
+				totalDoctors++;
+			}
+		}
 		return totalDoctors;
 	}
 	
@@ -343,6 +335,12 @@ public class Tier extends Display {
 	 * @return the total number of Factories
 	 */
 	public int getFactories() {
+		int totalFactories=0;
+		for (Place p: places) {
+			if (p instanceof Factory) {
+					totalFactories++;
+			}
+		}
 		return totalFactories;
 	}
 	
@@ -351,6 +349,12 @@ public class Tier extends Display {
 	 * @return the total number of Researchers
 	 */
 	public int getResearchers() {
+		int totalResearchers=0;
+		for (Person p: people) {
+			if (p instanceof Researcher) {
+				totalResearchers++;
+			}
+		}
 		return totalResearchers;
 	}
 	
@@ -359,6 +363,12 @@ public class Tier extends Display {
 	 * @return the total number of PublicPlaces
 	 */
 	public int getPublicPlaces() {
+		int totalPublicPlaces=0;
+		for (Place p: places) {
+			if (p instanceof PublicPlace) {
+				totalPublicPlaces++;
+			}
+		}
 		return totalPublicPlaces;
 	}
 	
@@ -376,6 +386,10 @@ public class Tier extends Display {
 	 */
 	public void setStopwatch(int i) {
 		stopwatch = i;
+	}
+	
+	public void reduceInfected() {
+		infectedPeople--;
 	}
 	
 	
