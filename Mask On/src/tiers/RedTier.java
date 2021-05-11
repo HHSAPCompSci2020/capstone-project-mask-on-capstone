@@ -1,18 +1,84 @@
 package tiers;
 
 import java.awt.Color;
-import display.Tier;
+import java.util.ArrayList;
 
+import display.Location;
+import display.Tier;
+import gamecomponents.people.Player;
+import gamecomponents.places.Factory;
+import gamecomponents.places.Place;
+import gamecomponents.places.PublicPlace;
+import gamecomponents.places.VaccineClinic;
+/**
+ * The RedTier class represents a Tier which 
+ * @author Felicia Zhang
+ *
+ */
 public class RedTier extends Tier {
-	
+	/**
+	 * Set up a RedTier with the given values, similar to Display
+	 * @param x the top left corner x value
+	 * @param y the top left corner y value
+	 * @param width tier width
+	 * @param height tier height
+	 * @param strokeWeight strokeweight of lines
+	 * @param strokeColor strokecolor of lines
+	 * @param fillColor fill color of shapes
+	 */
 	public RedTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
-		// TODO Auto-generated constructor stub
+		//public places
+		ArrayList<Location> publicPlaceSquares1 = new ArrayList<Location>();
+		for (int i = 2; i <= 3; i++) {
+			for (int j = 12; j <= 13; j++) {
+				publicPlaceSquares1.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new PublicPlace(publicPlaceSquares1));
+		
+		ArrayList<Location> publicPlaceSquares2 = new ArrayList<Location>();
+		for (int i = 10; i <= 11; i++) {
+			for (int j = 3; j <= 4; j++) {
+				publicPlaceSquares2.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new PublicPlace(publicPlaceSquares2));
+		
+		//factory
+		ArrayList<Location> factorySquares = new ArrayList<Location>();
+		for (int i = 13; i <= 14; i++) {
+			for (int j = 13; j <= 14; j++) {
+				factorySquares.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new Factory(factorySquares));
+		
+		//Vaccine clinic
+		ArrayList<Location> vaccineClinicSquares = new ArrayList<Location>();
+		for (int i = 6; i <= 7; i++) {
+			for (int j = 6; j <= 7; j++) {
+				vaccineClinicSquares.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new VaccineClinic(vaccineClinicSquares));
+		
+		//private places
+		ArrayList<Location> privateSquares = new ArrayList<Location>();
+		for (int i = 0; i < 4; i++) {
+			privateSquares.add(new Location(3, i));
+			privateSquares.add(new Location(4, 13-i));
+		}
+		this.addPlaceToArrayList(new Place(privateSquares));
+		
+		//player
+		this.addPlayer(new Player(new Location(1,1), false, 'r'));
+		
+		//people
+		randomSpawn(5, 5, 2, 0);
 	}
-
-	@Override
+	
 	public int getScore() {
-		// TODO Auto-generated method stub
-		return 0;
+		return 1;
 	}
 }

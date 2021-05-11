@@ -41,23 +41,24 @@ public class VaccineClinic extends Place {
 	 */
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
+		marker.fill(200);
 		for (Location l : getLocations()) {
 			marker.stroke(120);
 			marker.square(t.getX() + 40 * l.getCol(), t.getY() + 40 * l.getRow(), 40);
 		}
 		marker.fill(0);
-		marker.textSize(12);
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
 		if (!isOpen && (double)(System.currentTimeMillis() - startTime)/1000 >=15) {
 			isOpen = true;
 		}
+		marker.textSize(8);
 		if (isOpen) {
-			marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
+			marker.text("Patients:\n " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
 		}
 		else {
-			marker.text("VACCINE IS NOT READY", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
+			marker.text("CLOSED", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
 		}
 		marker.popStyle();
 		removePatient(t);
