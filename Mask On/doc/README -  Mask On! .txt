@@ -37,7 +37,6 @@ What are the rules? What is the goal?
 	* Each tier (level) will have different rules and goals. In the yellow tier, you must try to mask everybody and take infected people to the hospital to get better. In the orange tier, your hospital system is overwhelmed with cases, so you must build a new hospital. In the red tier, you must open up vaccination clinics and try to get people vaccinated. In the purple tier, a new strain that is vaccine-resistant develops, so you need to recruit researchers to incorporate defense against this strain in the vaccine. [b]
 	* The goal in all tiers is to bring the case count back to 0. This is achieved by making sure no one is infected, everyone is wearing a mask (lower levels), and everyone is vaccinated (higher levels). 
 	* Rules: 
-	   * You must wear PPE[c] before taking infected people to the hospital.
 	   * You can only build new hospitals and vaccination centers in public places.
 	   * You can only move one square at a time on the grid.
 Who would want to use your program?
@@ -55,25 +54,25 @@ Where will you need to click?
 Will you have menus that need to be navigated? What will they look like? 
 	* The start menu will need to be navigated, with the start and instructions buttons. 
 Do actions need to be taken in a certain order?
-	* There is no certain order the tiers need to be solved in, they just all need to be solved by the end of the game. [e]
+	* There is no certain order the tiers need to be solved in, they just all need to be solved by the end of the game.
 
 
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
 [These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
 	* There will be a menu screen with the title, start button, and instructions. 
-	* We need an interactive map so that players can “go” to different counties in California. By clicking on a certain area of the map, they will be able to complete a tier. [f]
-	* In the main game screen, there will be a sidebar with your inventory, which will show how much ppe and/or masks you have; a task bar, for the extra tasks that need to be completed that level; and a COVID tracker, which will fluctuate depending on the number of people in the grid that are infected. There will also be a timer that shows how long the user took to complete a tier. [g]
-	* The main game screen will have a grid with people, hospital buildings, vaccination centers, private residences, public spaces, and a PPE factory.
-	* The people need to be able to move on their own across the grid. 
+	* [Completed] We need an interactive map so that players can “go” to different counties in California. By clicking on a certain area of the map, they will be able to complete a tier. 
+	* In the main game screen, there will be a sidebar with your inventory, which will show how much ppe and/or masks you have; a task bar, for the extra tasks that need to be completed that level; and a COVID tracker, which will fluctuate depending on the number of people in the grid that are infected. There will also be a timer that shows how long the user took to complete a tier. 
+	* [Completed] The main game screen will have a grid with people, hospital buildings, vaccination centers, private residences, public spaces, and a PPE factory.
+	* [Completed] The people need to be able to move on their own across the grid. 
 
 
 Want-to-have Features:
 [These are features that you would like to have by the project due date, but you’re unsure whether you’ll hit all of them. A good final project would have perhaps half of these completed. At least 5 are required. Again, fully describe each.]
-	* Each character and building will have a different icon, reflective of what their character/building represents or what their character is wearing (PPE). 
-	* We would like to have constant background music playing, which may increase tempo[h] as covid cases rise. 
-	* The infected people die after becoming infected for a certain period of time. If more than a certain number of people die, you must restart the task. [i]
-	* The Player is able to choose accessories (not including any PPE) to look how they want to.[j]
+	* [Completed] Each character and building will have a different icon, reflective of what their character/building represents or what their character is wearing (PPE). 
+	* We would like to have constant background music playing, which may increase tempo as covid cases rise. 
+	* The infected people die after becoming infected for a certain period of time. If more than a certain number of people die, you must restart the task.
+	* The Player is able to choose accessories (not including any PPE) to look how they want to.
 	* The SideBar has more specific tracking features, and it tracks the number of people in every situation, not just infected.
 
 
@@ -86,41 +85,49 @@ Stretch Features:
 
 Class List:
 [This section lists the Java classes that make up the program and very briefly describes what each represents. It’s totally fine to put this section in list format and not to use full sentences.]
-	* Main: runs the program, contains the main method, creates the window
-	* DrawingSurface: window
-	* Map: shows California[k]
-	* Menu: shows info and instruction
-	* Timer: keeps track of time in timed version
-	* Covid Tracker: a bar that changes depending on how many infected are on the screen (single color). 
-	* Inventory: a box that represents the player’s inventory. 
-	* Tier: a class for a level, it has the grid for the game
-	   * PurpleTier: fourth level (hardest)
-	   * RedTier: third level
-	   * OrangeTier: second level
-	   * YellowTier: first level (easiest)
-	* Person: represents each individual in the population in the grid
-	   * Doctor: people who have skills to work in a hospital
-	   * Researcher: people who have skills to improve vaccines
-	   * Player: represents the user [l]
-	
-	
-	
-
+	* (default package)
+		* Main: runs the program, contains the main method, creates the window
+		* DrawingSurface: window
+	* display package
+		* Display: an abstract class for everything displayed on the screen
+		* Map: shows California and counties with different covid tiers
+		* Menu: shows info and instruction
+		* TimerDisplay: keeps track of time
+		* CovidTracker: a bar that changes depending on how many infected are on the screen (single color). 
+		* Inventory: a box that represents the player’s inventory. 
+		* Tier: a class for a level, it has the grid for the game
+		* Location: represents a location on the grid in the tier
+		* GameComponent: represents anything (people or places) on the grid, no code, just for polymorphism
+	* gamecomponents.people package
+		* Person: represents each individual in the population in the grid
+	   	* Doctor: people who have skills to work in a hospital
+	   	* Researcher: people who have skills to improve vaccines
+	   	* Player: represents the user
+	* gamecomponents.places package
+		* Place: represents a private place
+		* PublicPlace: place that can turn into a hospital or vaccine clinic
+		* VaccineClinic: where people get vaccinated
+		* Hospital: where infected people get cured
+		* Factory: where player can get masks from
+	* tiers
+		* PurpleTier: fourth level (hardest)
+		* RedTier: third level
+		* OrangeTier: second level
+		* YellowTier: first level (easiest)
 
 
 Credits:
 [Gives credit for project components. This includes both internal credit (your group members) and external credit (other people, websites, libraries). To do this:
-	* Everyone: Tier, Person, Main, DrawingSurface
-	* Felicia: first 4 classes not including above
-	* Emily: next 4 classes not including above
-	* Roshni: remaining classes
-	* Java.awt.Color
-	* Java.util.Timer
 	* List the group members and describe how each member contributed to the completion of the final program. This could be classes written, art assets created, leadership/organizational skills exercises, or other tasks. Initially, this is how you plan on splitting the work.
 	* Give credit to all outside resources used. This includes downloaded images or sounds, external java libraries, parent/tutor/student coding help, etc.]
 	
-
-External resources: Processing (external java library), pixilart.com (drawing software), GridWorld, unsplash
-	Roshni: Map, Display, Menu, Location, DrawingSurface, Person, Place, Main, YellowTier, UML, README
-	Felicia: CovidTracker, TimerDisplay, DrawingSurface, Hospital, Factory, Main, UML, README
-	Emily: Inventory, Tier, Player, images, DrawingSurface, Main, UML, README
+	External resources: Processing (external java library), pixilart.com (drawing software), GridWorld, unsplash, cliparts.co
+	Note: GameComponent is an existing class but it has no code. Everyone worked on Main, DrawingSurface, and this README together.
+	Roshni: 
+		Classes: Map, Display, Menu, Location, Person, Place, YellowTier, OrangeTier
+		UML: tiers package
+	Felicia: 
+		Classes: CovidTracker, TimerDisplay, Hospital, Factory, Doctor, VaccineClinic
+		UML: display package
+	Emily: Inventory, Tier, Player, images, DrawingSurface, Main, PublicPlace, Researcher
+		UML: gamecomponents package

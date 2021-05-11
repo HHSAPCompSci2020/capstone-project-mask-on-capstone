@@ -65,48 +65,6 @@ public class DrawingSurface extends PApplet {
 		if (map.getColor() != 'w') {
 			tier.draw(this);
 		}
-		if (tier.getGameStatus()) {
-			pushStyle();
-			
-			if (tier instanceof YellowTier) {
-				fill(255, 220, 0, 175);
-			}
-			else if (tier instanceof OrangeTier) {
-				fill(255, 127.5F, 0, 175);
-			}
-			else if (tier instanceof RedTier) {
-				fill(255, 0, 0, 175);
-			}
-			else if (tier instanceof PurpleTier) {
-				fill(255, 0, 255, 175);
-			}
-			else fill(0,0,0,175);
-			
-			rect(tier.getX(),tier.getY(),tier.getWidth(),tier.getHeight());
-			fill(255);
-			rect(1000/4+10, 750/2-10, 200,100);
-			fill(0);
-			textSize(30);
-			textAlign(CENTER, CENTER);
-			text("VICTORY", 1000/4 + 10, 750/2-10, 200, 50);
-			if (tier.getScore() == 1) {
-				image(loadImage("images/filledstar.png"), 295, 415, 40, 40);
-				image(loadImage("images/unfilledstar.png"), 340, 415, 40, 40);
-				image(loadImage("images/unfilledstar.png"), 385, 415, 40, 40);
-			}
-			else if (tier.getScore() == 2) {
-				image(loadImage("images/filledstar.png"), 295, 415, 40, 40);
-				image(loadImage("images/filledstar.png"), 340, 415, 40, 40);
-				image(loadImage("images/unfilledstar.png"), 385, 415, 40, 40);
-			}
-			else {
-				image(loadImage("images/filledstar.png"), 295, 415, 40, 40);
-				image(loadImage("images/filledstar.png"), 340, 415, 40, 40);
-				image(loadImage("images/filledstar.png"), 385, 415, 40, 40);
-			}
-			
-			popStyle();
-		}
 				
 		//menu
 		//last because if opened it should appear above others

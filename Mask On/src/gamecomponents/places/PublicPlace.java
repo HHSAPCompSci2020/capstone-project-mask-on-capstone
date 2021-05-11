@@ -22,6 +22,11 @@ public class PublicPlace extends Place {
 		return new Hospital(this.getLocations());
 	}
 	
+	public VaccineClinic convertIntoVaccineClinic() {
+		//need to remove it from the board in the future
+		return new VaccineClinic(this.getLocations());
+	}
+	
 	public void draw(PApplet marker, Tier t) {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();

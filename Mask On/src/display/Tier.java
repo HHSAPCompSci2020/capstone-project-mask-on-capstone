@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import gamecomponents.people.*;
 import gamecomponents.places.*;
 import processing.core.PApplet;
+import processing.core.PConstants;
+import tiers.OrangeTier;
+import tiers.PurpleTier;
+import tiers.RedTier;
+import tiers.YellowTier;
 
 /**
  * This class represents the overall structure of a Tier, or level, in the Mask On! game
@@ -95,6 +100,51 @@ public abstract class Tier extends Display {
 					movePerson(p);
 				}
 			}
+		}
+		
+		if (over) {
+				marker.pushStyle();
+				
+				if (this instanceof YellowTier) {
+					marker.fill(255, 220, 0, 175);
+				}
+				else if (this instanceof OrangeTier) {
+					marker.fill(255, 127.5F, 0, 175);
+				}
+				else if (this instanceof RedTier) {
+					marker.fill(255, 0, 0, 175);
+				}
+				else if (this instanceof PurpleTier) {
+					marker.fill(255, 0, 255, 175);
+				}
+				else marker.fill(0,0,0,175);
+				
+				marker.rect(getX(),getY(),getWidth(),getHeight());
+				marker.fill(255);
+				marker.rect(1000/4+10, 750/2-10, 200,100);
+				marker.fill(0);
+				marker.textSize(30);
+				marker.textAlign(PConstants.CENTER, PConstants.CENTER);
+				marker.text("VICTORY", 1000/4 + 10, 750/2-10, 200, 50);
+				
+				//http://cliparts.co/yellow-star-clip-art
+				if (getScore() == 1) {
+					marker.image(marker.loadImage("images/filledstar.png"), 295, 415, 40, 40);
+					marker.image(marker.loadImage("images/unfilledstar.png"), 340, 415, 40, 40);
+					marker.image(marker.loadImage("images/unfilledstar.png"), 385, 415, 40, 40);
+				}
+				else if (getScore() == 2) {
+					marker.image(marker.loadImage("images/filledstar.png"), 295, 415, 40, 40);
+					marker.image(marker.loadImage("images/filledstar.png"), 340, 415, 40, 40);
+					marker.image(marker.loadImage("images/unfilledstar.png"), 385, 415, 40, 40);
+				}
+				else {
+					marker.image(marker.loadImage("images/filledstar.png"), 295, 415, 40, 40);
+					marker.image(marker.loadImage("images/filledstar.png"), 340, 415, 40, 40);
+					marker.image(marker.loadImage("images/filledstar.png"), 385, 415, 40, 40);
+				}
+				
+				marker.popStyle();
 		}
 		
 	}
