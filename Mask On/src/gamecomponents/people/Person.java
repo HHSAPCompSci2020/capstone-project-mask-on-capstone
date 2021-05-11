@@ -18,6 +18,7 @@ public class Person extends GameComponent {
 	private boolean masked;
 	private boolean vaccinated;
 	private char direction;
+	private int maskingStopwatch;
 	
 	/**
 	 * Creates a Person with given information, automatically unmasked
@@ -31,6 +32,7 @@ public class Person extends GameComponent {
 		this.direction = direction;
 		masked = false;
 		vaccinated = false;
+		maskingStopwatch = 0;
 	}
 	
 	/**
@@ -46,11 +48,17 @@ public class Person extends GameComponent {
 			}
 			else if (masked) {
 				marker.image(marker.loadImage("images/uninfectedMasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
+				maskingStopwatch++;
+				if (maskingStopwatch % 150 == 0) {
+					masked = false;
+				}
 			}
 			else {
 				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 		}
+		
+		
 	}
 	
 	/**
