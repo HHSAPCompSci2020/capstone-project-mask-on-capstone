@@ -46,7 +46,7 @@ public abstract class Tier extends Display {
 		places = new ArrayList<Place>();
 		over = false;
 		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
-		inventory = new Inventory(675, 290,  240, 240);
+		inventory = new Inventory(675, 290,  240, 120);
 		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50);
 	}
 	
