@@ -1,9 +1,8 @@
 package display;
 
-import java.awt.Color;
-
 import processing.core.PApplet;
 import processing.core.PFont;
+
 /**
  * The TimerDisplay class is a Display that represents a stopwatch used to keep track of how much time the user spends on a Tier
  * @author Felicia Zhang
@@ -60,5 +59,9 @@ public class TimerDisplay extends Display{
 		marker.textFont(timerFont);
 		marker.text(min + " : " + secs, getX()+ getWidth()*6/7, getY()+ getHeight()*5/7);
 		marker.popStyle();
+	}
+	
+	public long getTime() {
+		return elapsedTime;
 	}
 }

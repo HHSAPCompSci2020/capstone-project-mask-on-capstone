@@ -43,4 +43,8 @@ public class OrangeTier extends Tier {
 		//people
 		randomSpawn(7, 3, 1, 0);
 	}
+	
+	public int getScore() {
+		return 1;
+	}
 }

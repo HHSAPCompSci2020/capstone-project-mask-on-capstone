@@ -1,9 +1,7 @@
 package display;
 
 import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-
 import gamecomponents.people.*;
 import gamecomponents.places.*;
 import processing.core.PApplet;
@@ -13,7 +11,7 @@ import processing.core.PApplet;
  * @author emtinside
  *
  */
-public class Tier extends Display {
+public abstract class Tier extends Display {
 	private int infectedPeople;
 	private GameComponent[][] grid; //not accessible by other Tier objects, 
 									//nor mutable without use of mutator methods
@@ -22,8 +20,6 @@ public class Tier extends Display {
 	private CovidTracker tracker;
 	private ArrayList<Person> people;
 	private ArrayList<Place> places;
-	/*private Person person, person2; //TESTING DELETE LATER
-	private Place place; //TESTING DELETE LATER*/
 	private int stopwatch;
 	private Inventory inventory;
 	private TimerDisplay timer;
@@ -52,15 +48,6 @@ public class Tier extends Display {
 		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
 		inventory = new Inventory(675, 290,  240, 240);
 		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50);
-		
-		/*person = new Person(new Location(5,3), false, 'u');
-		person2 = new Person(new Location(1,3), true, 'l');
-		ArrayList<Location> placeSquares = new ArrayList<Location>();
-		placeSquares.add(new Location(0, 0));
-		place = new Place(placeSquares);
-		this.addPersonToGrid(person);
-		this.addPersonToGrid(person2);
-		this.addPlaceToGrid(place);*/
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -199,16 +186,6 @@ public class Tier extends Display {
 	public void removeFromGrid(Person p) {
 		grid[p.getLocation().getRow()][p.getLocation().getCol()] = null;
 		p.setLocation(null);
-		
-//		if (p.isInfected()) infectedPeople--;
-//		if(p instanceof Doctor) totalDoctors--;
-//		else if(p instanceof Researcher) totalResearchers--;
-		
-		//if (!(p instanceof Player)) {
-//			totalPeople--; 
-		//people.remove(p);}
-		
-		//people.remove(p);
 	}
 	
 	/**
@@ -387,6 +364,12 @@ public class Tier extends Display {
 	public void reduceInfected() {
 		infectedPeople--;
 	}
+	
+	public TimerDisplay getTimerDisplay() {
+		return timer;
+	}
+	
+	public abstract int getScore();
 	
 	public void randomSpawn(int normalPeople, int infected, int doctors, int researchers) {
 		for (int i = 0; i < normalPeople; i++) {
