@@ -71,6 +71,18 @@ public class DrawingSurface extends PApplet {
 		if (map.getColor() != 'w') {
 			tier.draw(this);
 		}
+		if (tier.getGameStatus()) {
+			pushStyle();
+			fill(0,0,0,175);
+			rect(tier.getX(),tier.getY(),tier.getWidth(),tier.getHeight());
+			fill(255);
+			rect(width/4+10, height/2-10, 200,100);
+			fill(0,0,255);
+			textSize(30);
+			textAlign(CENTER, CENTER);
+			text("VICTORY", width/4 + 10, height/2-10, 200, 100);
+			popStyle();
+		}
 				
 		//menu
 		//last because if opened it should appear above others
