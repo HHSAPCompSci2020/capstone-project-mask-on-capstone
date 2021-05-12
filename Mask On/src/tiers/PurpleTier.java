@@ -12,10 +12,10 @@ import gamecomponents.places.Place;
 
 public class PurpleTier extends Tier {
 	
-	public PurpleTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
+	public PurpleTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor, char playerMode) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);		
 		
-		this.addPlayer(new Player(new Location(7, 5), false, 'u'));
+		this.addPlayer(new Player(new Location(7, 5), false, 'u', playerMode));
 	
 		ArrayList<Location> hosLocs1 = new ArrayList<Location>();
 		for (int i = 5; i <= 6; i++) {

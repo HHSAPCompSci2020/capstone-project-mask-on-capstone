@@ -21,16 +21,18 @@ public class Player extends Person {
 	boolean hasPPE;
 	boolean hasPerson;
 	Person yourPerson;
+	private char mode;
+	
 	/**
 	 * Creates a Player with given information
 	 * @param loc Location at which the Player starts at
 	 * @param isInfected whether the Player starts out infected or not
 	 * @param direction which direction the Player will start moving in
 	 */
-	public Player(Location loc, boolean isInfected, char direction) {
+	public Player(Location loc, boolean isInfected, char direction, char mode) {
 		super(loc, isInfected, direction);
 		inventory = new int[]{0,0,0,0,0};
-		
+		this.mode = mode;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -46,7 +48,12 @@ public class Player extends Person {
 				marker.image(marker.loadImage("images/HazmatManMask.png"), t.getX() + 40 * this.getLocation().getCol(), t.getY() + 40 * this.getLocation().getRow(), 40, 40);
 			else
 				marker.image(marker.loadImage("images/HazmatMan.png"), t.getX() + 40 * this.getLocation().getCol(), t.getY() + 40 * this.getLocation().getRow(), 40, 40);
-				
+			if (mode == 'r') {
+				marker.image(marker.loadImage("images/mouse.png"), t.getX() + 40 * this.getLocation().getCol(), t.getY() + 40 * this.getLocation().getRow(), 40, 40);
+			}
+			else if (mode == 'c') {
+				marker.image(marker.loadImage("images/cowboy.png"), t.getX() + 40 * this.getLocation().getCol(), t.getY() + 40 * this.getLocation().getRow(), 40, 40);
+			}
 		}
 	}
 	/**

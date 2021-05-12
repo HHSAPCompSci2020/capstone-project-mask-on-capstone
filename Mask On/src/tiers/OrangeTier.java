@@ -8,7 +8,7 @@ import gamecomponents.places.*;
 
 public class OrangeTier extends Tier {
 	
-	public OrangeTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
+	public OrangeTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor, char playerMode) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 		
 		//public places
@@ -45,7 +45,7 @@ public class OrangeTier extends Tier {
 		this.addPlaceToArrayList(new Place(privateSquares));
 		
 		//player
-		this.addPlayer(new Player(new Location(7, 8), false, 'r'));
+		this.addPlayer(new Player(new Location(7, 8), false, 'r', playerMode));
 		
 		//people
 		randomSpawn(7, 3, 1, 0);

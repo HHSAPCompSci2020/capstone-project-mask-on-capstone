@@ -127,7 +127,7 @@ Credits:
 		Classes: Map, Display, Menu, Location, Person, Place, YellowTier, OrangeTier
 		UML: tiers package
 	Felicia: 
-		Classes: CovidTracker, TimerDisplay, Hospital, Factory, Doctor, VaccineClinic
+		Classes: CovidTracker, TimerDisplay, Hospital, Factory, Doctor, VaccineClinic, RedTier
 		UML: display package
-	Emily: Inventory, Tier, Player, images, DrawingSurface, Main, PublicPlace, Researcher
+	Emily: Inventory, Tier, Player, images, PublicPlace, Researcher, PurpleTier
 		UML: gamecomponents package

@@ -25,7 +25,7 @@ public class DrawingSurface extends PApplet {
 	public DrawingSurface() {
 		menu = new Menu(900, 650/15, 650/15, 650/15, 0, new Color(0), new Color(255, 255, 255, 220));
 		map = new Map(700, 3 * 650/20, 200, (1102/900) * 200);
-		tier = new YellowTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+		tier = new YellowTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255), 'n');
 
 	}
 	
@@ -120,6 +120,8 @@ public class DrawingSurface extends PApplet {
 		mouseX *= 1000F/width; mouseY *= 750F/height;
 		
 		menu.openClose(mouseX, mouseY);
+		menu.changeTab(mouseX, mouseY);
+		menu.changePlayer(mouseX, mouseY);
 		
 		if (!menu.state()) {
 			boolean changed = false;
@@ -128,16 +130,16 @@ public class DrawingSurface extends PApplet {
 			}
 			if (changed) {
 				if (map.getColor() == 'y') {
-					tier = new YellowTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+					tier = new YellowTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255), menu.getMode());
 				}
 				if (map.getColor() == 'o') {
-					tier = new OrangeTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+					tier = new OrangeTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255), menu.getMode());
 				}
 				if (map.getColor() == 'r') {
-					tier = new RedTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+					tier = new RedTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255), menu.getMode());
 				}
 				if (map.getColor() == 'p') {
-					tier = new PurpleTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255));
+					tier = new PurpleTier(60, 100, 600, 600, 1, new Color(0), new Color(255, 255, 255), menu.getMode());
 				}
 			}
 		}

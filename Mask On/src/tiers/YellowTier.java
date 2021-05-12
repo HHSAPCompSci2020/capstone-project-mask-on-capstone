@@ -8,10 +8,10 @@ import gamecomponents.places.*;
 
 public class YellowTier extends Tier {
 	
-	public YellowTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
+	public YellowTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor, char playerMode) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);		
 		
-		this.addPlayer(new Player(new Location(5, 5), false, 'r'));
+		this.addPlayer(new Player(new Location(5, 5), false, 'r', playerMode));
 	
 		ArrayList<Location> hospitalSquares = new ArrayList<Location>();
 		for (int i = 0; i <= 1; i++) {

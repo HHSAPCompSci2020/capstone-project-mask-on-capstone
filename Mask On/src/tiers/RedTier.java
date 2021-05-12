@@ -25,8 +25,9 @@ public class RedTier extends Tier {
 	 * @param strokeWeight strokeweight of lines
 	 * @param strokeColor strokecolor of lines
 	 * @param fillColor fill color of shapes
+	 * @param playerMode mode/accessories of the Player
 	 */
-	public RedTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor) {
+	public RedTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor, char playerMode) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 		//public places
 		ArrayList<Location> publicPlaceSquares1 = new ArrayList<Location>();
@@ -72,7 +73,7 @@ public class RedTier extends Tier {
 		this.addPlaceToArrayList(new Place(privateSquares));
 		
 		//player
-		this.addPlayer(new Player(new Location(1,1), false, 'r'));
+		this.addPlayer(new Player(new Location(1,1), false, 'r', playerMode));
 		
 		//people
 		randomSpawn(5, 5, 2, 1);
