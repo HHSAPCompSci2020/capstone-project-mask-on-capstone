@@ -39,7 +39,7 @@ public class VaccineClinic extends Place {
 		elapsedTime = 0;
 	}
 	/**
-	 * Draws the VaccineClinic in the given Tier, the VaccineClinic shows that number of researches it currently has if it is not open
+	 * Draws the VaccineClinic in the given Tier, the VaccineClinic shows that number of researches it currently has if it is not open. The VaccineClinic also removes a patient that has stayed at the clinic for at least 15 seconds.
 	 * if it is open, the VaccineClinic displays the word open
 	 * @param marker the PApplet surface on which the VaccineClinic is being drawn
 	 * @param t the Tier in which the VaccineClinic is inside
@@ -92,11 +92,7 @@ public class VaccineClinic extends Place {
 		}
 		return false;
 	}
-	/**
-	 * Removes a patient a patient that has stayed at the clinic for at least 15 seconds
-	 * @param t The Tier that the VaccineClinic is in
-	 */
-	public void removePatient(Tier t) {
+	private void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
 			if ((currentTime - times.get(i))/1000 >= 15) {

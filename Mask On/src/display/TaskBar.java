@@ -10,7 +10,7 @@ import tiers.*;
 public class TaskBar extends Display{
 	private Tier t;
 	/**
-	 * 
+	 * Creates a TaskBar with the given dimensions
 	 * @param x the x-coordinate of the upper left corner of the TaskBar
 	 * @param y the y-coordinate of the upper left corner of the TaskBar
 	 * @param width the width of the TaskBar

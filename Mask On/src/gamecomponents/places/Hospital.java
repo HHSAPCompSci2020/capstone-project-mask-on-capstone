@@ -31,7 +31,7 @@ public class Hospital extends Place {
 		isDisabled = false;
 	}
 	/**
-	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has. 
+	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has. The Hospital also removes patients who have stayed for at least 15 seconds.
 	 * @param marker the PApplet surface on which the Hospital is being drawn
 	 * @param t the Tier in which the Hospital is inside
 	 * @pre this method runs with the conditions previously set on the given PApplet
@@ -71,11 +71,7 @@ public class Hospital extends Place {
 		}
 		return false;
 	}
-	/**
-	 * Removes a patient a patient that has stayed at the Hospital for at least 15 seconds
-	 * @param t The Tier that the Hospital is in
-	 */
-	public void removePatient(Tier t) {
+	private void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
 			if ((currentTime - times.get(i))/1000 >= 15) {

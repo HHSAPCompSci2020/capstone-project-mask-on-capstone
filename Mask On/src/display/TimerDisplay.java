@@ -22,7 +22,7 @@ public class TimerDisplay extends Display{
 		startTime = System.currentTimeMillis();
 	}
 	/**
-	 * Calculates the elaspedTime using the current and start times
+	 * Calculates the elaspedTime using the current and start times and updates it
 	 */
 	public void updateTime() {
 		elapsedTime = (System.currentTimeMillis() - startTime)/1000;
@@ -33,7 +33,6 @@ public class TimerDisplay extends Display{
 	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker) {
-		
 		marker.pushStyle();
 		marker.fill(255);
 		marker.stroke(0);
