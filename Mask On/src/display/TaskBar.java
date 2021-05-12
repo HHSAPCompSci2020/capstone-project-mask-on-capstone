@@ -56,7 +56,7 @@ public class TaskBar extends Display{
 		}
 		else if (t instanceof PurpleTier) {
 			marker.text("1.     Build a Hospital", getX() + getWidth()/11, getY() + getHeight()*5/14);
-			marker.text("2.     Build a Vaccine Clinic", getX() + getWidth()/11, getY() + getHeight()*5/9);
+			marker.text("2.     Open the Vaccine clinic", getX() + getWidth()/11, getY() + getHeight()*5/9);
 			marker.text("3.     Vaccinate people", getX() + getWidth()/11, getY() + getHeight()*3/4);
 			marker.text("4.     Mask people", getX() + getWidth()/11, getY() + getHeight()*15/16);
 		}

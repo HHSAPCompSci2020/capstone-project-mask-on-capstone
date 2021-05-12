@@ -186,6 +186,7 @@ public class Player extends Person {
 						VaccineClinic v = (VaccineClinic)p;
 						
 						
+						
 					}
 					if (yourPerson != null && !yourPerson.isVaccinated() && !yourPerson.isInfected()) {
 					
