@@ -64,10 +64,4 @@ public class PurpleTier extends Tier {
 		randomSpawn(6, 4, 2, 2);
 	}
 
-	@Override
-	public int getScore() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 }

@@ -422,7 +422,20 @@ public abstract class Tier extends Display {
 		return timer;
 	}
 	
-	public abstract int getScore();
+	public int getScore() {
+		int bonus = 0;
+		for (Person p : people) {
+			if (p.isMasked()) bonus += 5;
+			if (p.isVaccinated()) bonus += 15;
+		}
+		if (getTimerDisplay().getTime() - bonus <= 30) {
+			return 3;
+		}
+		else if (getTimerDisplay().getTime() - bonus <= 45) {
+			return 2;
+		}
+		return 1;
+	}
 	
 	public void randomSpawn(int normalPeople, int infected, int doctors, int researchers) {
 		for (int i = 0; i < normalPeople; i++) {

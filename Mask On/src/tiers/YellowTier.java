@@ -37,15 +37,5 @@ public class YellowTier extends Tier {
 		
 		randomSpawn(8, 2, 0, 0);
 	}
-	
-	public int getScore() {
-		if (getTimerDisplay().getTime() <= 30) {
-			return 3;
-		}
-		else if (getTimerDisplay().getTime() <= 45) {
-			return 2;
-		}
-		return 1;
-	}
 
 }
