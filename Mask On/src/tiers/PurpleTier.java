@@ -79,15 +79,4 @@ public class PurpleTier extends Tier {
 		randomSpawn(4, 5, 2, 2);
 	}
 
-	@Override
-	public int getScore() {
-		if (getTimerDisplay().getTime() <= 60) {
-			return 3;
-		}
-		else if (getTimerDisplay().getTime() <= 90) {
-			return 2;
-		}
-		return 1;
-	}
-
 }
