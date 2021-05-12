@@ -35,6 +35,14 @@ public class PurpleTier extends Tier {
 		}
 		this.addPlaceToArrayList(new PublicPlace(ppLocs2));
 		
+		ArrayList<Location> factory1 = new ArrayList<Location>();
+		for (int i = 2; i <= 3; i++) {
+			for (int j = 12; j <= 13; j++) {
+				factory1.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new Factory(factory1));
+		
 		ArrayList<Location> factorySquares = new ArrayList<Location>();
 		for (int i = 13; i <= 14; i++) {
 			for (int j = 13; j <= 14; j++) {
@@ -43,13 +51,21 @@ public class PurpleTier extends Tier {
 		}
 		this.addPlaceToArrayList(new Factory(factorySquares));
 		
-		ArrayList<Location> vaccine = new ArrayList<Location>();
+		ArrayList<Location> vaccine1 = new ArrayList<Location>();
 		for (int i = 12; i <= 13; i++) {
 			for (int j = 1; j <= 2; j++) {
-				vaccine.add(new Location(i, j));
+				vaccine1.add(new Location(i, j));
 			}
 		}
-		this.addPlaceToArrayList(new VaccineClinic(vaccine));
+		this.addPlaceToArrayList(new VaccineClinic(vaccine1));
+		
+		ArrayList<Location> vaccine2 = new ArrayList<Location>();
+		for (int i = 1; i <= 2; i++) {
+			for (int j = 1; j <= 2; j++) {
+				vaccine2.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new VaccineClinic(vaccine2));
 		
 		ArrayList<Location> privateSquares = new ArrayList<Location>();
 		for (int i = 4; i < 7; i++) {
@@ -61,13 +77,18 @@ public class PurpleTier extends Tier {
 		this.addPlaceToArrayList(new Place(privateSquares));
 		
 		
-		randomSpawn(6, 4, 2, 2);
+		randomSpawn(4, 5, 2, 2);
 	}
 
 	@Override
 	public int getScore() {
-		// TODO Auto-generated method stub
-		return 0;
+		if (getTimerDisplay().getTime() <= 60) {
+			return 3;
+		}
+		else if (getTimerDisplay().getTime() <= 90) {
+			return 2;
+		}
+		return 1;
 	}
 
 }

@@ -33,24 +33,31 @@ public class Menu extends Display {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 		isOpen = true;
 		general = "Click on the other tabs to see further rules and images for each tier \n"
-				+ "1) Objective: Bring the Covid count to 0 in as little time as possible\n" + 
-				"	2) Key binds: WASD to move player, Q to drop a person in your inventory, E to mask people on the board\n" + 
-				"	3) Player: Run into people to pick them up. You can hold one person at a time. By running into specific buildings, you can drop people into the building. \n" + 
-				"	4) Masks: Collectables objects you can obtain by running into the factory. You obtain 5 masks every time you visit the factory, which has a cooldown of 20s as they replenish the masks. \n" + 
-				"	5) Hospital: You can drop infected (red) people off at the hospital by running into it. The people will stay in the hospital until they are cured. \n" + 
-				"	6) Private Residences: No function, other than being an obstacle.\n" + 
-				"	7) Covid Tracker: The bar will increase and decrease based on the Covid count on the board. Try to make the tracker reach 0 (completely white). \n" + 
-				"	8) Task Bar: See what recommended tasks you should complete in order to finish the level.\n" + 
-				"	9) Inventory: View what you currently have. \n" + 
-				"	10) Map: Click on the circles OR rectangles to visit a county in California, whose respective color relates to their Covid case count (tiers). \n";
+				+ "1) OBJECTIVE: Bring the Covid count to 0 in as little time as possible\n" + 
+				"	2) KEY BINDS: \"WASD\" to move player, 'Q' to drop a person in your inventory, 'E' to mask people on the board\n" + 
+				"	3) PLAYER: Run into people to pick them up. You can hold one person at a time. By running into specific buildings, you can drop people into the building. \n" + 
+				"	4) MASKS: Collectables objects you can obtain by running into the factory. You obtain 5 masks every time you visit the factory, which has a cooldown of 20s as they replenish the masks. \n" + 
+				"	5) HOSPITAL: You can drop infected (red) people off at the hospital by running into it. The people will stay in the hospital until they are cured. \n" + 
+				"	6) PRIVATE RESIDENCES: No function, other than being an obstacle.\n" + 
+				"	7) COVID COUNT: The bar will increase and decrease based on the Covid count on the board. Try to make the tracker reach 0 (completely white). \n" + 
+				"	8) TASK BAR: See what recommended tasks you should complete in order to finish the level.\n" + 
+				"	9) INVENTORY: View what you currently have. \n" + 
+				"	10) MAP: Click on the circles OR rectangles to visit a county in California, whose respective color relates to their Covid case count (tiers). \n";
 		yellow = "Refer to general rules";
-		orange = "1) Public Places: Run into these buildings while holding a doctor to convert it into a hospital. \n" + 
-				"2) Doctor: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
-		red = "1) Vaccine Clinics: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
-				"2) Vaccinated People: Run into them to pick them up.";
+		orange = "1) PUBLIC PLACES: Run into these buildings while holding a doctor to convert it into a hospital. \n" + 
+				"2) DOCTOR: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
+		red = "1) VACCINE CLINICS: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
+				"2) VACCINATED PEOPLE: Run into them to pick them up.";
+		purple = "There’s a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
+				"1) VACCINE CLINICS: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
+				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
+		orange = "1) PUBLIC PLACES: Run into these buildings while holding a doctor to convert it into a hospital. \n" + 
+				"2) DOCTOR: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
+		red = "1) VACCINE CLINICS: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
+				"2) VACCINATED PEOPLE: Run into them to pick them up.";
 		purple = "There's a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
-				"1) Vaccine Clinics: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
-				"2) Researcher: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
+				"1) VACCINE CLINICS: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
+				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
 		tab = 'g';
 		playerMode = 'n';
 	}

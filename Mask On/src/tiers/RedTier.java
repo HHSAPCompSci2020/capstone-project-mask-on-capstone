@@ -78,8 +78,4 @@ public class RedTier extends Tier {
 		//people
 		randomSpawn(5, 5, 2, 0);
 	}
-	
-	public int getScore() {
-		return 1;
-	}
 }
