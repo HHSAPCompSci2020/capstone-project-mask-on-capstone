@@ -6,20 +6,24 @@ import display.Tier;
 import processing.core.PApplet;
 
 /**
- * A type of place, A public place can be converted into hospital in certain conditions
+ * A type of Place, a public place can be converted into hospital in certain conditions
  * @author EmilyTumacder
  *
  */
 public class PublicPlace extends Place {
 
+	/**
+	 * 
+	 * @param locs an ArrayList of Locations that the PublicPlace occupies on the grid
+	 */
 	public PublicPlace(ArrayList<Location> locs) {
 		super(locs);
 		// TODO Auto-generated constructor stub
 	}
 	
 	/**
-	 * Convert this place into a hospital
-	 * @param t
+	 * Converts this PublicPlace into a hospital
+	 * @param t the Tier in which the PublicPlace is
 	 */
 	public void convertIntoHospital(Tier t) {
 		t.removeFromGrid(this);
@@ -28,6 +32,11 @@ public class PublicPlace extends Place {
 		t.addPlaceToGrid(h);
 	}
 	
+	/**
+	 * Draws the PublicPlace with the given PApplet in the given Tier
+	 * @param marker the PApplet on which it is drawn
+	 * @param t the Tier in which it is drawn
+	 */
 	public void draw(PApplet marker, Tier t) {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();

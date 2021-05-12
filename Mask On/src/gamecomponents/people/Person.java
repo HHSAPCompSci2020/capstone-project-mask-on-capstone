@@ -90,7 +90,11 @@ public class Person extends GameComponent {
 		return numberInfected;
 	}
 
-	
+	/**
+	 * 
+	 * @param t the Tier in which the Person is
+	 * @return whether the Person can move or not
+	 */
 	public boolean canMove(Tier t) {
 		if (loc == null) return false;
 		Location loc;
@@ -119,6 +123,7 @@ public class Person extends GameComponent {
 		}
 		
 	}
+	
 	/**
 	 * Moves the Person based on its given direction and surroundings
 	 */
@@ -137,7 +142,10 @@ public class Person extends GameComponent {
 		}
 	}
 	
-
+	/**
+	 * 
+	 * @param loc the Location the Person is to be at
+	 */
 	public void setLocation(Location loc) {
 		this.loc = loc;
 	}
@@ -214,21 +222,24 @@ public class Person extends GameComponent {
 		t.removeFromGrid(this);
 		loc = null;
 	}
+	
+	/**
+	 * 
+	 * @param direction the direction the Person needs to move in
+	 */
 	public void setDirection(char direction) {
 		this.direction = direction;
 	}
 	
 	/**
-	 * 
-	 * @return whether the Person object is null or not
+	 * Cures the Person if infected
+	 * @param t the Tier that the Person is in
 	 */
-	public boolean isNull() {
-		if(this.equals(null)) return true;
-		else return false;
-	}
 	public void cure(Tier t) {
-		t.reduceInfected();
-		infected = false;
+		if (infected) {
+			t.reduceInfected();
+			infected = false;
+		}
 	}
 	
 }
