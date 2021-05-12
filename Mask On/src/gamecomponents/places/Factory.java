@@ -66,6 +66,13 @@ public class Factory extends Place {
 		return 0;
 	}
 	/**
+	 * 
+	 * @return the current status of the Factory
+	 */
+	public boolean getStatus() {
+		return isOpen;
+	}
+	/**
 	 * Sets the disabled status of the Factory
 	 * @param b the new status of the Factory, true means the Factory is now disabled
 	 */
