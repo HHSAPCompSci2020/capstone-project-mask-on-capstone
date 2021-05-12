@@ -6,8 +6,25 @@ import display.*;
 import gamecomponents.people.*;
 import gamecomponents.places.*;
 
+/**
+ * Represents the second level Tier, or the Orange Tier. It has PublicPlaces that can be converted
+ * to Hospitals with Doctors.
+ * @author roshnibright
+ *
+ */
 public class OrangeTier extends Tier {
 	
+	/**
+	 * Sets up an OrangeTier with the given values, predecided Places, and randomly-created people
+	 * @param x the top left corner x value
+	 * @param y the top left corner y value
+	 * @param width tier width
+	 * @param height tier height
+	 * @param strokeWeight strokeweight of lines
+	 * @param strokeColor strokecolor of lines
+	 * @param fillColor fill color of shapes
+	 * @param playerMode mode/accessories of the Player
+	 */
 	public OrangeTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor, char playerMode) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);
 		

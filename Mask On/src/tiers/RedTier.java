@@ -10,14 +10,16 @@ import gamecomponents.places.Factory;
 import gamecomponents.places.Place;
 import gamecomponents.places.PublicPlace;
 import gamecomponents.places.VaccineClinic;
+
 /**
  * The RedTier class represents a Tier which is level 3. It has VaccineClinics. 
  * @author Felicia Zhang
  *
  */
 public class RedTier extends Tier {
+	
 	/**
-	 * Set up a RedTier with the given values, similar to Display
+	 * Sets up a RedTier with the given values, predecided Places, and randomly-created people
 	 * @param x the top left corner x value
 	 * @param y the top left corner y value
 	 * @param width tier width

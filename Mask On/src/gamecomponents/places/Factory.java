@@ -1,10 +1,10 @@
 package gamecomponents.places;
 
 import java.util.ArrayList;
-
 import display.Location;
 import display.Tier;
 import processing.core.PApplet;
+
 /**
  * The Factory class represents a Place that makes masks. It makes 5 masks in 20 seconds and is open when it is done making the masks.
  * @author Felicia Zhang
@@ -14,6 +14,7 @@ public class Factory extends Place {
 	private double startProduction;
 	private boolean isOpen;
 	private boolean isDisabled;
+	
 	/**
 	 * Creates the Factory at the given locations. It is open.
 	 * @param locs the ArrayList of Location objects the Factory occupies
@@ -24,6 +25,7 @@ public class Factory extends Place {
 		isOpen = true;
 		isDisabled = false;
 	}
+	
 	/**
 	 * Draws the Factory in the given Tier, the Factory has a countdown from 20 seconds when it is making masks, and when it is done making masks, it is open.
 	 * @param marker the PApplet surface on which the Factory is being drawn
@@ -53,6 +55,7 @@ public class Factory extends Place {
 		}
 		marker.popStyle();
 	}
+	
 	/**
 	 * Allows the player to retrieve 5 masks if the Factory is open. If Factory is closed, 0 masks are retrieved. 
 	 * @return the number of masks retrieved
@@ -65,6 +68,7 @@ public class Factory extends Place {
 		}
 		return 0;
 	}
+	
 	/**
 	 * 
 	 * @return the current status of the Factory
@@ -72,6 +76,7 @@ public class Factory extends Place {
 	public boolean getStatus() {
 		return isOpen;
 	}
+	
 	/**
 	 * Sets the disabled status of the Factory
 	 * @param b the new status of the Factory, true means the Factory is now disabled

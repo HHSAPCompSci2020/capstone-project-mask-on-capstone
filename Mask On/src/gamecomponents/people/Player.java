@@ -16,11 +16,8 @@ import processing.core.PApplet;
  */
 public class Player extends Person {
 
-	int[] inventory; //0 = mask, 1= infected, 2= doctor, 3= researcher, 4 = uninfected
-	boolean isInfected;
-	boolean hasPPE;
-	boolean hasPerson;
-	Person yourPerson;
+	private int[] inventory; //0 = mask, 1= infected, 2= doctor, 3= researcher, 4 = uninfected
+	private Person yourPerson;
 	private char mode;
 	
 	/**
@@ -55,6 +52,7 @@ public class Player extends Person {
 			}
 		}
 	}
+	
 	/**
 	 * Picks up a person from the Tier and updates the Inventory
 	 * @param p the person that needs to put in the Inventory
@@ -68,6 +66,7 @@ public class Player extends Person {
 			else if (p instanceof Researcher) {inventory[3]++;}
 		
 	}
+	
 	/**
 	 * Puts the person in a random adjacent spot
 	 * @param p the person that needs to be placed
@@ -100,6 +99,7 @@ public class Player extends Person {
 		
 		yourPerson = null;
 	}
+	
 	/**
 	 * Gives a person a mask
 	 * @param p the person that needs a mask
@@ -125,7 +125,7 @@ public class Player extends Person {
 	
 	/**
 	 * 
-	 * @return the inventory
+	 * @return the inventory stored as an array of integers
 	 */
 	public int[] getInventory() {
 		return inventory;

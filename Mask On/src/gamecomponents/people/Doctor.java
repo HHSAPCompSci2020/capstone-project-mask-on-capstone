@@ -3,12 +3,14 @@ package gamecomponents.people;
 import display.Location;
 import display.Tier;
 import processing.core.PApplet;
+
 /**
  * The Doctor class represents a Person that is immune to Covid and can be used to create Hospitals.
  * @author Felicia Zhang
  *
  */
 public class Doctor extends Person {
+	
 	/**
 	 * Creates a Doctor with given information, automatically vaccinated
 	 * @param loc Location at which the Person starts at
@@ -18,6 +20,7 @@ public class Doctor extends Person {
 		super(loc, false, direction);
 		getVaccinated();
 	}
+	
 	/**
 	 * Draws the Doctor in the given Tier with the given PApplet
 	 * @param marker PApplet on which the Doctor is drawn

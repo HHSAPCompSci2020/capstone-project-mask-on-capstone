@@ -6,8 +6,24 @@ import display.*;
 import gamecomponents.people.*;
 import gamecomponents.places.*;
 
+/**
+ * Represents the first level Tier, or the Yellow Tier. It doesn't have anything special.
+ * @author roshnibright
+ *
+ */
 public class YellowTier extends Tier {
 	
+	/**
+	 * Sets up a YellowTier with the given values, predecided Places, and randomly-created people
+	 * @param x the top left corner x value
+	 * @param y the top left corner y value
+	 * @param width tier width
+	 * @param height tier height
+	 * @param strokeWeight strokeweight of lines
+	 * @param strokeColor strokecolor of lines
+	 * @param fillColor fill color of shapes
+	 * @param playerMode mode/accessories of the Player
+	 */
 	public YellowTier(double x, double y, double width, double height, int strokeWeight, Color strokeColor, Color fillColor, char playerMode) {
 		super(x, y, width, height, strokeWeight, strokeColor, fillColor);		
 		
