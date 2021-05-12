@@ -97,6 +97,13 @@ public class Person extends GameComponent {
 	 */
 	public boolean canMove(Tier t) {
 		if (loc == null) return false;
+		
+		if (infected && isPlayerNextToMe(t)) {
+			if (awayFromPlayer(t) != '\u0000') {
+				direction = awayFromPlayer(t);
+			}
+		}
+		
 		Location loc;
 		if (direction == 'u') loc = new Location(this.getLocation().getRow()-1, this.getLocation().getCol());
 		else if (direction == 'd') loc = new Location(this.getLocation().getRow()+1, this.getLocation().getCol());
@@ -240,6 +247,41 @@ public class Person extends GameComponent {
 			t.reduceInfected();
 			infected = false;
 		}
+	}
+	
+	private boolean isPlayerNextToMe(Tier t) {
+		ArrayList<Location> adjacent = new ArrayList<Location>();
+		adjacent.add(loc.getTop(t));
+		adjacent.add(loc.getBottom(t));
+		adjacent.add(loc.getLeft(t));
+		adjacent.add(loc.getRight(t));
+		for (Location l : adjacent) {
+			if (t.getComponentAtLoc(l) instanceof Player) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	private char awayFromPlayer(Tier t) {
+		ArrayList<Location> adjacent = loc.getAdjacentLocations(t);
+		for (Location l : adjacent) {
+			if (t.getComponentAtLoc(l) instanceof Player) {
+				if (loc.getTop(t) != null && loc.getTop(t).getRow() == l.getRow() && loc.getTop(t).getCol() == l.getCol()) {
+					return 'd';
+				}
+				else if (loc.getBottom(t) != null && loc.getBottom(t).getRow() == l.getRow() && loc.getBottom(t).getCol() == l.getCol()) {
+					return 'u';
+				}
+				else if (loc.getLeft(t) != null && loc.getLeft(t).getRow() == l.getRow() && loc.getLeft(t).getCol() == l.getCol()) {
+					return 'r';
+				}
+				else if (loc.getRight(t) != null && loc.getRight(t).getRow() == l.getRow() && loc.getRight(t).getCol() == l.getCol()) {
+					return 'l';
+				}
+			}
+		}
+		return '\u0000';
 	}
 	
 }

@@ -97,7 +97,7 @@ public abstract class Tier extends Display {
 		stopwatch++;
 		
 		if (!over) {
-			if (stopwatch % 20 == 0) {
+			if (stopwatch % 10 == 0) {
 				for (Person p : people) {
 					movePerson(p);
 				}
