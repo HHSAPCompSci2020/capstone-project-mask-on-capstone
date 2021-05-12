@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import display.Location;
 import display.Tier;
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /**
  * This class represents a Place on the grid displayed in a Tier
@@ -31,8 +32,12 @@ public class Place extends GameComponent {
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
 		marker.fill(120);
+		PImage house = marker.loadImage("images/place.png");
+		house.resize(40, 0);
 		for (Location l : locs) {
-			marker.square(t.getX() + 40 * l.getCol(), t.getY() + 40 * l.getRow(), 40);
+	//		marker.square(t.getX() + 40 * l.getCol(), t.getY() + 40 * l.getRow(), 40);
+			
+			marker.image(house, t.getX() + 40 * l.getCol(),t.getY() + 40 * l.getRow());
 		}
 		marker.popStyle();
 	}

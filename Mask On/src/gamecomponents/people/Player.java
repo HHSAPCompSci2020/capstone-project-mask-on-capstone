@@ -164,15 +164,17 @@ public class Player extends Person {
 				else if (p instanceof PublicPlace) {
 					if (inventory[2] >0) {
 						inventory[2]--;
+						yourPerson = null;
 						PublicPlace place = (PublicPlace)p;
-						place.convertIntoHospital();
+						place.convertIntoHospital(t);
 					}
 				}
 				else if (p instanceof VaccineClinic) {
 					if (inventory[3] >0) {
 						inventory[3]--;
+						yourPerson = null;
 						PublicPlace place = (PublicPlace)p;
-						place.convertIntoHospital();
+						place.convertIntoHospital(t);
 					}
 				}
 				else if (p instanceof Factory) {

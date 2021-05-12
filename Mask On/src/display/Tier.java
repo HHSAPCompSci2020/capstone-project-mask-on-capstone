@@ -234,7 +234,7 @@ public abstract class Tier extends Display {
 	}
 	
 	/**
-	 * Remove a person from the grid
+	 * Remove a person from the grid only so that you cannot see them, will still count towards the total population
 	 * @param p Person
 	 */
 	public void removeFromGrid(Person p) {
@@ -243,7 +243,7 @@ public abstract class Tier extends Display {
 	}
 	
 	/**
-	 * Remove a place from the grid
+	 * Remove a place from the grid permanently
 	 * @param p Place
 	 */
 	public void removeFromGrid(Place p) {

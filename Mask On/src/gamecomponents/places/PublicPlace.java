@@ -17,13 +17,17 @@ public class PublicPlace extends Place {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Hospital convertIntoHospital() {
+	public void convertIntoHospital(Tier t) {
 		//need to remove it from the board in the future
-		return new Hospital(this.getLocations());
+		t.removeFromGrid(this);
+		Hospital h=  new Hospital(this.getLocations());
+		t.addPlaceToArrayList(h);
+		t.addPlaceToGrid(h);
 	}
 	
-	public VaccineClinic convertIntoVaccineClinic() {
+	public VaccineClinic convertIntoVaccineClinic(Tier t) {
 		//need to remove it from the board in the future
+		t.removeFromGrid(this);
 		return new VaccineClinic(this.getLocations());
 	}
 	

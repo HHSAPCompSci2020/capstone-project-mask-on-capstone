@@ -25,8 +25,6 @@ public class Inventory extends Display{
 	public Inventory( double x, double y, double width, double height) {
 		super(x, y, width, height);
 		maskCount = 0;
-		yourPerson = new Person(null, false, 'd');
-	
 	}
 
 	/**
@@ -56,36 +54,45 @@ public class Inventory extends Display{
 		}
 
 		if (yourPerson != null) {
+			marker.textSize(12);
+			marker.fill(0);
 			if (yourPerson.isInfected()) {
 				PImage y = marker.loadImage("images/infected.png");
 				y.resize(30,0);
 				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
-			}
-			else if (!yourPerson.isVaccinated() && !yourPerson.isMasked()) {
-				PImage y = marker.loadImage("images/uninfectedUnmasked.png");
-				y.resize(30,0);
-				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
-			}
-			else if (!yourPerson.isVaccinated() && yourPerson.isMasked()) {
-				PImage y = marker.loadImage("images/uninfectedMasked.png");
-				y.resize(30,0);
-				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
-			}
-			else if (yourPerson.isVaccinated()) {
-				PImage y = marker.loadImage("images/vaccinated.png");
-				y.resize(30,0);
-				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
+				marker.text("(infected)", this.getX() +50, this.getY()+50 + this.getHeight()/4+20);
 			}
 			else if (yourPerson instanceof Researcher) {
 				PImage y = marker.loadImage("images/researcher.png");
 				y.resize(30,0);
 				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
+				marker.text("(researcher)", this.getX() +50, this.getY()+50 + this.getHeight()/4+20);
 			}
 			else if (yourPerson instanceof Doctor) {
 				PImage y = marker.loadImage("images/doctor.png");
 				y.resize(30,0);
 				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
+				marker.text("(doctor)", this.getX() +50, this.getY()+50 + this.getHeight()/4+20);
 			}
+			else if (!yourPerson.isVaccinated() && !yourPerson.isMasked()) {
+				PImage y = marker.loadImage("images/uninfectedUnmasked.png");
+				y.resize(30,0);
+				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
+				marker.text("(unvaccinated)", this.getX() +50, this.getY()+50 + this.getHeight()/4+20);
+			}
+			else if (!yourPerson.isVaccinated() && yourPerson.isMasked()) {
+				PImage y = marker.loadImage("images/uninfectedMasked.png");
+				y.resize(30,0);
+				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
+				marker.text("(unvaccinated)", this.getX() +50, this.getY()+50 + this.getHeight()/4+20);
+			}
+			else if (yourPerson.isVaccinated()) { //just in case there's errors in the future
+				PImage y = marker.loadImage("images/vaccinated.png");
+				y.resize(30,0);
+				marker.image(y, this.getX() +10, this.getY()+50 + this.getHeight()/4);
+				marker.text("(vaccinated)", this.getX() +50, this.getY()+50 + this.getHeight()/4+20);
+			}
+			
 		}
 		marker.popStyle();
 		
