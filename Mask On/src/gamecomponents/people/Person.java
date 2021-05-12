@@ -53,6 +53,9 @@ public class Person extends GameComponent {
 					masked = false;
 				}
 			}
+			else if (vaccinated) {
+				marker.image(marker.loadImage("images/vaccinated.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
+			}
 			else {
 				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}

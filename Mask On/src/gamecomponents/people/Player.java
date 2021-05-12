@@ -12,6 +12,7 @@ import processing.core.PApplet;
 
 /**
  * The Player class is a Person that is controlled by the user.
+ * @author EmilyTumacder
  */
 public class Player extends Person {
 
@@ -127,7 +128,12 @@ public class Player extends Person {
 	}
 	
 	/**
-	 * Checks whether the Player can move
+	 * Checks whether the Player can move. The Player is able to do a multitude of things if 
+	 * intersecting with certain GameComponent including:
+	 * -(Person) pick up the person
+	 * -(Hospital) drop person off at hospital
+	 * -(Vaccine clinic) drop person off at clinic
+	 * -(Public Place) drop a specialist off to convert it into a Hospital or Vaccine clinic
 	 * @param t Tier in which the Player is inside
 	 * @return whether or not the Player can move
 	 */
@@ -149,41 +155,46 @@ public class Player extends Person {
 				Place p = (Place) t.getComponentAtLoc(loc);
 				if (p instanceof Hospital && yourPerson != null && yourPerson.isInfected()) {
 					
-						Hospital h = (Hospital)p;
-						h.addPatient(yourPerson);
-						yourPerson = null;
-						/* TESTING
-						Person person = new Person(null, false, 'r');
-						this.dropPerson(person, t);
-						*/
-						inventory[1] --;
-					
+						Hospital h = (Hospital)p;					
+						if (h.addPatient(yourPerson)) {
+							yourPerson = null;
+							inventory[1] --;
+						}
 					return false;
 				}
 			
 				else if (p instanceof PublicPlace) {
-					if (inventory[2] >0) {
-						inventory[2]--;
-						yourPerson = null;
-						PublicPlace place = (PublicPlace)p;
-						place.convertIntoHospital(t);
+					if (yourPerson != null) {
+				
+						if (yourPerson instanceof Doctor) {
+							inventory[2]--;
+							yourPerson = null;
+							PublicPlace place = (PublicPlace)p;
+							place.convertIntoHospital(t);
+						}
+						else if (yourPerson instanceof Researcher) {
+							inventory[3]--;
+							yourPerson = null;
+							PublicPlace place = (PublicPlace)p;
+							place.convertIntoVaccineClinic(t);
+						}
 					}
 				}
 				else if (p instanceof VaccineClinic) {
-					if (inventory[3] >0) {
-						inventory[3]--;
-						yourPerson = null;
-						PublicPlace place = (PublicPlace)p;
-						place.convertIntoHospital(t);
+					if (yourPerson != null && !yourPerson.isVaccinated() && !yourPerson.isInfected()) {
+					
+						VaccineClinic v = (VaccineClinic)p;
+						if (v.addPerson(yourPerson)) {
+							yourPerson = null;
+							inventory[4]--;
+						}
+					
 					}
 				}
 				else if (p instanceof Factory) {
 					if (((Factory) p).retrieveMasks() == 5) {
 						inventory[0]+=5;
 					}
-				}
-				else if (p instanceof VaccineClinic) {
-					
 				}
 				return false;
 			}

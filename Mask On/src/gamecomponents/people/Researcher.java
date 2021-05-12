@@ -8,7 +8,7 @@ public class Researcher extends Person {
 
 	public Researcher(Location loc, char direction) {
 		super(loc, false, direction);
-		takeMask();
+//		takeMask();
 		getVaccinated();
 		// TODO Auto-generated constructor stub
 	}

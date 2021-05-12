@@ -13,8 +13,7 @@ import tiers.YellowTier;
 
 /**
  * This class represents the overall structure of a Tier, or level, in the Mask On! game
- * @author emtinside
- *
+ * @author EmilyTumacder
  */
 public abstract class Tier extends Display {
 	private int infectedPeople;
