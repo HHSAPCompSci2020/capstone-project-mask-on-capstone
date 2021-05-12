@@ -28,6 +28,7 @@ public abstract class Tier extends Display {
 	private int stopwatch;
 	private Inventory inventory;
 	private TimerDisplay timer;
+	private TaskBar taskBar;
 	
 	/**
 	 * Set up a tier with the given values, similar to Display
@@ -53,6 +54,7 @@ public abstract class Tier extends Display {
 		tracker = new CovidTracker(675, 18 * 650/20, 240, (1102/900) * 20);
 		inventory = new Inventory(675, 290,  240, 120);
 		timer = new TimerDisplay(675, 19 * 660/20, 125, (1102/900) * 50);
+		taskBar = new TaskBar(675, 430,  240, 120);
 	}
 	
 	//Currently just hardcoding things into it for testing
@@ -67,6 +69,8 @@ public abstract class Tier extends Display {
 		tracker.draw(marker);
 		inventory.draw(marker);
 		inventory.update(player, this);
+		taskBar.update(this);
+		taskBar.draw(marker);
 		if (!over) {
 			timer.updateTime();
 		}
