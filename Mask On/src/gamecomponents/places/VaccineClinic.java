@@ -22,6 +22,7 @@ public class VaccineClinic extends Place {
 	private Researcher researcher;
 	private boolean isOpen;
 	private boolean isDisabled;
+	private double elapsedTime;
 	/**
 	 * Creates a VaccineClinic at certain locations
 	 * @param locs the ArrayList of Location objects the VaccineClinic occupies
@@ -34,6 +35,7 @@ public class VaccineClinic extends Place {
 		isOpen = true;
 		researcher = null;
 		isDisabled = false;
+		elapsedTime = 0;
 	}
 	/**
 	 * Draws the VaccineClinic in the given Tier, the VaccineClinic shows that number of researches it currently has if it is not open
@@ -56,18 +58,23 @@ public class VaccineClinic extends Place {
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
 		if (!isDisabled) {
-			if ((double)(System.currentTimeMillis() - startTime)/1000 >= 15) {
-				isOpen = true;
-			}
-			else {
-				isOpen = false;
-			}
+//			if ((double)(System.currentTimeMillis() - startTime)/1000 >= 15) {
+//				isOpen = true;
+//			}
+//			else {
+//				isOpen = false;
+//			}
 			if (t instanceof PurpleTier && researcher == null) {
 				isOpen = false;
 			}
 			marker.textSize(8);
-			if (isOpen) {
+			elapsedTime = (double)(System.currentTimeMillis() - startTime)/1000;
+			if (isOpen && elapsedTime >= 15) {
 				marker.text("Patients:\n " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
+			}
+			else if (isOpen && elapsedTime <= 15) {
+				marker.textSize(12);
+				marker.text((15 - (int)elapsedTime) + "s", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
 			}
 			else {
 				marker.text("CLOSED", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
@@ -86,9 +93,10 @@ public class VaccineClinic extends Place {
 		if (p instanceof Researcher && researcher == null) {
 			researcher = (Researcher) p;
 			startTime = (double)System.currentTimeMillis();
+			isOpen = true;
 			return true;
 		}
-		else if (patients.size() < 5 && isOpen && !(p instanceof Doctor) && !(p instanceof Player)) {
+		else if (patients.size() < 5 && elapsedTime >= 15 && isOpen && !(p instanceof Doctor) && !(p instanceof Player)) {
 			patients.add(p);
 			times.add((double)(System.currentTimeMillis()));
 			return true;
