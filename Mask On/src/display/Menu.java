@@ -48,7 +48,7 @@ public class Menu extends Display {
 				"2) Doctor: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
 		red = "1) Vaccine Clinics: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
 				"2) Vaccinated People: Run into them to pick them up.";
-		purple = "There’s a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
+		purple = "There's a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
 				"1) Vaccine Clinics: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
 				"2) Researcher: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
 		tab = 'g';

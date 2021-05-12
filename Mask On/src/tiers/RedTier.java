@@ -76,7 +76,7 @@ public class RedTier extends Tier {
 		this.addPlayer(new Player(new Location(1,1), false, 'r', playerMode));
 		
 		//people
-		randomSpawn(5, 5, 2, 1);
+		randomSpawn(5, 5, 2, 0);
 	}
 	
 	public int getScore() {
