@@ -7,7 +7,6 @@ import display.Location;
 import display.Tier;
 import gamecomponents.people.Player;
 import gamecomponents.places.Factory;
-import gamecomponents.places.Hospital;
 import gamecomponents.places.Place;
 import gamecomponents.places.PublicPlace;
 import gamecomponents.places.VaccineClinic;
