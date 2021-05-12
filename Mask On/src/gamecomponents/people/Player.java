@@ -182,10 +182,10 @@ public class Player extends Person {
 					
 					if (yourPerson instanceof Researcher) {
 						VaccineClinic v = (VaccineClinic)p;
-						v.addPerson(yourPerson);
-						inventory[3]--;
-						yourPerson = null;
-						
+						if (v.addPerson(yourPerson)) {
+							inventory[3]--;
+							yourPerson = null;
+						}
 					}
 					if (yourPerson != null && !yourPerson.isVaccinated() && !yourPerson.isInfected()) {
 					
