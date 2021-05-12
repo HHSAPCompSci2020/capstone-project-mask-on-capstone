@@ -1,4 +1,10 @@
 package display;
-public class GameComponent {
 
+/**
+ * Represents a component on the grid of a Tier
+ * @author roshnibright
+ *
+ */
+public class GameComponent {
+//only use is for polymorphism
 }

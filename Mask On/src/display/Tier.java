@@ -158,19 +158,17 @@ public abstract class Tier extends Display {
 	 */
 	public void addPersonToGrid(Person p) {
 		Location loc = p.getLocation();
-		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0)
-		{} //System.out.println("You're out of bounds buddy");
+		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0) {}
 		
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
 		}
-		/* TESTING PURPOSES
-		else {
-			System.out.println("This space is occupied");
-		}
-		*/
 	}
 	
+	/**
+	 * 
+	 * @param p Person that needs to be added to the Tier's people ArrayList and grid
+	 */
 	public void addPersonToArrayList(Person p) {
 		if (p.isInfected()) infectedPeople++;
 		people.add(p);
@@ -187,13 +185,13 @@ public abstract class Tier extends Display {
 			if (grid[locs.get(i).getRow()][locs.get(i).getCol()] == null) { // if empty
 				grid[locs.get(i).getRow()][locs.get(i).getCol()] = p;
 			}
-			/* TESTING PURPOSES
-			else
-				System.out.println("This space is occupied");
-			 */
 		}
 	}
 	
+	/**
+	 * 
+	 * @param p Place that needs to be added to the Tier's places ArrayList and grid
+	 */
 	public void addPlaceToArrayList(Place p) {
 		places.add(p);
 		this.addPlaceToGrid(p);
@@ -256,13 +254,18 @@ public abstract class Tier extends Display {
 	}
 	
 	//	ACCESSOR METHODS
+	/**
+	 * 
+	 * @return the grid of GameComponents the Tier has
+	 */
 	public GameComponent[][] getGrid() {
 		return grid;
 	}
+	
 	/**
 	 * Get the component at a specified location in the grid
 	 * @param loc the Location in the grid
-	 * @return GameComponent the object in the grid
+	 * @return the GameComponent in the grid at the specified Location
 	 */
 	public GameComponent getComponentAtLoc(Location loc) {
 		//so that nothing moves to out-of-bounds locations
@@ -275,9 +278,10 @@ public abstract class Tier extends Display {
 		return null;
 		
 	}
+	
 	/**
 	 * Get the status of the game, over or still playing
-	 * @return boolean isOver
+	 * @return boolean for whether the Tier is over or not
 	 */
 	public boolean getGameStatus() {
 		return over;
@@ -291,16 +295,27 @@ public abstract class Tier extends Display {
 		return infectedPeople;
 	}
 	
+	/**
+	 * 
+	 * @return an ArrayList of people that the Tier has
+	 */
 	public ArrayList<Person> getPeople() {
 		return people;
 	}
 	
-	
+	/**
+	 * 
+	 * @param p Player that needs to be added to the Tier and its grid
+	 */
 	public void addPlayer(Player p) {
 		if (player == null) player = p;
 		this.addPersonToGrid(p);
 	}
 	
+	/**
+	 * 
+	 * @return an ArrayList of places that the Tier has
+	 */
 	public ArrayList<Place> getPlaces() {
 		return places;
 	}
@@ -425,15 +440,15 @@ public abstract class Tier extends Display {
 	
 	/**
 	 * 
-	 * @return timer
+	 * @return the TimerDisplay in the Tier
 	 */
 	public TimerDisplay getTimerDisplay() {
 		return timer;
 	}
 	
 	/**
-	 * Get the player's score
-	 * @return int score
+	 * Get the Player's score
+	 * @return an integer score
 	 */
 	public int getScore() {
 		int bonus = 0;
@@ -472,10 +487,6 @@ public abstract class Tier extends Display {
 		}
 	}
 	
-	/**
-	 * 
-	 * @return Location, a random empty location
-	 */
 	private Location randomEmptyLocation() {
 		ArrayList<Location> emptyLocs = new ArrayList<Location>();
 		for (int r = 0; r < grid.length; r++) {
@@ -487,10 +498,6 @@ public abstract class Tier extends Display {
 		return emptyLocs.get(random);
 	}
 	
-	/**
-	 * 
-	 * @return char, a random direction
-	 */
 	private char randomDirection() {
 		int random = (int) (Math.random() * 4);
 		

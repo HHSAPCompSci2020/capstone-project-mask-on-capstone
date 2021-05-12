@@ -2,13 +2,16 @@ package display;
 
 import processing.core.PApplet;
 import tiers.*;
+
 /**
  * The TaskBar class represents a Display that gives the user recommended tasks to complete in each Tier.
  * @author Felicia Zhang
  *
  */
 public class TaskBar extends Display{
+	
 	private Tier t;
+	
 	/**
 	 * Creates a TaskBar with the given dimensions
 	 * @param x the x-coordinate of the upper left corner of the TaskBar
@@ -20,6 +23,7 @@ public class TaskBar extends Display{
 		super(x, y, width, height);
 		t = null;
 	}
+	
 	/**
 	 * Draws the TaskBar
 	 * @param marker the PApplet on which the TaskBar is drawn
@@ -62,6 +66,7 @@ public class TaskBar extends Display{
 		}
 		marker.popStyle();
 	}
+	
 	/**
 	 * Updates the Tier of the TaskBar
 	 * @param t the current Tier
