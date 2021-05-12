@@ -60,6 +60,7 @@ public class VaccineClinic extends Place {
 			elapsedTime = (double)(System.currentTimeMillis() - startTime)/1000;
 			if (isOpen && elapsedTime >= 15) {
 				marker.text("Patients:\n " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
+				maskAdjacent(t);
 			}
 			else if (isOpen && elapsedTime <= 15) {
 				marker.textSize(12);
@@ -92,6 +93,7 @@ public class VaccineClinic extends Place {
 		}
 		return false;
 	}
+	//get arraylist of neighbors and mask them
 	private void removePatient(Tier t) {
 		double currentTime = (double)(System.currentTimeMillis());
 		for (int i = 0; i<patients.size(); i++) {
@@ -116,7 +118,24 @@ public class VaccineClinic extends Place {
 				patients.remove(i);
 				}
 			}
+	}
+	private void maskAdjacent(Tier t) {
+		ArrayList<Location> clinicLocs = new ArrayList<Location>();
+		for (int a=0; a<this.getLocations().size(); a++){
+			clinicLocs.addAll(this.getLocations().get(a).getAdjacentLocations(t));
 		}
+		for (int b=0; b<clinicLocs.size();b++) {
+			if (clinicLocs.get(b).isOutOfBounds(t) || !(t.getComponentAtLoc(clinicLocs.get(b)) instanceof Person)) {
+				clinicLocs.remove(b);
+				b--;
+			}
+		}
+		for (int c=0; c<clinicLocs.size();c++) {
+			Person p = (Person) t.getComponentAtLoc(clinicLocs.get(c));
+			if (!p.isMasked() && !p.isInfected() && !(p instanceof Doctor) && !(p instanceof Player) && !(p instanceof Researcher))
+				p.takeMask();
+		}
+	}
 	/**
 	 * Sets the disabled status of the VaccineClinic
 	 * @param b the new status of the VaccineClinic, true means the clinic is now disabled
