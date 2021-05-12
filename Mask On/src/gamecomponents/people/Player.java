@@ -181,11 +181,10 @@ public class Player extends Person {
 				else if (p instanceof VaccineClinic) {
 					
 					if (yourPerson instanceof Researcher) {
+						VaccineClinic v = (VaccineClinic)p;
+						v.addPerson(yourPerson);
 						inventory[3]--;
 						yourPerson = null;
-						VaccineClinic v = (VaccineClinic)p;
-						
-						
 						
 					}
 					if (yourPerson != null && !yourPerson.isVaccinated() && !yourPerson.isInfected()) {
@@ -217,6 +216,10 @@ public class Player extends Person {
 		
 	}
 	
+	/**
+	 * Get the person in your inventory
+	 * @return yourPerson
+	 */
 	public Person getYourPerson() {
 		return yourPerson;
 	}
