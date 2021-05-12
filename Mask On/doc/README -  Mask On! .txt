@@ -18,7 +18,7 @@ General Rules:
         Objective: Bring the Covid count to 0 in as little time as possible
         Key binds: WASD to move player, ‘Q’ to drop a person in your inventory, ‘E’ to mask people on the board
         Player: Run into people to pick them up. You can hold one person at a time. By running into specific buildings, you can drop people into the building. 
-        Masks: Collectables objects you can obtain by running into the factory. You obtain 5 masks every time you visit the factory, which has a cooldown of 20s as they replenish the masks. 
+        Masks: Collectable objects you can obtain by running into the factory. You obtain 5 masks every time you visit the factory, which has a cooldown of 20s as they replenish the masks. 
         Hospital: You can drop infected (red) people off at the hospital by running into it. The people will stay in the hospital until they are cured. 
         Private Residences: No function, other than being an obstacle.
         Covid Tracker: The bar will increase and decrease based on the Covid count on the board. Try to make the tracker reach 0 (completely white). 
