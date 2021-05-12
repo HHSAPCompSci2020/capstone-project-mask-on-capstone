@@ -20,6 +20,7 @@ public class Factory extends Place {
 	public Factory(ArrayList<Location> locs) {
 		super(locs);
 		startProduction = System.currentTimeMillis();
+		isOpen = true;
 	}
 	/**
 	 * Draws the Factory in the given Tier, the Factory has a countdown from 30 seconds when it is making masks, and when it is done making masks, it is open
@@ -39,7 +40,7 @@ public class Factory extends Place {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/factory.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
-		if (elapsedTime >= 20) {
+		if (elapsedTime >= 20 || isOpen) {
 			marker.text("OPEN", t.getX()+ 40*(x+1), t.getY() + 40*(y+1));
 			isOpen = true;
 		}
