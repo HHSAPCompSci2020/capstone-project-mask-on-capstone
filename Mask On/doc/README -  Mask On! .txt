@@ -1,5 +1,6 @@
 ﻿AP Computer Science Final Project - README 
 
+
 Mask On!
 Authors: Felicia Zhang, Roshni Parulekar-Martins, Emily Tumacder
 Revision: 5/ 12/ 2021
@@ -64,7 +65,6 @@ Stretch Features:
 Class List:
 *organized  by packages*
 
-
 DEFAULT 
 * Main: runs the program, contains the main method, creates the window
 * DrawingSurface: window
@@ -100,29 +100,44 @@ GAMECOMPONENTS PLACES
 Credits:
 Roshni:
 UML, README, Main, Drawingsurface
+------
 Map, Display, Location, Menu
+------
 Person
+------
 Place
+------
 YellowTier, OrangeTier
 
 Felicia:
 UML, README
+------
 CovidTracker, TaskBar, TimerDisplay
+------
 Doctor
+------
 Factory, Hospital, VaccineClinic
+-------
 RedTier
-
+	
 Emily:
 UML, README
+------
 Inventory, Tier
+------
 Player, Researcher
+------
 PublicPlace
+------
 PurpleTier
+------- 
 All icons that represent game components
 	
+
 External resources: 
 * Processing library (external Java library)
 * Pixilart.com (drawing software)
 * Unsplash.com (image database, screen background)
 * GridWorld (APCS Project, used as a reference for code) 
 * Cliparts.co (image database, star images)
+* Clipart-library.com (image database, California map)
