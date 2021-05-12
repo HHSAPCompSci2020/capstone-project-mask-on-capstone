@@ -56,13 +56,13 @@ public class VaccineClinic extends Place {
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
 		if (!isDisabled) {
-			if (t instanceof PurpleTier && researcher == null) {
-				isOpen = false;
-			}
 			if ((double)(System.currentTimeMillis() - startTime)/1000 >= 15) {
 				isOpen = true;
 			}
 			else {
+				isOpen = false;
+			}
+			if (t instanceof PurpleTier && researcher == null) {
 				isOpen = false;
 			}
 			marker.textSize(8);
