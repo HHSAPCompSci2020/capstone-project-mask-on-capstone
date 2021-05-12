@@ -7,7 +7,6 @@ import display.Location;
 import display.Tier;
 import gamecomponents.people.Player;
 import gamecomponents.places.Factory;
-import gamecomponents.places.Hospital;
 import gamecomponents.places.Place;
 import gamecomponents.places.PublicPlace;
 import gamecomponents.places.VaccineClinic;
@@ -78,17 +77,6 @@ public class PurpleTier extends Tier {
 		
 		
 		randomSpawn(4, 5, 2, 2);
-	}
-
-	@Override
-	public int getScore() {
-		if (getTimerDisplay().getTime() <= 60) {
-			return 3;
-		}
-		else if (getTimerDisplay().getTime() <= 90) {
-			return 2;
-		}
-		return 1;
 	}
 
 }

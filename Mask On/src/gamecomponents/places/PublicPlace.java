@@ -17,6 +17,10 @@ public class PublicPlace extends Place {
 		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Convert this place into a hospital
+	 * @param t
+	 */
 	public void convertIntoHospital(Tier t) {
 		//need to remove it from the board in the future
 		t.removeFromGrid(this);
