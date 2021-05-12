@@ -42,10 +42,12 @@ public class VaccineClinic extends Place {
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
 		marker.fill(200);
+		/*
 		for (Location l : getLocations()) {
 			marker.stroke(120);
 			marker.square(t.getX() + 40 * l.getCol(), t.getY() + 40 * l.getRow(), 40);
 		}
+		*/
 		marker.fill(0);
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();

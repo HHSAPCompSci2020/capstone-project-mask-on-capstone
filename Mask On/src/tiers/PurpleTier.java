@@ -9,6 +9,8 @@ import gamecomponents.people.Player;
 import gamecomponents.places.Factory;
 import gamecomponents.places.Hospital;
 import gamecomponents.places.Place;
+import gamecomponents.places.PublicPlace;
+import gamecomponents.places.VaccineClinic;
 
 public class PurpleTier extends Tier {
 	
@@ -17,14 +19,21 @@ public class PurpleTier extends Tier {
 		
 		this.addPlayer(new Player(new Location(7, 5), false, 'u', playerMode));
 	
-		ArrayList<Location> hosLocs1 = new ArrayList<Location>();
+		ArrayList<Location> ppLocs1 = new ArrayList<Location>();
 		for (int i = 5; i <= 6; i++) {
 			for (int j = 5; j <= 6; j++) {
-				hosLocs1.add(new Location(i, j));
+				ppLocs1.add(new Location(i, j));
 			}
 		}
-		
-		this.addPlaceToArrayList(new Hospital(hosLocs1));
+		this.addPlaceToArrayList(new PublicPlace(ppLocs1));
+	
+		ArrayList<Location> ppLocs2 = new ArrayList<Location>();
+		for (int i = 11; i <= 12; i++) {
+			for (int j = 11; j <= 12; j++) {
+				ppLocs2.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new PublicPlace(ppLocs2));
 		
 		ArrayList<Location> factorySquares = new ArrayList<Location>();
 		for (int i = 13; i <= 14; i++) {
@@ -34,11 +43,23 @@ public class PurpleTier extends Tier {
 		}
 		this.addPlaceToArrayList(new Factory(factorySquares));
 		
+		ArrayList<Location> vaccine = new ArrayList<Location>();
+		for (int i = 12; i <= 13; i++) {
+			for (int j = 1; j <= 2; j++) {
+				vaccine.add(new Location(i, j));
+			}
+		}
+		this.addPlaceToArrayList(new VaccineClinic(vaccine));
+		
 		ArrayList<Location> privateSquares = new ArrayList<Location>();
-		for (int i = 0; i < 4; i++) {
-			privateSquares.add(new Location(7, i));
+		for (int i = 4; i < 7; i++) {
+			privateSquares.add(new Location(i, 3));
+		}
+		for (int i = 10; i < 15; i++) {
+			privateSquares.add(new Location(9, i));
 		}
 		this.addPlaceToArrayList(new Place(privateSquares));
+		
 		
 		randomSpawn(6, 4, 2, 2);
 	}
