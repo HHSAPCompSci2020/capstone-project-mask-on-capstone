@@ -18,6 +18,7 @@ public class Hospital extends Place {
 	private ArrayList<Person> patients;
 	private ArrayList<Double> times;
 	private Doctor doctor;
+	private boolean isDisabled;
 	/**
 	 * Creates a Hospital at certain locations
 	 * @param locs the ArrayList of Location objects the Hospital occupies
@@ -27,6 +28,7 @@ public class Hospital extends Place {
 		patients = new ArrayList<Person>();
 		times = new ArrayList<Double>();
 		doctor = null;
+		isDisabled = false;
 	}
 	/**
 	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has
@@ -45,9 +47,11 @@ public class Hospital extends Place {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/hospital.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
-		marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
+		if (!isDisabled) {
+			marker.text("Patients: " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.2f));
+			removePatient(t);
+		}
 		marker.popStyle();
-		removePatient(t);
 	}
 	/**
 	 * Admits a person that is not a Researcher or Player to the Hospital if the Hospital is not at its maximum capacity of 5 people.
@@ -112,5 +116,12 @@ public class Hospital extends Place {
 				}
 			}
 		}
+	/**
+	 * 
+	 * @param b sets the disabled status of the Hospital
+	 */
+	public void setDisabled (boolean b) {
+		isDisabled = b;
+	}
 }
 

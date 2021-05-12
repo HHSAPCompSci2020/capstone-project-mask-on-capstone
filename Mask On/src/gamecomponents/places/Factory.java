@@ -13,6 +13,7 @@ import processing.core.PApplet;
 public class Factory extends Place {
 	private double startProduction;
 	private boolean isOpen;
+	private boolean isDisabled;
 	/**
 	 * 
 	 * @param locs the ArrayList of Location objects the Factory occupies
@@ -21,6 +22,7 @@ public class Factory extends Place {
 		super(locs);
 		startProduction = System.currentTimeMillis();
 		isOpen = true;
+		isDisabled = false;
 	}
 	/**
 	 * Draws the Factory in the given Tier, the Factory has a countdown from 30 seconds when it is making masks, and when it is done making masks, it is open
@@ -40,12 +42,14 @@ public class Factory extends Place {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/factory.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
-		if (elapsedTime >= 20 || isOpen) {
-			marker.text("OPEN", t.getX()+ 40*(x+1), t.getY() + 40*(y+1));
-			isOpen = true;
-		}
-		else {
-			marker.text("" + (20 - (int)elapsedTime) + "s left", t.getX()+ 40*(x+0.8f), t.getY() + 40*(y+1));
+		if (!isDisabled) {
+			if (elapsedTime >= 20 || isOpen) {
+				marker.text("OPEN", t.getX()+ 40*(x+1), t.getY() + 40*(y+1));
+				isOpen = true;
+			}
+			else {
+				marker.text("" + (20 - (int)elapsedTime) + "s left", t.getX()+ 40*(x+0.8f), t.getY() + 40*(y+1));
+			}
 		}
 		marker.popStyle();
 	}
@@ -67,5 +71,12 @@ public class Factory extends Place {
 	 */
 	public boolean getStatus() {
 		return isOpen;
+	}
+	/**
+	 * 
+	 * @param b sets the disabled status of the Factory
+	 */
+	public void setDisabled (boolean b) {
+		isDisabled = b;
 	}
 }

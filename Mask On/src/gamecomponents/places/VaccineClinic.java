@@ -20,6 +20,7 @@ public class VaccineClinic extends Place {
 	private double startTime;
 	private Researcher researcher;
 	private boolean isOpen;
+	private boolean isDisabled;
 	/**
 	 * Creates a VaccineClinic at certain locations
 	 * @param locs the ArrayList of Location objects the VaccineClinic occupies
@@ -31,6 +32,7 @@ public class VaccineClinic extends Place {
 		startTime = (double)(System.currentTimeMillis());
 		isOpen = false;
 		researcher = null;
+		isDisabled = false;
 	}
 	/**
 	 * Draws the VaccineClinic in the given Tier, the VaccineClinic shows that number of researches it currently has if it is not open
@@ -52,18 +54,20 @@ public class VaccineClinic extends Place {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
-		if (!isOpen && (double)(System.currentTimeMillis() - startTime)/1000 >=15) {
-			isOpen = true;
-		}
-		marker.textSize(8);
-		if (isOpen) {
-			marker.text("Patients:\n " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
-		}
-		else {
-			marker.text("CLOSED", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
+		if (!isDisabled) {
+			if (!isOpen && (double)(System.currentTimeMillis() - startTime)/1000 >=15) {
+				isOpen = true;
+			}
+			marker.textSize(8);
+			if (isOpen) {
+				marker.text("Patients:\n " + patients.size(), t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
+			}
+			else {
+				marker.text("CLOSED", t.getX()+ 40*(x+0.2f), t.getY() + 40*(y+1.4f));
+			}
+			removePatient(t);
 		}
 		marker.popStyle();
-		removePatient(t);
 	}
 	/**
 	 * Admits a patient to the VaccineClinic, a Person that is not a Doctor, Player, or Researcher can only be admitted if the clinic is not at its full capacity of 5 people. 
@@ -112,5 +116,12 @@ public class VaccineClinic extends Place {
 				}
 			}
 		}
+	/**
+	 * 
+	 * @param b sets the disabled status of the VaccineClinic
+	 */
+	public void setDisabled (boolean b) {
+		isDisabled = b;
+	}
 }
 
