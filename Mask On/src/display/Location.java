@@ -3,7 +3,7 @@ package display;
 import java.util.ArrayList;
 /**
  * Represents the location of a person in the Tier
- *
+ * @author roshnibright
  */
 public class Location {
 	private int row;
