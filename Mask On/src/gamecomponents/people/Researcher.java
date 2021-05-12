@@ -4,6 +4,11 @@ import display.Location;
 import display.Tier;
 import processing.core.PApplet;
 
+/**
+ * A Researcher is an invincible person, who can open up vaccine clinics
+ * @author EmilyTumacder
+ *
+ */
 public class Researcher extends Person {
 
 	public Researcher(Location loc, char direction) {

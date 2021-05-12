@@ -6,7 +6,7 @@ import display.Tier;
 import processing.core.PApplet;
 
 /**
- * 
+ * A type of place, A public place can be converted into hospital in certain conditions
  * @author EmilyTumacder
  *
  */

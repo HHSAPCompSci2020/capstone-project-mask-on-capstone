@@ -218,13 +218,6 @@ public class Person extends GameComponent {
 		this.direction = direction;
 	}
 	
-//	public int getStopwatch() {
-//		return stopwatch;
-//	}
-//	
-//	public void setStopwatch(int i) {
-//		stopwatch = i;
-//	}
 	/**
 	 * 
 	 * @return whether the Person object is null or not

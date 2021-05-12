@@ -8,7 +8,7 @@ import processing.core.PApplet;
 import processing.core.PImage;
 /**
  * The Inventory class is a Display that shows what the player has
- * @author emtinside
+ * @author EmilyTumacder
  */
 public class Inventory extends Display{
 
