@@ -25,14 +25,6 @@ public class PublicPlace extends Place {
 		t.addPlaceToGrid(h);
 	}
 	
-	public void convertIntoVaccineClinic(Tier t) {
-		//need to remove it from the board in the future
-		t.removeFromGrid(this);
-		VaccineClinic v = new VaccineClinic(this.getLocations());
-		t.addPlaceToArrayList(v);
-		t.addPlaceToGrid(v);
-	}
-	
 	public void draw(PApplet marker, Tier t) {
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();

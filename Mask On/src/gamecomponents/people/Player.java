@@ -179,15 +179,18 @@ public class Player extends Person {
 							PublicPlace place = (PublicPlace)p;
 							place.convertIntoHospital(t);
 						}
-						else if (yourPerson instanceof Researcher) {
-							inventory[3]--;
-							yourPerson = null;
-							PublicPlace place = (PublicPlace)p;
-							place.convertIntoVaccineClinic(t);
-						}
+	
 					}
 				}
 				else if (p instanceof VaccineClinic) {
+					
+					if (yourPerson instanceof Researcher) {
+						inventory[3]--;
+						yourPerson = null;
+						VaccineClinic v = (VaccineClinic)p;
+						
+						
+					}
 					if (yourPerson != null && !yourPerson.isVaccinated() && !yourPerson.isInfected()) {
 					
 						VaccineClinic v = (VaccineClinic)p;
