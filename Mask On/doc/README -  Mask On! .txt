@@ -60,9 +60,9 @@ Do actions need to be taken in a certain order?
 Features List (THE ONLY SECTION THAT CANNOT CHANGE LATER):
 Must-have Features:
 [These are features that we agree you will definitely have by the project due date. A good final project would have all of these completed. At least 5 are required. Each feature should be fully described (at least a few full sentences for each)]
-	* There will be a menu screen with the title, start button, and instructions. 
+	* [Completed] There will be a menu screen with the title, start button, and instructions. 
 	* [Completed] We need an interactive map so that players can “go” to different counties in California. By clicking on a certain area of the map, they will be able to complete a tier. 
-	* In the main game screen, there will be a sidebar with your inventory, which will show how much ppe and/or masks you have; a task bar, for the extra tasks that need to be completed that level; and a COVID tracker, which will fluctuate depending on the number of people in the grid that are infected. There will also be a timer that shows how long the user took to complete a tier. 
+	* [Completed] In the main game screen, there will be a sidebar with your inventory, which will show how much ppe and/or masks you have; a task bar, for the extra tasks that need to be completed that level; and a COVID tracker, which will fluctuate depending on the number of people in the grid that are infected. There will also be a timer that shows how long the user took to complete a tier. 
 	* [Completed] The main game screen will have a grid with people, hospital buildings, vaccination centers, private residences, public spaces, and a PPE factory.
 	* [Completed] The people need to be able to move on their own across the grid. 
 
@@ -72,7 +72,7 @@ Want-to-have Features:
 	* [Completed] Each character and building will have a different icon, reflective of what their character/building represents or what their character is wearing (PPE). 
 	* We would like to have constant background music playing, which may increase tempo as covid cases rise. 
 	* The infected people die after becoming infected for a certain period of time. If more than a certain number of people die, you must restart the task.
-	* The Player is able to choose accessories (not including any PPE) to look how they want to.
+	* [Completed] The Player is able to choose accessories (not including any PPE) to look how they want to.
 	* The SideBar has more specific tracking features, and it tracks the number of people in every situation, not just infected.
 
 

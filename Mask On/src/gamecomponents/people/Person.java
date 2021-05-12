@@ -46,15 +46,15 @@ public class Person extends GameComponent {
 			if (infected) {
 				marker.image(marker.loadImage("images/infected.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
+			else if (vaccinated) {
+				marker.image(marker.loadImage("images/vaccinated.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
+			}
 			else if (masked) {
 				marker.image(marker.loadImage("images/uninfectedMasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 				maskingStopwatch++;
 				if (maskingStopwatch % 150 == 0) {
 					masked = false;
 				}
-			}
-			else if (vaccinated) {
-				marker.image(marker.loadImage("images/vaccinated.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
 			}
 			else {
 				marker.image(marker.loadImage("images/uninfectedUnmasked.png"), t.getX() + 40 * loc.getCol(), t.getY() + 40 * loc.getRow(), 40, 40);
