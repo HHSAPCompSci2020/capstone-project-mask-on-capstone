@@ -141,3 +141,4 @@ External resources:
 * GridWorld (APCS Project, used as a reference for code) 
 * Cliparts.co (image database, star images)
 * Clipart-library.com (image database, California map)
+* 1001 Fonts (timer font)
