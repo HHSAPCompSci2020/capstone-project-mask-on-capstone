@@ -51,6 +51,13 @@ public class Menu extends Display {
 		purple = "There’s a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
 				"1) VACCINE CLINICS: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
 				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
+		orange = "1) PUBLIC PLACES: Run into these buildings while holding a doctor to convert it into a hospital. \n" + 
+				"2) DOCTOR: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
+		red = "1) VACCINE CLINICS: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
+				"2) VACCINATED PEOPLE: Run into them to pick them up.";
+		purple = "There's a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
+				"1) VACCINE CLINICS: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
+				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
 		tab = 'g';
 		playerMode = 'n';
 	}

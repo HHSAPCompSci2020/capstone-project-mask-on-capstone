@@ -33,7 +33,6 @@ public class Player extends Person {
 		super(loc, isInfected, direction);
 		inventory = new int[]{0,0,0,0,0};
 		this.mode = mode;
-		// TODO Auto-generated constructor stub
 	}
 	
 	/**
@@ -63,7 +62,6 @@ public class Player extends Person {
 	 */
 	public void grabPerson(Person p, Tier t) {
 			p.latchToPlayer(t);
-			//TESTER if(p instanceof Person) inventory[0]++;
 			yourPerson = p;
 			if (p.isInfected()) {inventory[1] ++;}
 			else if (p instanceof Doctor) {inventory[2]++;}
@@ -92,10 +90,9 @@ public class Player extends Person {
 			locs.remove(loc);
 			loc = locs.get(returnRandom(locs.size()-1, 0));
 		}
-			//System.out.println(loc.getRow() +" "+ loc.getCol());
+		
 		p.setLocation(loc);
 		t.addPersonToGrid(p);
-			//System.out.println(t.getComponentAtLoc(loc));
 		
 		if (p.isInfected()) {inventory[1]--;}
 		if (p instanceof Doctor) {inventory[2]--;}
@@ -153,7 +150,6 @@ public class Player extends Person {
 			if (t.getComponentAtLoc(loc) instanceof Person) {
 				Person p = (Person) t.getComponentAtLoc(loc);
 				if (yourPerson == null && (!p.isMasked()|| !p.isVaccinated()|| p.isInfected() || p instanceof Doctor || p instanceof Researcher)) {
-					//		System.out.println("you've picked up a person");
 					grabPerson(p, t);
 					return true;
 				}
