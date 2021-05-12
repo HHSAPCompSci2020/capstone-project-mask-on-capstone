@@ -10,11 +10,11 @@ import gamecomponents.people.Researcher;
 import processing.core.PApplet;
 import tiers.PurpleTier;
 /**
- * The VaccineClinic represents a Place that vaccinates people. It can hold a maximum of 5 patients at a time and can have 1 Researcher.
+ * The VaccineClinic represents a Place that vaccinates people. It can hold a maximum of 5 patients at a time and can have at most 1 Researcher. 
+ * The VaccineClinic takes 15 seconds to "make the vaccine" after it is opened.
  * @author Felicia Zhang
  *
  */
-
 public class VaccineClinic extends Place {
 	private ArrayList<Person> patients;
 	private ArrayList<Double> times;
@@ -23,8 +23,9 @@ public class VaccineClinic extends Place {
 	private boolean isOpen;
 	private boolean isDisabled;
 	private double elapsedTime;
+	
 	/**
-	 * Creates a VaccineClinic at certain locations
+	 * Creates a VaccineClinic at certain locations. The clinic is open and does not have a researcher.
 	 * @param locs the ArrayList of Location objects the VaccineClinic occupies
 	 */
 	public VaccineClinic(ArrayList<Location> locs) {
@@ -41,29 +42,17 @@ public class VaccineClinic extends Place {
 	 * Draws the VaccineClinic in the given Tier, the VaccineClinic shows that number of researches it currently has if it is not open
 	 * if it is open, the VaccineClinic displays the word open
 	 * @param marker the PApplet surface on which the VaccineClinic is being drawn
-	 * @param t the Tier in which the Hospital is inside
+	 * @param t the Tier in which the VaccineClinic is inside
 	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
 	public void draw(PApplet marker, Tier t) {
 		marker.pushStyle();
 		marker.fill(200);
-		/*
-		for (Location l : getLocations()) {
-			marker.stroke(120);
-			marker.square(t.getX() + 40 * l.getCol(), t.getY() + 40 * l.getRow(), 40);
-		}
-		*/
 		marker.fill(0);
 		int x = getLocations().get(0).getCol();
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
 		if (!isDisabled) {
-//			if ((double)(System.currentTimeMillis() - startTime)/1000 >= 15) {
-//				isOpen = true;
-//			}
-//			else {
-//				isOpen = false;
-//			}
 			if (t instanceof PurpleTier && researcher == null) {
 				isOpen = false;
 			}
@@ -133,8 +122,8 @@ public class VaccineClinic extends Place {
 			}
 		}
 	/**
-	 * 
-	 * @param b sets the disabled status of the VaccineClinic
+	 * Sets the disabled status of the VaccineClinic
+	 * @param b the new status of the VaccineClinic, true means the clinic is now disabled
 	 */
 	public void setDisabled (boolean b) {
 		isDisabled = b;

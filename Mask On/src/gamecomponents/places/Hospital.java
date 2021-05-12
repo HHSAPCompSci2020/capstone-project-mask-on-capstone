@@ -10,7 +10,7 @@ import gamecomponents.people.Player;
 import gamecomponents.people.Researcher;
 import processing.core.PApplet;
 /**
- * The Hospital class represents a Place that can hold 5 patients at a time. It can have 1 doctor. 
+ * The Hospital class represents a Place that cures the infected people and can hold 5 patients at a time. It can have at most 1 Doctor. 
  * @author Felicia Zhang
  *
  */
@@ -20,7 +20,7 @@ public class Hospital extends Place {
 	private Doctor doctor;
 	private boolean isDisabled;
 	/**
-	 * Creates a Hospital at certain locations
+	 * Creates a Hospital at certain locations.
 	 * @param locs the ArrayList of Location objects the Hospital occupies
 	 */
 	public Hospital(ArrayList<Location> locs) {
@@ -31,7 +31,7 @@ public class Hospital extends Place {
 		isDisabled = false;
 	}
 	/**
-	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has
+	 * Draws the Hospital in the given Tier, the Hospital shows that number of patients it currently has. 
 	 * @param marker the PApplet surface on which the Hospital is being drawn
 	 * @param t the Tier in which the Hospital is inside
 	 * @pre this method runs with the conditions previously set on the given PApplet
@@ -80,45 +80,28 @@ public class Hospital extends Place {
 		for (int i = 0; i<patients.size(); i++) {
 			if ((currentTime - times.get(i))/1000 >= 15) {
 				times.remove(i);
-				
-				/*
-				 * 1. get what the hospital occupies (arraylist of locations)
-				 * 2. find the adjacent locations to all the locations that hospital occupies (arraylist of locations)
-				 * 3. Add all the locations at 2) into 1)
-				 */
-				
 				ArrayList<Location> hosLocs = new ArrayList<Location>();
 				for (int a=0; a<this.getLocations().size(); a++){
 					hosLocs.addAll(this.getLocations().get(a).getAdjacentLocations(t));
 				}
-				//ArrayList<Location> validLocs = new ArrayList<Location>();
 				for (int b=0; b<hosLocs.size();b++) {
 					if (hosLocs.get(b).isOutOfBounds(t) || t.getComponentAtLoc(hosLocs.get(b)) != null) {
 						hosLocs.remove(b);
 						b--;
 					}
-					
 				}
-				
 				Location loc = hosLocs.get(0); 
-//System.out.println(loc.getRow() +" "+ loc.getCol());
 				Person p = patients.get(i);
 				p.cure(t);
-			//	Location loc = getLocations().get(2).getBottom(t);
 				patients.get(i).setLocation(loc);
-					//System.out.println(p.getLocation().getRow() + " "+p.getLocation().getCol());
 				t.addPersonToGrid(p);
-			//	t.addPersonToArrayList(p);
 				patients.remove(i);
-//				System.out.println(t.getPeople());
-				
-				//return patients.remove(i);
 				}
 			}
 		}
 	/**
-	 * 
-	 * @param b sets the disabled status of the Hospital
+	 * Sets the disabled status of the Hospital
+	 * @param b the new status of the Hospital, true means the Hospital is now disabled
 	 */
 	public void setDisabled (boolean b) {
 		isDisabled = b;

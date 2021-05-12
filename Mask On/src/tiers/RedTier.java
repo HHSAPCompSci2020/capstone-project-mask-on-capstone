@@ -11,7 +11,7 @@ import gamecomponents.places.Place;
 import gamecomponents.places.PublicPlace;
 import gamecomponents.places.VaccineClinic;
 /**
- * The RedTier class represents a Tier which 
+ * The RedTier class represents a Tier which is level 3. It has VaccineClinics. 
  * @author Felicia Zhang
  *
  */
