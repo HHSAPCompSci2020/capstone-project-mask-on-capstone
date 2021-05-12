@@ -56,7 +56,6 @@ public abstract class Tier extends Display {
 		taskBar = new TaskBar(675, 430,  240, 120);
 	}
 	
-	//Currently just hardcoding things into it for testing
 	/**
 	 * Draw the tier on the surface
 	 * @param marker the PApplet surface you're drawing on
@@ -160,14 +159,16 @@ public abstract class Tier extends Display {
 	public void addPersonToGrid(Person p) {
 		Location loc = p.getLocation();
 		if (loc.getRow() >= grid.length || loc.getRow() < 0 || loc.getCol() >= grid.length || loc.getCol() < 0)
-			System.out.println("You're out of bounds buddy");
+		{} //System.out.println("You're out of bounds buddy");
 		
 		else if (grid[loc.getRow()][loc.getCol()] == null) { // if empty
 			grid[loc.getRow()][loc.getCol()] = p;
 		}
+		/* TESTING PURPOSES
 		else {
 			System.out.println("This space is occupied");
 		}
+		*/
 	}
 	
 	public void addPersonToArrayList(Person p) {
@@ -186,9 +187,10 @@ public abstract class Tier extends Display {
 			if (grid[locs.get(i).getRow()][locs.get(i).getCol()] == null) { // if empty
 				grid[locs.get(i).getRow()][locs.get(i).getCol()] = p;
 			}
+			/* TESTING PURPOSES
 			else
 				System.out.println("This space is occupied");
-		
+			 */
 		}
 	}
 	
@@ -414,14 +416,25 @@ public abstract class Tier extends Display {
 		stopwatch = i;
 	}
 	
+	/**
+	 * reduce the infected on the board
+	 */
 	public void reduceInfected() {
 		infectedPeople--;
 	}
 	
+	/**
+	 * 
+	 * @return timer
+	 */
 	public TimerDisplay getTimerDisplay() {
 		return timer;
 	}
 	
+	/**
+	 * Get the player's score
+	 * @return int score
+	 */
 	public int getScore() {
 		int bonus = 0;
 		for (Person p : people) {
@@ -437,6 +450,13 @@ public abstract class Tier extends Display {
 		return 1;
 	}
 	
+	/**
+	 * Spawn types of people randomly on the board
+	 * @param normalPeople uninfected people
+	 * @param infected 
+	 * @param doctors
+	 * @param researchers
+	 */
 	public void randomSpawn(int normalPeople, int infected, int doctors, int researchers) {
 		for (int i = 0; i < normalPeople; i++) {
 			addPersonToArrayList(new Person(randomEmptyLocation(), false, randomDirection()));
@@ -452,6 +472,10 @@ public abstract class Tier extends Display {
 		}
 	}
 	
+	/**
+	 * 
+	 * @return Location, a random empty location
+	 */
 	private Location randomEmptyLocation() {
 		ArrayList<Location> emptyLocs = new ArrayList<Location>();
 		for (int r = 0; r < grid.length; r++) {
@@ -463,6 +487,10 @@ public abstract class Tier extends Display {
 		return emptyLocs.get(random);
 	}
 	
+	/**
+	 * 
+	 * @return char, a random direction
+	 */
 	private char randomDirection() {
 		int random = (int) (Math.random() * 4);
 		

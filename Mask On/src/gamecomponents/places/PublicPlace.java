@@ -22,7 +22,6 @@ public class PublicPlace extends Place {
 	 * @param t
 	 */
 	public void convertIntoHospital(Tier t) {
-		//need to remove it from the board in the future
 		t.removeFromGrid(this);
 		Hospital h=  new Hospital(this.getLocations());
 		t.addPlaceToArrayList(h);
