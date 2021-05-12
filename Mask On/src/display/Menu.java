@@ -63,7 +63,7 @@ public class Menu extends Display {
 	}
 	
 	/**
-	 * Draws the Menu
+	 * Draws the Menu with the given PApplet
 	 * @param marker the PApplet on which the Menu is drawn
 	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */
@@ -165,6 +165,11 @@ public class Menu extends Display {
 		}
 	}
 	
+	/**
+	 * Changes the tab in the Menu's instructions based on where the user clicked
+	 * @param x x-coordinate of the place where the user clicked
+	 * @param y y-coordinate of the place where the user clicked
+	 */
 	public void changeTab(int x, int y) {
 		if (Display.insideRect(x, y, 100, 120, 100, 30)) {
 			tab = 'g';
@@ -183,6 +188,11 @@ public class Menu extends Display {
 		}
 	}
 	
+	/**
+	 * Changes the accessory of the Player based on where the user clicked
+	 * @param x x-coordinate of the place where the user clicked
+	 * @param y y-coordinate of the place where the user clicked
+	 */
 	public void changePlayer(int x, int y) {
 		if (Display.insideRect(x, y, 1000 * 2/3, 400, 200, 40)) {
 			playerMode = 'n';
@@ -195,6 +205,10 @@ public class Menu extends Display {
 		}
 	}
 	
+	/**
+	 * Shows the tab that should be displayed based on which tab the user clicked
+	 * @param marker PApplet on which the tab is shown
+	 */
 	public void showTab(PApplet marker) {
 		marker.pushStyle();
 		marker.textAlign(PConstants.LEFT, PConstants.TOP);
@@ -287,6 +301,10 @@ public class Menu extends Display {
 		super.setHeight(width);
 	}
 	
+	/**
+	 * 
+	 * @return the accessory the player has
+	 */
 	public char getMode() {
 		return playerMode;
 	}

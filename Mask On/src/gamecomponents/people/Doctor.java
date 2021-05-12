@@ -4,15 +4,18 @@ import display.Location;
 import display.Tier;
 import processing.core.PApplet;
 /**
- * The Doctor class represents a Person that can not be infected.
+ * The Doctor class represents a Person that is immune to Covid and can be used to create Hospitals.
  * @author Felicia Zhang
  *
  */
 public class Doctor extends Person {
-
+	/**
+	 * Creates a Doctor with given information, automatically vaccinated
+	 * @param loc Location at which the Person starts at
+	 * @param direction which direction the Person will start moving in
+	 */
 	public Doctor(Location loc, char direction) {
 		super(loc, false, direction);
-//		takeMask();
 		getVaccinated();
 	}
 	/**

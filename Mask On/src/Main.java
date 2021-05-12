@@ -4,7 +4,7 @@ import processing.awt.PSurfaceAWT;
 import processing.core.PApplet;
 /**
  * The Main class represents the start of entire program
- *
+ * @author Emily Tumacder, Felicia Zhang, roshnibright
  */
 public class Main {
 	/**

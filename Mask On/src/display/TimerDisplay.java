@@ -60,7 +60,9 @@ public class TimerDisplay extends Display{
 		marker.text(min + " : " + secs, getX()+ getWidth()*6/7, getY()+ getHeight()*5/7);
 		marker.popStyle();
 	}
-	
+	/**
+	 * @return the elapsed time in type long
+	 */
 	public long getTime() {
 		return elapsedTime;
 	}

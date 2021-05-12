@@ -2,7 +2,7 @@ package display;
 
 import processing.core.PApplet;
 /**
- * Represents a tracker that keeps track of the number of Covid cases in each Tier
+ * The CovidTrakcer is a Display  that keeps track of the number of Covid cases in each Tier
  * @author Felicia Zhang
  *
  */
@@ -22,7 +22,7 @@ public class CovidTracker extends Display{
 		this.total = 0;
 	}
 	/**
-	 * Draws the tracker, which is a horizontal bar in which the ratio of the red to the whole bar is proportional to the Covid count out of the total population
+	 * Draws the CovidTracker, which is a horizontal bar in which the ratio of the red to the whole bar is proportional to the Covid count out of the total population
 	 * @param marker the PApplet on which the CovidTracker is drawn
 	 * @pre this method runs with the conditions previously set on the given PApplet
 	 */

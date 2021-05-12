@@ -6,7 +6,7 @@ import display.Location;
 import display.Tier;
 import processing.core.PApplet;
 /**
- * The Factory class represents a Place that makes masks. It makes 5 masks in 30 seconds and is open when it is done making the masks.
+ * The Factory class represents a Place that makes masks. It makes 5 masks in 20 seconds and is open when it is done making the masks.
  * @author Felicia Zhang
  *
  */
@@ -15,7 +15,7 @@ public class Factory extends Place {
 	private boolean isOpen;
 	private boolean isDisabled;
 	/**
-	 * 
+	 * Creates the Factory at the given locations. It is open.
 	 * @param locs the ArrayList of Location objects the Factory occupies
 	 */
 	public Factory(ArrayList<Location> locs) {
@@ -25,7 +25,7 @@ public class Factory extends Place {
 		isDisabled = false;
 	}
 	/**
-	 * Draws the Factory in the given Tier, the Factory has a countdown from 30 seconds when it is making masks, and when it is done making masks, it is open
+	 * Draws the Factory in the given Tier, the Factory has a countdown from 20 seconds when it is making masks, and when it is done making masks, it is open.
 	 * @param marker the PApplet surface on which the Factory is being drawn
 	 * @param t the Tier in which the Factory is inside
 	 * @pre this method runs with the conditions previously set on the given PApplet
@@ -54,7 +54,7 @@ public class Factory extends Place {
 		marker.popStyle();
 	}
 	/**
-	 * The player retrieves 5 masks if the Factory is open. If it is closed, 0 masks are retrieved. 
+	 * Allows the player to retrieve 5 masks if the Factory is open. If Factory is closed, 0 masks are retrieved. 
 	 * @return the number of masks retrieved
 	 */
 	public int retrieveMasks() {
@@ -73,8 +73,8 @@ public class Factory extends Place {
 		return isOpen;
 	}
 	/**
-	 * 
-	 * @param b sets the disabled status of the Factory
+	 * Sets the disabled status of the Factory
+	 * @param b the new status of the Factory, true means the Factory is now disabled
 	 */
 	public void setDisabled (boolean b) {
 		isDisabled = b;

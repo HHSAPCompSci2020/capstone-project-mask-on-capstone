@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 
 /**
  * The DrawingSurface class draws the components of program on the window and updates them based on user actions
+ * @author Emily Tumacder, Felicia Zhang, roshnibright
  *
  */
 public class DrawingSurface extends PApplet {
@@ -144,10 +145,6 @@ public class DrawingSurface extends PApplet {
 			}
 		}
 		
-	}
-	
-	public void mouseDragged() {
-			
 	}
 
 }
