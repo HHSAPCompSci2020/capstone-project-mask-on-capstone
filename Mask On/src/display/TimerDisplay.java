@@ -61,7 +61,7 @@ public class TimerDisplay extends Display{
 		marker.popStyle();
 	}
 	/**
-	 * @return the elapsed time
+	 * @return the elapsed time in type long
 	 */
 	public long getTime() {
 		return elapsedTime;

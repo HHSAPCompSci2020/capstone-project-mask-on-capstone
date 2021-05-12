@@ -22,6 +22,13 @@ public class Inventory extends Display{
 	private int maskCount;
 	private Person yourPerson;
 
+	/**
+	 * 
+	 * @param x x-coordinate of the top left corner
+	 * @param y y-coordinate of the top left corner
+	 * @param width width of the Inventory display
+	 * @param height height of the Inventory display
+	 */
 	public Inventory( double x, double y, double width, double height) {
 		super(x, y, width, height);
 		maskCount = 0;
