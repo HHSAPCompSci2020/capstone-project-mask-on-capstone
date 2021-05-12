@@ -8,6 +8,7 @@ import gamecomponents.people.Person;
 import gamecomponents.people.Player;
 import gamecomponents.people.Researcher;
 import processing.core.PApplet;
+import tiers.PurpleTier;
 /**
  * The VaccineClinic represents a Place that vaccinates people. It can hold a maximum of 5 patients at a time and can have 1 Researcher.
  * @author Felicia Zhang
@@ -30,7 +31,7 @@ public class VaccineClinic extends Place {
 		patients = new ArrayList<Person>();
 		times = new ArrayList<Double>();
 		startTime = (double)(System.currentTimeMillis());
-		isOpen = false;
+		isOpen = true;
 		researcher = null;
 		isDisabled = false;
 	}
@@ -55,8 +56,14 @@ public class VaccineClinic extends Place {
 		int y = getLocations().get(0).getRow();
 		marker.image(marker.loadImage("images/vaccine.png"), t.getX()+ 40*x,  t.getY() + 40*y, t.getWidth()*2/15, t.getHeight()*2/15);
 		if (!isDisabled) {
-			if (!isOpen && (double)(System.currentTimeMillis() - startTime)/1000 >=15) {
+			if (t instanceof PurpleTier && researcher == null) {
+				isOpen = false;
+			}
+			if ((double)(System.currentTimeMillis() - startTime)/1000 >= 15) {
 				isOpen = true;
+			}
+			else {
+				isOpen = false;
 			}
 			marker.textSize(8);
 			if (isOpen) {
@@ -78,6 +85,7 @@ public class VaccineClinic extends Place {
 	public boolean addPerson(Person p) {
 		if (p instanceof Researcher && researcher == null) {
 			researcher = (Researcher) p;
+			startTime = (double)System.currentTimeMillis();
 			return true;
 		}
 		else if (patients.size() < 5 && isOpen && !(p instanceof Doctor) && !(p instanceof Player)) {
