@@ -50,6 +50,7 @@ public class Menu extends Display {
 			marker.strokeWeight(getStrokeWeight());
 			marker.rect(1000/15, 3 * 750/20, 13 * 1000/15, 3 * 750/4);
 			marker.fill(0);
+			/*
 			marker.text("General Rules", 1000/15 + 5, 3 * 750/20, (13 * 1000/15)/3 - 5, 487.5F);
 			marker.text("Yellow Tier Rules", 1000/15 + (13 * 1000/15)/3, 3 * 750/20, 1000/15 + (13 * 1000/15)/3, 487.5F/2);
 			marker.text("Orange Tier Rules", 1000/15 + 2 * (13 * 1000/15)/3 + 5, 3 * 750/20, 1000/15 + 2 * (13 * 1000/15)/3 - 5, 487.5F/2);
@@ -58,6 +59,8 @@ public class Menu extends Display {
 			marker.strokeWeight(1);
 			marker.line(1000/15 + 2 * (13 * 1000/15)/3, 3 * 750/20 + 5, 1000/15 + 2 * (13 * 1000/15)/3, 600);
 			marker.line(1000/15 + (13 * 1000/15)/3, 356.25F, 1000/15 + 13 * 1000/15 - 5, 356.25F);
+			*/
+			
 			
 			//start button that does the same thing as the close box
 			marker.fill(255, 220, 0);

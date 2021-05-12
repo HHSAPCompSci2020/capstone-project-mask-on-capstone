@@ -49,9 +49,11 @@ public class Inventory extends Display{
 			marker.rect(this.getX()+10, this.getY()+50 + this.getHeight()/4, this.getWidth()-25, this.getHeight()/4);
 			PImage m = marker.loadImage("images/mask.png");
 			m.resize(35,0);
-		for (int i=0; i<maskCount; i++) {
-			marker.image(m, this.getX()+ 10 + 35*(i), this.getY()+40);
-		}
+
+			marker.image(m, this.getX()+ 10, this.getY()+40);
+			marker.fill(0);
+			marker.text("x" + maskCount, this.getX()+ 50, this.getY()+60);
+		
 
 		if (yourPerson != null) {
 			marker.textSize(12);

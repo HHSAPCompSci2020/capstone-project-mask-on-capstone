@@ -25,7 +25,7 @@ public class PurpleTier extends Tier {
 		}
 		
 		this.addPlaceToArrayList(new Hospital(hosLocs1));
-		/*
+		
 		ArrayList<Location> factorySquares = new ArrayList<Location>();
 		for (int i = 13; i <= 14; i++) {
 			for (int j = 13; j <= 14; j++) {
@@ -39,7 +39,7 @@ public class PurpleTier extends Tier {
 			privateSquares.add(new Location(7, i));
 		}
 		this.addPlaceToArrayList(new Place(privateSquares));
-		*/
+		
 		randomSpawn(6, 4, 2, 2);
 	}
 
