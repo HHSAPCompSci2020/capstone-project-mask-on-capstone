@@ -33,4 +33,62 @@ public class Doctor extends Person {
 		}
 	}
 	
+	/**
+	 * Moves the Doctor diagonally
+	 */
+	public void move() {
+		char direction = this.getDirection();
+		Location loc = this.getLocation();
+		
+		if (direction == 'u') {
+			this.setLocation(new Location(loc.getRow() - 1, loc.getCol()+1));	
+		}
+		else if (direction == 'd') {
+			this.setLocation(new Location(loc.getRow() + 1, loc.getCol()-1));
+		}
+		else if (direction == 'l') {
+			this.setLocation(new Location(loc.getRow() - 1, loc.getCol()-1));
+		}
+		else if (direction == 'r'){
+			this.setLocation(new Location(loc.getRow() + 1, loc.getCol()+1));
+		}
+	}
+	
+	/**
+	 * The doctor will check if it can move diagonally
+	 * @param t the Tier in which the Doctor is
+	 * @return whether the Doctor can move or not
+	 */
+	public boolean canMove(Tier t) {
+		
+		char direction = this.getDirection();
+		if (this.getLocation() == null) return false;
+		
+		Location loc;
+		if (direction == 'u') loc = new Location(this.getLocation().getRow()-1, this.getLocation().getCol()+1);
+		else if (direction == 'd') loc = new Location(this.getLocation().getRow()+1, this.getLocation().getCol()-1);
+		else if (direction == 'l') loc = new Location(this.getLocation().getRow()-1, this.getLocation().getCol()-1);
+		else loc = new Location(this.getLocation().getRow()+1, this.getLocation().getCol()+1);
+		
+		//if (loc == null) return false;
+		if (loc.isOutOfBounds(t)) {
+			if (direction == 'u') direction = 'd';
+			else if (direction == 'd') direction ='u';
+			else if (direction == 'l') direction ='r';
+			else if (direction == 'r') direction ='l';
+			
+			return false;
+		}
+		else if (t.getComponentAtLoc(loc) == null) return true;
+		else {
+			if (direction == 'u') direction = 'd';
+			else if (direction == 'd') direction ='u';
+			else if (direction == 'l') direction ='r';
+			else if (direction == 'r') direction ='l';
+			
+			return false;
+		}
+		
+	}
+	
 }

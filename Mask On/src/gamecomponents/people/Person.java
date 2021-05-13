@@ -91,7 +91,7 @@ public class Person extends GameComponent {
 	}
 
 	/**
-	 * 
+	 * Checks if the person can move
 	 * @param t the Tier in which the Person is
 	 * @return whether the Person can move or not
 	 */
