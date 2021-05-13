@@ -224,6 +224,7 @@ public class Person extends GameComponent {
 	
 	/**
 	 * Has the Person be carried by the Player
+	 * @param t The Tier that the Person is in
 	 */
 	public void latchToPlayer(Tier t) {
 		t.removeFromGrid(this);

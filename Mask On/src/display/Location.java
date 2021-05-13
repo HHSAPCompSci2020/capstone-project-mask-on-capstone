@@ -69,7 +69,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location above this Location
 	 */
 	public Location getTop(Tier t) {
@@ -80,7 +80,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location below of this Location
 	 */
 	public Location getBottom(Tier t) {
@@ -91,7 +91,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location to the left of this Location
 	 */
 	public Location getLeft(Tier t) {
@@ -102,7 +102,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location to the right of this Location
 	 */
 	public Location getRight(Tier t) {
@@ -113,7 +113,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location to the top left of this Location
 	 */
 	public Location getTopLeft(Tier t) {
@@ -124,7 +124,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location to the top right of this Location
 	 */
 	public Location getTopRight(Tier t) {
@@ -135,7 +135,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location to the bottom left of this Location
 	 */
 	public Location getBottomLeft(Tier t) {
@@ -146,7 +146,7 @@ public class Location {
 	}
 	
 	/**
-	 * 
+	 * @param t the Tier that the location is in
 	 * @return the adjacent Location to the bottom right of this Location
 	 */
 	public Location getBottomRight(Tier t) {
@@ -155,7 +155,11 @@ public class Location {
 		
 		return null;
 	}
-	
+	/**
+	 * Checks to see if a location is out of bounds
+	 * @param t the Tier that the location is in
+	 * @return whether or not the Location is out of bounds
+	 */
 	public boolean isOutOfBounds(Tier t) {
 		if (this.row >= t.getGrid().length || this.row < 0 || this.col >= t.getGrid()[0].length || this.col< 0)
 			return true;

@@ -25,6 +25,7 @@ public class Player extends Person {
 	 * @param loc Location at which the Player starts at
 	 * @param isInfected whether the Player starts out infected or not
 	 * @param direction which direction the Player will start moving in
+	 * @param mode the mode of the Player
 	 */
 	public Player(Location loc, boolean isInfected, char direction, char mode) {
 		super(loc, isInfected, direction);
@@ -102,7 +103,7 @@ public class Player extends Person {
 	
 	/**
 	 * Gives a person a mask
-	 * @param p the person that needs a mask
+	 * @param t the Tier that the Player is in
 	 */
 	public void giveMask(Tier t) {
 		ArrayList<Location> locs = this.getLocation().getAdjacentLocations(t);
@@ -139,6 +140,7 @@ public class Player extends Person {
 	 * -(Vaccine clinic) drop person off at clinic
 	 * -(Public Place) drop a specialist off to convert it into a Hospital or Vaccine clinic
 	 * @param t Tier in which the Player is inside
+	 * @param loc the location to check for
 	 * @return whether or not the Player can move
 	 */
 	public boolean canMove(Location loc, Tier t) {

@@ -225,6 +225,7 @@ public abstract class Tier extends Display {
 	/**
 	 * Move a Person from its original location to a new location
 	 * @param p the Person object you are moving
+	 * @param loc the Location to move the player to 
 	 */
 	public void movePlayer(Location loc, Player p) {
 		
@@ -472,10 +473,10 @@ public abstract class Tier extends Display {
 	
 	/**
 	 * Spawn types of people randomly on the board
-	 * @param normalPeople uninfected people
-	 * @param infected 
-	 * @param doctors
-	 * @param researchers
+	 * @param normalPeople The number of uninfected people
+	 * @param infected The number of uninfected people
+	 * @param doctors The number of doctors
+	 * @param researchers The number of researchers
 	 */
 	public void randomSpawn(int normalPeople, int infected, int doctors, int researchers) {
 		for (int i = 0; i < normalPeople; i++) {

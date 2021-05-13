@@ -38,6 +38,7 @@ public class CovidTracker extends Display{
 	/**
 	 * Updates the Covid count and total number of people based on the Tier
 	 * @param t the current Tier
+	 * @return whether or not the covidCount is 0
 	 */
 	public boolean update(Tier t) {
 		total = t.getNumPeople();

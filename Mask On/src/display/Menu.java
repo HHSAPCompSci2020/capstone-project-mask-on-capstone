@@ -155,6 +155,8 @@ public class Menu extends Display {
 	
 	/**
 	 * Opens or closes the Menu depending on its current state
+	 * @param x x-coordinate of the place where the user clicked
+	 * @param y y-coordinate of the place where the user clicked
 	 */
 	public void openClose(int x, int y) {
 		if (Display.insideRect(x, y, getX(), getY(), getWidth(), getHeight())
