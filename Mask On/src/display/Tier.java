@@ -99,7 +99,12 @@ public abstract class Tier extends Display {
 		if (!over) {
 			if (stopwatch % 10 == 0) {
 				for (Person p : people) {
-					movePerson(p);
+					if (p.isInfected()) movePerson(p);
+				}
+			}
+			if (stopwatch % 20 == 0) {
+				for (Person p : people) {
+					if (!p.isInfected()) movePerson(p);
 				}
 			}
 		}
