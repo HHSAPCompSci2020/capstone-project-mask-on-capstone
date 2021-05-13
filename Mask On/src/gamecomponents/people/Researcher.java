@@ -1,5 +1,6 @@
 package gamecomponents.people;
 
+import java.util.ArrayList;
 import display.Location;
 import display.Tier;
 import processing.core.PApplet;
@@ -10,6 +11,8 @@ import processing.core.PApplet;
  *
  */
 public class Researcher extends Person {
+	
+	private ArrayList<Location> movable;
 
 	/**
 	 * 
@@ -18,9 +21,9 @@ public class Researcher extends Person {
 	 */
 	public Researcher(Location loc, char direction) {
 		super(loc, false, direction);
-//		takeMask();
+		takeMask();
 		getVaccinated();
-		// TODO Auto-generated constructor stub
+		movable = new ArrayList<Location>();
 	}
 	
 	/**
@@ -29,6 +32,33 @@ public class Researcher extends Person {
 	public void draw(PApplet marker, Tier t) {
 		if (getLocation() != null) {
 			marker.image(marker.loadImage("images/researcher.png"), t.getX() + 40 * getLocation().getCol(), t.getY() + 40 * getLocation().getRow(), 40, 40);
+		}
+	}
+	
+	public boolean canMove(Tier t) {
+		if (getLocation() == null) return false;
+		ArrayList<Location> adjacent = getLocation().getAdjacentLocations(t);
+		if (movable.size() > 0) {
+			movable.clear();
+		}
+		for (Location l : adjacent) {
+			if (t.getComponentAtLoc(l) == null) {
+				movable.add(l);
+			}
+		}
+		for (Location l : adjacent) {
+			if (t.getComponentAtLoc(l) == null) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void move() {
+		if (movable.size() > 0 && getLocation() != null) {
+			int random = (int) (Math.random() * movable.size());
+			getLocation().setRow(movable.get(random).getRow());
+			getLocation().setCol(movable.get(random).getCol());
 		}
 	}
 	

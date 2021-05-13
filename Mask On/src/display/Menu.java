@@ -43,21 +43,19 @@ public class Menu extends Display {
 				"	8) TASK BAR: See what recommended tasks you should complete in order to finish the level.\n" + 
 				"	9) INVENTORY: View what you currently have. \n" + 
 				"	10) MAP: Click on the circles OR rectangles to visit a county in California, whose respective color relates to their Covid case count (tiers). \n";
-		yellow = "Refer to general rules";
+		yellow = "Refer to general rules \n"
+				+ "Movement Note: The uninfected people move either vertically or horizontally. Infected people move at twice the speed, and when above, below, to "
+				+ "the left, or to the right of you, they move away from you.";
 		orange = "1) PUBLIC PLACES: Run into these buildings while holding a doctor to convert it into a hospital. \n" + 
-				"2) DOCTOR: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
+				"2) DOCTOR: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals. \n"
+				+ "Movement Note: Doctors move along a diagonal on the grid, unlike normal people.";
 		red = "1) VACCINE CLINICS: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
-				"2) VACCINATED PEOPLE: Run into them to pick them up.";
+				"2) VACCINATED PEOPLE: Run into them to pick them up. \n"
+				+ "Functionality Note: When regular people run into an open vaccine clinic, they get masked, as the clinic hands out free masks when open.";
 		purple = "There’s a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
 				"1) VACCINE CLINICS: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
-				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
-		orange = "1) PUBLIC PLACES: Run into these buildings while holding a doctor to convert it into a hospital. \n" + 
-				"2) DOCTOR: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.";
-		red = "1) VACCINE CLINICS: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. \n" + 
-				"2) VACCINATED PEOPLE: Run into them to pick them up.";
-		purple = "There's a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. \n" + 
-				"1) VACCINE CLINICS: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. \n" + 
-				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics";
+				"2) RESEARCHER: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics. \n"
+				+ "Movement Note: Researchers move to a random adjacent location, unlike regular people and doctors.";
 		tab = 'g';
 		playerMode = 'n';
 	}
@@ -222,29 +220,29 @@ public class Menu extends Display {
 			marker.textAlign(PConstants.CENTER, PConstants.CENTER);
 			marker.textSize(10);
 			
-			marker.image(marker.loadImage("images/hospital.png"), 235, 200, 30, 30);
-			marker.text("hospital", 200, 230, 100, 20);
+			marker.image(marker.loadImage("images/hospital.png"), 235, 250, 30, 30);
+			marker.text("hospital", 200, 280, 100, 20);
 			
-			marker.image(marker.loadImage("images/factory.png"), 335, 200, 30, 30);
-			marker.text("factory", 300, 230, 100, 20);
+			marker.image(marker.loadImage("images/factory.png"), 335, 250, 30, 30);
+			marker.text("factory", 300, 280, 100, 20);
 			
-			marker.image(marker.loadImage("images/place.png"), 435, 200, 30, 30);
-			marker.text("private place", 400, 230, 100, 20);
+			marker.image(marker.loadImage("images/place.png"), 435, 250, 30, 30);
+			marker.text("private place", 400, 280, 100, 20);
 			
-			marker.image(marker.loadImage("images/uninfectedUnmasked.png"), 135, 270, 30, 30);
-			marker.text("unmasked", 100, 300, 100, 20);
+			marker.image(marker.loadImage("images/uninfectedUnmasked.png"), 135, 320, 30, 30);
+			marker.text("unmasked", 100, 350, 100, 20);
 			
-			marker.image(marker.loadImage("images/uninfectedMasked.png"), 235, 270, 30, 30);
-			marker.text("masked", 200, 300, 100, 20);
+			marker.image(marker.loadImage("images/uninfectedMasked.png"), 235, 320, 30, 30);
+			marker.text("masked", 200, 350, 100, 20);
 			
-			marker.image(marker.loadImage("images/infected.png"), 335, 270, 30, 30);
-			marker.text("infected", 300, 300, 100, 20);
+			marker.image(marker.loadImage("images/infected.png"), 335, 320, 30, 30);
+			marker.text("infected", 300, 350, 100, 20);
 			
-			marker.image(marker.loadImage("images/HazmatMan.png"), 435, 270, 30, 30);
-			marker.text("you", 400, 300, 100, 20);
+			marker.image(marker.loadImage("images/HazmatMan.png"), 435, 320, 30, 30);
+			marker.text("you", 400, 350, 100, 20);
 			
-			marker.image(marker.loadImage("images/HazmatManMask.png"), 535, 270, 30, 30);
-			marker.text("you + mask(s)", 500, 300, 100, 20);
+			marker.image(marker.loadImage("images/HazmatManMask.png"), 535, 320, 30, 30);
+			marker.text("you + mask(s)", 500, 350, 100, 20);
 		}
 		else if (tab == 'o') {
 			marker.text(orange, 90, 155, 520, 410);
