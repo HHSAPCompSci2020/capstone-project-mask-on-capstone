@@ -3,7 +3,7 @@
 
 Mask On!
 Authors: Felicia Zhang, Roshni Parulekar-Martins, Emily Tumacder
-Revision: 5/ 12/ 2021
+Revision: 5/ 14/ 2021
 
 
 Introduction: 
@@ -15,28 +15,32 @@ Each county has a different level of difficulty, based on real life “tiers” 
 
 Instructions:
 General Rules: 
-        Objective: Bring the Covid count to 0 in as little time as possible
-        Key binds: WASD to move player, ‘Q’ to drop a person in your inventory, ‘E’ to mask people on the board
-        Player: Run into people to pick them up. You can hold one person at a time. By running into specific buildings, you can drop people into the building. 
-        Masks: Collectable objects you can obtain by running into the factory. You obtain 5 masks every time you visit the factory, which has a cooldown of 20s as they replenish the masks. 
-        Hospital: You can drop infected (red) people off at the hospital by running into it. The people will stay in the hospital until they are cured. 
-        Private Residences: No function, other than being an obstacle.
-        Covid Tracker: The bar will increase and decrease based on the Covid count on the board. Try to make the tracker reach 0 (completely white). 
-        Task Bar: See what recommended tasks you should complete in order to finish the level. 
-        Inventory: View what you currently have. 
-        Map: Click on the circles OR rectangles to visit a county in California, whose respective color relates to their Covid case count (tiers). 
+	Objective: Bring the Covid count to 0 in as little time as possible
+	Key binds: WASD to move player, ‘Q’ to drop a person in your inventory, ‘E’ to mask people on the board
+	Player: Run into people to pick them up. You can hold one person at a time. By running into specific buildings, you can drop people into the building. 
+	Masks: Collectable objects you can obtain by running into the factory. You obtain 5 masks every time you visit the factory, which has a cooldown of 20s as they replenish the masks. 
+	Hospital: You can drop infected (red) people off at the hospital by running into it. The people will stay in the hospital until they are cured. 
+	Private Residences: No function, other than being an obstacle.
+	Covid Tracker: The bar will increase and decrease based on the Covid count on the board. Try to make the tracker reach 0 (completely white). 
+	Task Bar: See what recommended tasks you should complete in order to finish the level. 
+	Inventory: View what you currently have. 
+	Map: Click on the circles OR rectangles to visit a county in California, whose respective color relates to their Covid case count (tiers). 
 Yellow Tier (level 1): 
-Refer to general rules
+	Refer to general rules
+	Movement Note: The uninfected people move either vertically or horizontally. Infected people move at twice the speed, and when above, below, to the left, or to the right of you, they move away from you.
 Orange Tier (level  2):
-Public Places: Run into these buildings while holding a doctor to convert it into a hospital. 
-Doctor: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.
+	Public Places: Run into these buildings while holding a doctor to convert it into a hospital. 
+	Doctor: Run into them to pick them up. Doctors are immune to Covid, and are needed to convert public buildings into hospitals.
+	Movement Note: Doctors move along a diagonal on the grid, unlike normal people.
 Red Tier (level 3):
-        Vaccine Clinics: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. 
-        Vaccinated People: Run into them to pick them up. 
+	Vaccine Clinics: Run into these buildings while holding an uninfected, unvaccinated person to vaccinate them. They will leave the clinic immune to Covid. 
+	Vaccinated People: Run into them to pick them up. 
+	Functionality Note: When regular people run into an open vaccine clinic, they get masked, as the clinic hands out free masks when open.
 Purple Tier (level 4):
-         There’s a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. 
-        Vaccine Clinics: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. 
-        Researcher: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics
+	There’s a new variant of Covid in town! We now need to employ researchers at our vaccine clinics to create a new vaccine. 
+	Vaccine Clinics: Run into these closed buildings while holding a researcher to employ them. The clinic will open up after the researchers create the vaccine. 
+	Researcher: Run into them to pick them up. Researchers are immune to Covid, and are needed to open up vaccine clinics
+	Movement Note: Researchers move to a random adjacent location, unlike regular people and doctors.
 
 
 Features List:
@@ -98,8 +102,9 @@ GAMECOMPONENTS PLACES
 
 
 Credits:
+Note: There was no actual code in GameComponent, so there are no credits attributed for that class.
 Roshni:
-UML, README, Main, Drawingsurface
+UML, README, Main, DrawingSurface
 ------
 Map, Display, Location, Menu
 ------
@@ -110,7 +115,7 @@ Place
 YellowTier, OrangeTier
 
 Felicia:
-UML, README
+UML, README, Main, DrawingSurface
 ------
 CovidTracker, TaskBar, TimerDisplay
 ------
@@ -121,7 +126,7 @@ Factory, Hospital, VaccineClinic
 RedTier
 	
 Emily:
-UML, README
+UML, README, Main, DrawingSurface
 ------
 Inventory, Tier
 ------
