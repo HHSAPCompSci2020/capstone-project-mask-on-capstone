@@ -70,7 +70,6 @@ public class Doctor extends Person {
 		else if (direction == 'l') loc = new Location(this.getLocation().getRow()-1, this.getLocation().getCol()-1);
 		else loc = new Location(this.getLocation().getRow()+1, this.getLocation().getCol()+1);
 		
-		//if (loc == null) return false;
 		if (loc.isOutOfBounds(t)) {
 			if (direction == 'u') direction = 'd';
 			else if (direction == 'd') direction ='u';

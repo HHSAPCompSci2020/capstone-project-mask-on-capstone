@@ -115,8 +115,6 @@ public class DrawingSurface extends PApplet {
 	 * Updates the menu and map based on the user clicking on their mouse
 	 */
 	public void mousePressed() {
-		//DELETE LATER 
-		//System.out.println("(x,y) = " + mouseX + "," + mouseY);
 			
 		mouseX *= 1000F/width; mouseY *= 750F/height;
 		
