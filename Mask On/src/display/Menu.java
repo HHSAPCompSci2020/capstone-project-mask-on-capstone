@@ -144,6 +144,7 @@ public class Menu extends Display {
 			
 			//box
 			marker.rect(getX(), getY(), getWidth(), getHeight());
+			
 			//lines
 			marker.rect(getX() + getWidth()/8, getY() + 2 * getHeight()/7, 3 * getWidth()/4, 1);
 			marker.rect(getX() + getWidth()/8, getY() + getHeight()/2, 3 * getWidth()/4, 1);
